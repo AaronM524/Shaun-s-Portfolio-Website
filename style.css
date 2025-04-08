@@ -225,3 +225,47 @@ body {
   }
 }
 
+
+.skill-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.skill-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #5d5dff;
+}
+
+.skill-card .card-body {
+  padding: 25px;
+}
+
+.skill-level {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 10px;
+  background-color: #e6e9ff;
+  color: #5d5dff;
+}
