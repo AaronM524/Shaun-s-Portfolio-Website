@@ -274,3 +274,23 @@ body {
     padding-top: 30px;
   }
 }
+
+
+.skill-card {
+  max-width: 450px;
+  margin: auto;
+}
+
+@media (max-width: 576px) {
+  .skill-card {
+      max-width: 100%;
+  }
+}
+
+.skill-card .card-body {
+  padding: 1.5rem;
+}
+
+.skill-card .card-text {
+  font-size: 0.9rem;
+}
