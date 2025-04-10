@@ -1,3 +1,6 @@
+
+
+
 .arrow {
   position: absolute;
   bottom: 4rem; /* Adjust position */
@@ -83,7 +86,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover; /* Ensures the video covers the whole screen */
+  object-fit: cover;
   z-index: -1;
 }
 
@@ -101,7 +104,6 @@
   }
 }
 
-/* Custom Styling to Match Previous Design */
 body {
   background-color: #0f0f0f;
   font-family: "Inter", sans-serif;
@@ -294,3 +296,5 @@ body {
 .skill-card .card-text {
   font-size: 0.9rem;
 }
+
+
