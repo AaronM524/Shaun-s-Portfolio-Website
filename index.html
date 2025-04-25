@@ -170,24 +170,26 @@
     </div>
 </section>
 <!-- Projects Section -->
-<section id="projects" class="py-5" style="background-color: #f5f7fa;">
-  <div class="container text-center">
-    <h2 class="section-title mb-5">Projects</h2>
-    
-    <!-- Filter Buttons -->
-    <div class="filters mb-5">
-      <button class="filter-btn active" data-filter="all">featured</button>
-      <button class="filter-btn" data-filter="fullstack">fullstack</button>
-      <button class="filter-btn" data-filter="web3">web3</button>
-      <button class="filter-btn" data-filter="frontend">frontend</button>
+<section id="projects" class="py-5">
+  <div class="container">
+    <!-- Title and Filter Buttons pinned to the top -->
+    <div class="top-section text-center mb-4">
+      <h2 class="section-title mb-4">Projects</h2>
+      <div class="filters d-flex justify-content-center flex-wrap gap-2">
+        <button class="filter-btn active" data-filter="all">featured</button>
+        <button class="filter-btn" data-filter="fullstack">fullstack</button>
+        <button class="filter-btn" data-filter="web3">web3</button>
+        <button class="filter-btn" data-filter="frontend">frontend</button>
+      </div>
     </div>
-    
-    <!-- Project Grid - Will be populated from JSON -->
+
+    <!-- Project Grid -->
     <div class="row g-4" id="project-gallery">
-      <!-- Projects will be inserted here by JavaScript -->
+      <!-- Projects inserted here by JavaScript -->
     </div>
   </div>
 </section>
+
     <!-- Font Awesome for icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>

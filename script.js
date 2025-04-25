@@ -33,6 +33,7 @@ const projectsData = [
   // Function to create project cards from JSON data
   function createProjectCards() {
     const projectGallery = document.getElementById('project-gallery');
+    projectGallery.innerHTML = ''; // Clear any existing content
     
     projectsData.forEach(project => {
       // Create category classes string
@@ -41,9 +42,9 @@ const projectsData = [
       // Create HTML for tags
       const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join('');
       
-      // Create project card HTML
+      // Create project card HTML with responsive column classes
       const projectCard = `
-        <div class="col-md-6 filter-item ${categoryClasses}">
+        <div class="col-12 col-sm-6 col-lg-4 filter-item ${categoryClasses}">
           <div class="project-card">
             <div class="project-img">
               <img src="${project.image}" alt="${project.title}">
