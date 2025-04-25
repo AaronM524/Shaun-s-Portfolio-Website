@@ -430,3 +430,47 @@ body {
     padding: 3px 8px;
   }
 }
+
+
+/* Contact Section Styles */
+#contact .section-title:after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #007bff;
+  margin: 15px auto 0;
+}
+
+.contact-item {
+  transition: all 0.3s ease;
+  padding: 15px;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.contact-item a {
+  color: #555;
+  transition: color 0.3s;
+}
+
+.contact-item a:hover {
+  color: #007bff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .contact-item {
+    margin-bottom: 20px;
+  }
+}
