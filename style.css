@@ -184,7 +184,7 @@ body {
 }
 
 .navbar.scrolled .nav-link::after {
-    background-color: black;
+    background-color: #5F6A72;
 }
 
 /* Section Common Styles */
@@ -255,40 +255,6 @@ body {
     color: var(--text-light);
 }
 
-.about-skills {
-    margin-top: 2.5rem;
-}
-
-.about-skills h5 {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.skill-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill-tag {
-    display: inline-block;
-    background-color: var(--light-color);
-    color: var(--primary-color);
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-}
-
-.skill-tag:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    background-color: var(--primary-color);
-    color: white;
-}
 
 /* Skills Section */
 .skills-section {
@@ -341,8 +307,8 @@ body {
 
 .filter-btn {
     background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid #cc0033;
+    color: #cc0033;
     padding: 8px 20px;
     border-radius: 30px;
     font-size: 0.9rem;
@@ -353,7 +319,7 @@ body {
 }
 
 .filter-btn:hover, .filter-btn.active {
-    background-color: var(--primary-color);
+    background-color: #cc0333;
     color: white;
 }
 
@@ -412,7 +378,7 @@ body {
 
 .project-tag {
     background-color: var(--light-color);
-    color: var(--primary-color);
+    color: #cc0333;
     padding: 3px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -431,13 +397,13 @@ body {
 }
 
 .project-links a:first-child {
-    background-color: var(--primary-color);
+    background-color: #cc0033;
     color: white;
 }
 
 .project-links a:last-child {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid #cc0033;
+    color: #cc0333;
 }
 
 .project-links a:hover {
@@ -845,40 +811,7 @@ textarea.form-control {
     transform: translateY(-2px);
 }
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
-    .about-container {
-        padding: 80px 0;
-    }
-    
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .profile-column {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .about-container {
-        padding: 60px 0;
-    }
-    
-    .name-heading {
-        font-size: 32px;
-    }
-    
-    .title-subheading {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-} 
-
-
-/* Timeline Section Styles */
+/* Timeline Section */
 .timeline-section {
     padding: 80px 0;
     background-color: #f9f9f9;
@@ -891,27 +824,26 @@ textarea.form-control {
     padding: 20px 0;
 }
 
-/* Vertical line */
+/* Vertical center line */
 .timeline-container::after {
     content: '';
     position: absolute;
-    width: 4px;
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -2px;
+    width: 4px;
+    background-color: #cc0033;
+    transform: translateX(-50%);
 }
 
-/* Timeline items */
+/* Timeline item */
 .timeline-item {
-    padding: 10px 40px;
     position: relative;
     width: 50%;
+    padding: 20px 40px;
     box-sizing: border-box;
-    margin-bottom: 30px;
 }
 
-/* Alternating items left/right */
 .timeline-item:nth-child(odd) {
     left: 0;
     text-align: right;
@@ -922,42 +854,46 @@ textarea.form-control {
     text-align: left;
 }
 
-/* The circles on the timeline */
+/* Dot */
 .timeline-dot {
     position: absolute;
+    top: 20px;
     width: 20px;
     height: 20px;
-    right: -10px;
     background-color: white;
-    border: 4px solid #3498db;
+    border: 4px solid #cc0033;
     border-radius: 50%;
     z-index: 1;
 }
 
-/* Position the dots for right-side items */
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -10px;
+}
+
 .timeline-item:nth-child(even) .timeline-dot {
     left: -10px;
 }
 
-/* Content styling */
+/* Date */
 .timeline-date {
     font-weight: bold;
     color: #cc0033;
-    margin-bottom: 5px;
     font-size: 1.1rem;
+    margin-bottom: 10px;
 }
 
+/* Content */
 .timeline-content {
-    padding: 20px;
     background-color: white;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-content h3 {
     margin-top: 0;
-    color: #333;
     font-size: 1.3rem;
+    color: #333;
 }
 
 .timeline-content p {
@@ -965,93 +901,48 @@ textarea.form-control {
     margin-bottom: 0;
 }
 
-/* Responsive design for tablets and mobile */
+/* ------------------ Responsive Design ------------------ */
 @media screen and (max-width: 768px) {
     .timeline-container::after {
-        left: 40px;
+        left: 20px;
+        transform: none;
     }
-    
+
     .timeline-item {
         width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-        text-align: left;
+        padding: 20px 20px 20px 60px;
+        left: 0 !important;
+        text-align: left !important;
     }
-    
-    .timeline-item:nth-child(odd) {
-        left: 0;
-        text-align: left;
-    }
-    
-    .timeline-item:nth-child(even) {
-        left: 0;
-    }
-    
+
     .timeline-dot {
-        left: 30px;
+        left: 20px !important;
         right: auto;
-    }
-    
-    .timeline-item:nth-child(even) .timeline-dot {
-        left: 30px;
     }
 }
 
-/* Small screens additional adjustments */
 @media screen and (max-width: 480px) {
-    .timeline-container {
-        padding: 10px 0;
-    }
-    
     .timeline-item {
-        padding-left: 60px;
-        padding-right: 15px;
-        margin-bottom: 20px;
+        padding: 15px 15px 15px 50px;
     }
-    
+
     .timeline-dot {
-        left: 20px;
         width: 16px;
         height: 16px;
+        left: 15px !important;
     }
-    
-    .timeline-item:nth-child(even) .timeline-dot {
-        left: 20px;
-    }
-    
+
     .timeline-content {
         padding: 15px;
     }
-    
-    .timeline-container::after {
-        left: 30px;
+
+    .timeline-date {
+        font-size: 1rem;
     }
-}
 
-
-.timeline-dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -10px;
-    border: 4px solid #cc0033;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.timeline-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    margin-left: -2px;
-    background-color: #cc0033; 
-}
-
-.timeline-container {
-    position: relative;
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
 }
 
 
@@ -1197,3 +1088,4 @@ textarea.form-control {
         margin-bottom: 1.2rem;
     }
 }
+
