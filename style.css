@@ -126,7 +126,7 @@ body {
 }
 
 .navbar.scrolled {
-    background-color: rgba(30, 41, 59, 0.95) !important;
+    background-color: white !important;
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
@@ -139,7 +139,7 @@ body {
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: white !important;
     font-weight: 500;
     margin: 0 10px;
     position: relative;
@@ -172,6 +172,19 @@ body {
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+.navbar.scrolled .navbar-brand,
+.navbar.scrolled .nav-link {
+    color: #cc0033 !important;
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: #cc0033 !important;
+}
+
+.navbar.scrolled .nav-link::after {
+    background-color: black;
 }
 
 /* Section Common Styles */
