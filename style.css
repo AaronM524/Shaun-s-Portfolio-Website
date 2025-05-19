@@ -439,7 +439,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 20px;
-    color: var(--primary-color);
+    color: #cc0033;
     font-size: 1.2rem;
 }
 
@@ -456,7 +456,7 @@ body {
 }
 
 .contact-text a:hover {
-    color: var(--primary-color);
+    color: #cc0033;
 }
 
 .contact-form {
@@ -476,7 +476,7 @@ body {
 
 .form-control:focus {
     box-shadow: none;
-    border-color: var(--primary-color);
+    border-color: #cc0033;
 }
 
 textarea.form-control {
@@ -485,7 +485,7 @@ textarea.form-control {
 }
 
 .submit-btn {
-    background-color: var(--primary-color);
+    background-color: #cc0033;
     color: white;
     border: none;
     padding: 12px 30px;
