@@ -1,0 +1,70 @@
+{
+  "filters": [
+    { "label": "All", "value": "all" },
+    { "label": "Web Applications", "value": "web" },
+    { "label": "Mobile Apps", "value": "mobile" },
+    { "label": "UI/UX Design", "value": "design" }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "category": "web",
+      "title": "E-commerce Platform",
+      "description": "A full-featured online store with product listings, cart functionality, and secure checkout.",
+      "image": "images/project1.jpg",
+      "tags": ["React", "Node.js", "MongoDB"],
+      "liveLink": "#",
+      "codeLink": "#"
+    },
+    {
+      "id": 2,
+      "category": "mobile",
+      "title": "Task Management App",
+      "description": "A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.",
+      "image": "images/project2.jpg",
+      "tags": ["React Native", "Firebase", "Redux"],
+      "liveLink": "#",
+      "codeLink": "#"
+    },
+    {
+      "id": 3,
+      "category": "design",
+      "title": "Portfolio Website",
+      "description": "A responsive portfolio website showcasing creative work with smooth animations and transitions.",
+      "image": "images/project3.jpg",
+      "tags": ["HTML5", "CSS3", "JavaScript"],
+      "liveLink": "#",
+      "codeLink": "#"
+    },
+    {
+      "id": 4,
+      "category": "web",
+      "title": "Social Media Dashboard",
+      "description": "Analytics dashboard for tracking social media metrics across multiple platforms in real-time.",
+      "image": "images/project4.jpg",
+      "tags": ["Vue.js", "Express", "PostgreSQL"],
+      "liveLink": "#",
+      "codeLink": "#"
+    },
+    {
+      "id": 5,
+      "category": "mobile",
+      "title": "Fitness Tracker",
+      "description": "Mobile application for tracking workouts, nutrition, and progress with personalized recommendations.",
+      "image": "images/project5.jpg",
+      "tags": ["Flutter", "Firebase", "Dart"],
+      "liveLink": "#",
+      "codeLink": "#"
+    },
+    {
+      "id": 6,
+      "category": "web",
+      "title": "Weather Application",
+      "description": "Real-time weather forecasting app with location detection and 5-day forecasts using API integration.",
+      "image": "images/project6.jpg",
+      "tags": ["React", "API", "Geolocation"],
+      "liveLink": "#",
+      "codeLink": "#"
+    }
+  ]
+}

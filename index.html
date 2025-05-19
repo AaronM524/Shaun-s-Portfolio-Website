@@ -30,6 +30,8 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+
 </head>
 
 <body>
@@ -291,145 +293,53 @@
 
 
     <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="project-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Applications</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                <button class="filter-btn" data-filter="design">UI/UX Design</button>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card" data-category="web">
-                        <div class="project-img">
-                            <img src="images/project1.jpg" alt="E-commerce Platform">
-                        </div>
-                        <div class="project-info">
-                            <h3>E-commerce Platform</h3>
-                            <p>A full-featured online store with product listings, cart functionality, and secure
-                                checkout.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Node.js</span>
-                                <span class="project-tag">MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card" data-category="mobile">
-                        <div class="project-img">
-                            <img src="images/project2.jpg" alt="Task Management App">
-                        </div>
-                        <div class="project-info">
-                            <h3>Task Management App</h3>
-                            <p>A productivity application for organizing tasks with drag-and-drop functionality and team
-                                collaboration.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React Native</span>
-                                <span class="project-tag">Firebase</span>
-                                <span class="project-tag">Redux</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card" data-category="design">
-                        <div class="project-img">
-                            <img src="images/project3.jpg" alt="Portfolio Website">
-                        </div>
-                        <div class="project-info">
-                            <h3>Portfolio Website</h3>
-                            <p>A responsive portfolio website showcasing creative work with smooth animations and
-                                transitions.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">HTML5</span>
-                                <span class="project-tag">CSS3</span>
-                                <span class="project-tag">JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card" data-category="web">
-                        <div class="project-img">
-                            <img src="images/project4.jpg" alt="Social Media Dashboard">
-                        </div>
-                        <div class="project-info">
-                            <h3>Social Media Dashboard</h3>
-                            <p>Analytics dashboard for tracking social media metrics across multiple platforms in
-                                real-time.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Vue.js</span>
-                                <span class="project-tag">Express</span>
-                                <span class="project-tag">PostgreSQL</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card" data-category="mobile">
-                        <div class="project-img">
-                            <img src="images/project5.jpg" alt="Fitness Tracker">
-                        </div>
-                        <div class="project-info">
-                            <h3>Fitness Tracker</h3>
-                            <p>Mobile application for tracking workouts, nutrition, and progress with personalized
-                                recommendations.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Flutter</span>
-                                <span class="project-tag">Firebase</span>
-                                <span class="project-tag">Dart</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card" data-category="web">
-                        <div class="project-img">
-                            <img src="images/project6.jpg" alt="Weather Application">
-                        </div>
-                        <div class="project-info">
-                            <h3>Weather Application</h3>
-                            <p>Real-time weather forecasting app with location detection and 5-day forecasts using API
-                                integration.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">API</span>
-                                <span class="project-tag">Geolocation</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div id="app">
+    <section class="section projects-section">
+      <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-filter">
+          <button
+            v-for="filter in filters"
+            :key="filter.value"
+            @click="activeFilter = filter.value"
+            :class="['filter-btn', { active: activeFilter === filter.value }]"
+          >
+            {{ filter.label }}
+          </button>
         </div>
+        <div class="row">
+          <div
+            v-for="project in filteredProjects"
+            :key="project.id"
+            class="col-lg-4 col-md-6 mb-4"
+          >
+            <div class="project-card" :data-category="project.category">
+              <div class="project-img">
+                <img :src="project.image" :alt="project.title" />
+              </div>
+              <div class="project-info">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                <div class="project-tags">
+                  <span
+                    v-for="tag in project.tags"
+                    :key="tag"
+                    class="project-tag"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+                <div class="project-links">
+                  <a :href="project.liveLink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                  <a :href="project.codeLink"><i class="fab fa-github"></i> View Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+  </div>
 
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
@@ -457,7 +367,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Phone</h4>
-                                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                                <a href="tel:+1234567890">+1 732-618-8048</a>
                             </div>
                         </div>
 
@@ -467,8 +377,8 @@
                             </div>
                             <div class="contact-text">
                                 <h4>LinkedIn</h4>
-                                <a href="https://linkedin.com/in/shaunmathew"
-                                    target="_blank">linkedin.com/in/shaunmathew</a>
+                                <a href="https://www.linkedin.com/in/shaunm042"
+                                    target="_blank">linkedin.com/in/shaunm042</a>
                             </div>
                         </div>
 
@@ -478,7 +388,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>GitHub</h4>
-                                <a href="https://github.com/shaunmathew" target="_blank">github.com/shaunmathew</a>
+                                <a href="https://github.com/ShaunM042" target="_blank"> github.com/ShaunM042</a>
                             </div>
                         </div>
                     </div>
@@ -518,11 +428,8 @@
                 experiences.
             </p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shaunm042"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/ShaunM042"><i class="fab fa-github"></i></a>
             </div>
             <div class="footer-links mt-4">
                 <h4>Quick Links</h4>
