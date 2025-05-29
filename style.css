@@ -209,51 +209,169 @@ body {
     margin: 15px auto 0;
 }
 
-/* About Section */
-.about-section {
-    background-color: white;
-    padding: 5rem 0;
-}
+   /* About Section */
+        .about-section {
+            background-color: white;
+            padding: 4rem 0;
+        }
 
-.profile-img {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s ease;
-    border: 5px solid white;
-}
+        .profile-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
 
-.profile-img:hover {
-    transform: translateY(-8px) rotate(2deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
+        .profile-img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            border: 4px solid white;
+        }
 
-.about-content h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    position: relative;
-    display: inline-block;
-}
+        .profile-img:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
 
-.about-content h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 60px;
-    height: 4px;
-    background: #E3242B;
-    border-radius: 2px;
-}
+        .about-content {
+            text-align: center;
+        }
 
-.about-content p {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    margin-bottom: 1.5rem;
-    color: var(--text-light);
-}
+        .about-content h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--text-dark);
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background: #E3242B;
+            border-radius: 2px;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-align: left;
+            max-width: 100%;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 0;
+            }
+
+            .about-section {
+                padding: 2.5rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .profile-img {
+                max-width: 200px;
+                border: 3px solid white;
+            }
+
+            .profile-image-container {
+                margin-bottom: 1.5rem;
+            }
+
+            .about-content {
+                padding: 0 1rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .about-content h2::after {
+                width: 40px;
+                height: 3px;
+                bottom: -8px;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .profile-img {
+                max-width: 180px;
+            }
+
+            .about-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-content p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .about-section {
+                padding: 2rem 0;
+            }
+        }
+
+        /* Desktop layout restoration */
+        @media (min-width: 992px) {
+            .about-content {
+                text-align: left;
+            }
+
+            .about-content h2::after {
+                left: 0;
+                transform: none;
+            }
+
+            .about-content p {
+                text-align: left;
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+
+            .profile-img {
+                max-width: 320px;
+            }
+
+            .profile-image-container {
+                margin-bottom: 0;
+            }
+        }
+
 
 
 /* Skills Section */
