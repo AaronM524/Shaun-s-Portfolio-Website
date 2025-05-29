@@ -64,62 +64,62 @@
         {
           "id": 1,
           "category": "web",
-          "title": "E-commerce Platform",
-          "description": "A full-featured online store with product listings, cart functionality, and secure checkout.",
+          "title": "Fresh Finder",
+          "description": "NBA stats explorer built with Flask and the NBA API. Search players/teams, view box scores, and explore stats with visuals and real-world API optimizations.",
           "image": "https://via.placeholder.com/400/0000FF/FFFFFF?text=E-commerce",
-          "tags": ["React", "Node.js", "MongoDB"],
+          "tags": ["HTML", "Python", "CSS"],
           "liveLink": "#",
-          "codeLink": "#"
+          "codeLink": "https://github.com/ShaunM042/Fresh-Finder"
         },
         {
           "id": 2,
-          "category": "mobile",
-          "title": "Task Management App",
-          "description": "A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.",
+          "category": "web",
+          "title": "Chatbot",
+          "description": "This chatbot is designed to provide quick, helpful, and conversational responses to your questions or requests anytime you need.",
           "image": "https://via.placeholder.com/400/FF0000/FFFFFF?text=Task+App",
-          "tags": ["React Native", "Firebase", "Redux"],
+          "tags": ["HTML", "CSS", "Java"],
           "liveLink": "#",
-          "codeLink": "#"
+          "codeLink": "https://github.com/ShaunM042/Chatbot"
         },
         {
           "id": 3,
-          "category": "design",
-          "title": "Portfolio Website",
-          "description": "A responsive portfolio website showcasing creative work with smooth animations and transitions.",
+          "category": "web",
+          "title": "Prequisite",
+          "description": "This repository has a requirement checker system for courses and this is done by using adjacency lists and directed graphs. The project's goal is to make course prerequisites simpler for students to understand by presenting them as a Directed Acyclic Graph (DAG).",
           "image": "https://via.placeholder.com/400/00FF00/FFFFFF?text=Portfolio",
-          "tags": ["HTML5", "CSS3", "JavaScript"],
+          "tags": ["Java"],
           "liveLink": "#",
-          "codeLink": "#"
+          "codeLink": "https://github.com/ShaunM042/Prerequisite-Checker"
         },
         {
           "id": 4,
           "category": "web",
-          "title": "Social Media Dashboard",
-          "description": "Analytics dashboard for tracking social media metrics across multiple platforms in real-time.",
+          "title": "Parent Bridge",
+          "description": "This is a project we are working on which essentiall creates a social media app tailored to schools for their specific needs.",
           "image": "https://via.placeholder.com/400/FFFF00/000000?text=Dashboard",
-          "tags": ["Vue.js", "Express", "PostgreSQL"],
+          "tags": ["TypeScript"],
           "liveLink": "#",
-          "codeLink": "#"
+          "codeLink": "https://github.com/ShaunM042/ParentBridge"
         },
         {
           "id": 5,
           "category": "mobile",
-          "title": "Fitness Tracker",
-          "description": "Mobile application for tracking workouts, nutrition, and progress with personalized recommendations.",
+          "title": "Weather Generator",
+          "description": "A Java library that uses historical data to create and analyze simulated weather forecasts. This study uses predictive models of historical weather data to simulate patterns of precipitation in the future.",
           "image": "https://via.placeholder.com/400/FF00FF/FFFFFF?text=Fitness",
-          "tags": ["Flutter", "Firebase", "Dart"],
+          "tags": ["Java"],
           "liveLink": "#",
-          "codeLink": "#"
+          "codeLink": "https://github.com/ShaunM042/Weather-Generator"
         },
         {
           "id": 6,
           "category": "web",
-          "title": "Weather Application",
-          "description": "Real-time weather forecasting app with location detection and 5-day forecasts using API integration.",
+          "title": "Heart-Transplant",
+          "description": "This repository houses the creation of a heart transplant matching system that maximizes post-transplant survival rates by matching recipient hearts to donor hearts based on various factors",
           "image": "https://via.placeholder.com/400/00FFFF/000000?text=Weather",
           "tags": ["React", "API", "Geolocation"],
           "liveLink": "#",
-          "codeLink": "#"
+          "codeLink": "https://github.com/ShaunM042/Heart-Transplant"
         }
       ]
     }; 
