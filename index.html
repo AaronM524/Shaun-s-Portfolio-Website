@@ -292,55 +292,61 @@
 </section>
 
 
-    <!-- Projects Section -->
-    <div id="app">
-    <section class="section projects-section">
-      <div class="container">
-        <h2 class="section-title">My Projects</h2>
-        <div class="project-filter">
-          <button
-            v-for="filter in filters"
-            :key="filter.value"
-            @click="activeFilter = filter.value"
-            :class="['filter-btn', { active: activeFilter === filter.value }]"
-          >
-            {{ filter.label }}
-          </button>
-        </div>
-        <div class="row">
-          <div
-            v-for="project in filteredProjects"
-            :key="project.id"
-            class="col-lg-4 col-md-6 mb-4"
-          >
-            <div class="project-card" :data-category="project.category">
-              <div class="project-img">
-                <img :src="project.image" :alt="project.title" />
+ <div id="app">
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <div class="project-filter">
+        <button
+          v-for="filter in filters"
+          :key="filter.value"
+          @click="activeFilter = filter.value"
+          :class="['filter-btn', { active: activeFilter === filter.value }]"
+        >
+          {{ filter.label }}
+        </button>
+      </div>
+
+      <!-- Row container for Bootstrap grid -->
+      <div class="row">
+        <div
+          v-for="project in filteredProjects"
+          :key="project.id"
+          class="col-lg-4 col-md-6 mb-4"
+        >
+          <div class="project-card" :data-category="project.category">
+            <!-- Only render image if project.image exists -->
+            <div v-if="project.image" class="project-img">
+              <img :src="project.image" :alt="project.title" class="img-fluid" />
+            </div>
+            <div class="project-info">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+              <div class="project-tags">
+                <span
+                  v-for="tag in project.tags"
+                  :key="tag"
+                  class="project-tag"
+                >
+                  {{ tag }}
+                </span>
               </div>
-              <div class="project-info">
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-                <div class="project-tags">
-                  <span
-                    v-for="tag in project.tags"
-                    :key="tag"
-                    class="project-tag"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-                <div class="project-links">
-                  <a :href="project.liveLink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                  <a :href="project.codeLink"><i class="fab fa-github"></i> View Code</a>
-                </div>
-              </div>
+              <a
+                :href="project.codeLink"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-danger"
+              >
+                <i class="fab fa-github"></i> View Code
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </div> <!-- end row -->
 
+    </div> <!-- end container -->
+  </section>
+</div>
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
