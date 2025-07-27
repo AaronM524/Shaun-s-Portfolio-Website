@@ -2,13 +2,36 @@
 <html lang="en">
 
 <head>
-    <title>Shaun Mathew's Portfolio</title>
+    <title>Shaun Mathew - Full Stack Developer | Computer Science Student at Rutgers</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Professional portfolio of Shaun Mathew, showcasing skills and projects">
+    <meta name="description" content="Shaun Mathew is a Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS. View my projects and experience.">
+    <meta name="keywords" content="Shaun Mathew, Full Stack Developer, Computer Science, Rutgers University, Java, Python, JavaScript, React Native, AWS, Software Engineer, Portfolio">
+    <meta name="author" content="Shaun Mathew">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shaunmathew.dev/">
+    <meta property="og:title" content="Shaun Mathew - Full Stack Developer | Computer Science Student">
+    <meta property="og:description" content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS.">
+    <meta property="og:image" content="https://shaunmathew.dev/images/og-image.png">
+    <meta property="og:site_name" content="Shaun Mathew Portfolio">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shaunmathew.dev/">
+    <meta property="twitter:title" content="Shaun Mathew - Full Stack Developer | Computer Science Student">
+    <meta property="twitter:description" content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS.">
+    <meta property="twitter:image" content="https://shaunmathew.dev/images/og-image.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://shaunmathew.dev/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,11 +59,11 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <a class="navbar-brand" href="#">Shaun Mathew</a>
+            <a class="navbar-brand" href="#home" aria-label="Shaun Mathew - Home">Shaun Mathew</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -59,6 +82,17 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link resume-btn" href="resume.pdf" target="_blank" rel="noopener noreferrer" 
+                           aria-label="Download Resume PDF">
+                            <i class="fas fa-download me-1"></i>Resume
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
                     </li>
                 </ul>
             </div>
