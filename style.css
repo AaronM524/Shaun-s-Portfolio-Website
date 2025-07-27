@@ -8,6 +8,60 @@
     --text-light: #64748b;
 }
 
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --secondary-color: #2563eb;
+    --dark-color: #0f172a;
+    --light-color: #1e293b;
+    --accent-color: #60a5fa;
+    --text-color: #e2e8f0;
+    --text-light: #94a3b8;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--dark-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(15, 23, 42, 0.95);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    background-color: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .about-section,
+[data-theme="dark"] .projects-section {
+    background-color: var(--light-color);
+}
+
+[data-theme="dark"] .skills-section,
+[data-theme="dark"] .contact-section {
+    background-color: var(--dark-color);
+}
+
+[data-theme="dark"] .skill-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .contact-info,
+[data-theme="dark"] .contact-form {
+    background-color: #334155;
+    color: var(--text-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .timeline-content {
+    background-color: #334155;
+    color: var(--text-color);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .footer {
+    background-color: #0f172a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,10 +69,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: var(--text-color);
     background-color: var(--light-color);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hero Section */
@@ -185,6 +244,69 @@ body {
 
 .navbar.scrolled .nav-link::after {
     background-color: #5F6A72;
+}
+
+/* Resume Button */
+.resume-btn {
+    background-color: #E3242B !important;
+    color: white !important;
+    border-radius: 25px !important;
+    padding: 8px 20px !important;
+    margin-left: 15px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+}
+
+.resume-btn:hover {
+    background-color: #c51e24 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(227, 36, 43, 0.3) !important;
+}
+
+.navbar.scrolled .resume-btn {
+    background-color: #E3242B !important;
+    color: white !important;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.navbar.scrolled .theme-toggle {
+    color: #cc0033;
+}
+
+.navbar.scrolled .theme-toggle:hover {
+    background-color: rgba(204, 0, 51, 0.1);
+}
+
+/* Active Navigation */
+.nav-link.active {
+    color: #E3242B !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background-color: #E3242B;
+}
+
+.navbar.scrolled .nav-link.active {
+    color: #cc0033 !important;
 }
 
 /* Section Common Styles */
