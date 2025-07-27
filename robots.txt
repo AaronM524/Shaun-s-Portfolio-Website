@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shaunmathew.dev/sitemap.xml
+Sitemap: https://shaunmathew.me/sitemap.xml
