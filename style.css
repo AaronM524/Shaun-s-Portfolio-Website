@@ -88,7 +88,9 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-video {
