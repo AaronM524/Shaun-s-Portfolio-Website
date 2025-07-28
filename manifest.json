@@ -1,0 +1,24 @@
+{
+  "name": "Shaun Mathew - Portfolio",
+  "short_name": "Shaun Portfolio",
+  "description": "Professional portfolio of Shaun Mathew, Computer Science student at Rutgers University",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#E3242B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["portfolio", "developer", "education"],
+  "lang": "en-US"
+}

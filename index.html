@@ -12,48 +12,36 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shaunmathew.dev/">
+    <meta property="og:url" content="https://shaunmathew.me/">
     <meta property="og:title" content="Shaun Mathew - Full Stack Developer | Computer Science Student">
     <meta property="og:description" content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS.">
-    <meta property="og:image" content="https://shaunmathew.dev/images/og-image.png">
+    <meta property="og:image" content="https://shaunmathew.me/images/og-image.png">
     <meta property="og:site_name" content="Shaun Mathew Portfolio">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://shaunmathew.dev/">
+    <meta property="twitter:url" content="https://shaunmathew.me/">
     <meta property="twitter:title" content="Shaun Mathew - Full Stack Developer | Computer Science Student">
     <meta property="twitter:description" content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS.">
-    <meta property="twitter:image" content="https://shaunmathew.dev/images/og-image.png">
+    <meta property="twitter:image" content="https://shaunmathew.me/images/og-image.png">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://shaunmathew.dev/">
+    <link rel="canonical" href="https://shaunmathew.me/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-
-
+    <!-- Local CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fontawesome.min.css" rel="stylesheet">
+    <link href="fonts/poppins.css" rel="stylesheet">
+    <link href="css/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <!-- Local JavaScript -->
+    <script src="js/vue.min.js"></script>
 
 </head>
 
@@ -100,32 +88,35 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <video autoplay loop muted playsinline class="hero-video">
+    <section id="home" class="hero-section" role="banner">
+        <video autoplay loop muted playsinline class="hero-video" aria-hidden="true">
             <source src="images/3129957-uhd_3840_2160_25fps.mp4" type="video/mp4">
         </video>
-        <div class="hero-content">
-            <h1>Shaun Mathew</h1>
-            <p class = "hero-subtext"> Full Stack Developer | Creative Problem Solver | Tech Enthusiast </p>
-            <a href="#about" class="btn btn-primary btn-lg">Explore My Work</a>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 data-aos="fade-up" data-aos-delay="200">Shaun Mathew</h1>
+            <p class="hero-subtext" data-aos="fade-up" data-aos-delay="400">Full Stack Developer | Creative Problem Solver | Tech Enthusiast</p>
+            <a href="#about" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="600" aria-label="Explore my work and projects">Explore My Work</a>
         </div>
-        <a href="#about" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
+        <a href="#about" class="scroll-down" aria-label="Scroll to about section">
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
         </a>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section" role="main">
         <div class="container">
-            <h2 class="section-title text-center mb-5">About Me</h2>
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">About Me</h2>
             <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
                     <div class="profile-image-container">
-                        <img src="images/rutgers-scarlet-knights-logo-png-transparent.png" alt="Shaun Mathew" class="profile-img">
+                        <img src="images/rutgers-scarlet-knights-logo-png-transparent.png" 
+                             alt="Rutgers University Scarlet Knights logo representing Shaun Mathew's education" 
+                             class="profile-img"
+                             loading="lazy">
                         <div class="profile-backdrop"></div>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
                     <div class="about-content">
                         <h2 class="name-heading">Hey, I'm <span class="highlight">Shaun</span></h2>
                         <p>Full-stack developer by day, tech explorer by night. I build web experiences that make both
@@ -145,10 +136,10 @@
 <!-- Timeline Section -->
 <section id="timeline" class="section timeline-section">
     <div class="container">
-        <h2 class="section-title">My Journey</h2>
+        <h2 class="section-title" data-aos="fade-up">My Journey</h2>
         
         <div class="timeline-container">
-            <div class="timeline-item">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">June 2022</div>
                 <div class="timeline-content">
@@ -157,7 +148,7 @@
                 </div>
             </div>
             
-            <div class="timeline-item">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">August 2023</div>
                 <div class="timeline-content">
@@ -166,7 +157,7 @@
                 </div>
             </div>
             
-            <div class="timeline-item">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">October 2024</div>
                 <div class="timeline-content">
@@ -175,16 +166,16 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">June 2025</div>
                 <div class="timeline-content">
-                    <h3>Work Date </h3>
-                    <p>I will start my internship this summer, hoping to gain good experience and skills. </p>
+                    <h3>Summer Internship</h3>
+                    <p>Starting my upcoming summer internship, excited to gain valuable experience and expand my skillset.</p>
                 </div>
             </div>
             
-            <div class="timeline-item">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="600">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">June 2026 (Expected)</div>
                 <div class="timeline-content">
@@ -198,124 +189,124 @@
    <!-- Skills Section -->
 <section id="skills" class="section skills-section">
     <div class="container">
-        <h2 class="section-title text-center mb-5">My Skills</h2>
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">My Skills</h2>
         
         <div class="row">
             <!-- Programming Languages -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-java"></i>
+                        <i class="fab fa-java" aria-hidden="true"></i>
                     </div>
                     <h3>Java</h3>
                     <p>Object-oriented programming with strong focus on building scalable and maintainable applications.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-python"></i>
+                        <i class="fab fa-python" aria-hidden="true"></i>
                     </div>
                     <h3>Python</h3>
                     <p>Data analysis, backend development, and automation using frameworks like Flask and libraries like spaCy and Pandas.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-code"></i>
+                        <i class="fas fa-code" aria-hidden="true"></i>
                     </div>
                     <h3>C</h3>
                     <p>System-level programming with focus on memory management and performance optimization.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-js"></i>
+                        <i class="fab fa-js-square" aria-hidden="true"></i>
                     </div>
                     <h3>JavaScript & Frameworks</h3>
                     <p>Modern JavaScript development with jQuery, React Native, and Firebase for web and mobile applications.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-html5" aria-hidden="true"></i>
                     </div>
                     <h3>HTML/CSS</h3>
                     <p>Creating responsive, accessible, and visually appealing front-end interfaces and web experiences.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-flask"></i>
+                        <i class="fas fa-flask" aria-hidden="true"></i>
                     </div>
                     <h3>Flask</h3>
                     <p>Building lightweight web applications and RESTful APIs with Python's Flask framework.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-database"></i>
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
                     </div>
                     <h3>Data Analysis</h3>
                     <p>Working with data using spaCy for NLP and Pandas for manipulation, analysis, and visualization.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-react"></i>
+                        <i class="fab fa-react" aria-hidden="true"></i>
                     </div>
                     <h3>React Native</h3>
                     <p>Developing cross-platform mobile applications with seamless native-like experiences.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-git-alt"></i>
+                        <i class="fab fa-git-alt" aria-hidden="true"></i>
                     </div>
                     <h3>Git & GitHub</h3>
                     <p>Version control, collaborative development, and project management with Git and GitHub.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-tools" aria-hidden="true"></i>
                     </div>
                     <h3>Development Tools</h3>
                     <p>Experienced with Postman for API testing and Microsoft Office suite for documentation.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fab fa-aws"></i>
+                        <i class="fab fa-aws" aria-hidden="true"></i>
                     </div>
                     <h3>AWS</h3>
                     <p>Cloud infrastructure and services with AWS. Certified AWS Cloud Practitioner.</p>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-fire" aria-hidden="true"></i>
                     </div>
                     <h3>Firebase</h3>
                     <p>Backend-as-a-service for web and mobile apps with real-time database and authentication.</p>
@@ -327,40 +318,46 @@
 
 
  <div id="app">
-  <section id="projects" class="section projects-section">
+  <section id="projects" class="section projects-section" role="region" aria-labelledby="projects-title">
     <div class="container">
-      <h2 class="section-title">My Projects</h2>
-      <div class="project-filter">
+      <h2 id="projects-title" class="section-title" data-aos="fade-up">My Projects</h2>
+      <div class="project-filter" data-aos="fade-up" data-aos-delay="200" role="tablist" aria-label="Project category filters">
         <button
           v-for="filter in filters"
           :key="filter.value"
           @click="activeFilter = filter.value"
           :class="['filter-btn', { active: activeFilter === filter.value }]"
+          role="tab"
+          :aria-selected="activeFilter === filter.value"
+          :aria-controls="`projects-${filter.value}`"
         >
           {{ filter.label }}
         </button>
       </div>
 
       <!-- Row container for Bootstrap grid -->
-      <div class="row">
+      <div class="row" :id="`projects-${activeFilter}`" role="tabpanel" :aria-labelledby="`filter-${activeFilter}`">
         <div
-          v-for="project in filteredProjects"
+          v-for="(project, index) in filteredProjects"
           :key="project.id"
           class="col-lg-4 col-md-6 mb-4"
+          data-aos="fade-up"
+          :data-aos-delay="100 + (index * 100)"
         >
-          <div class="project-card" :data-category="project.category">
+          <article class="project-card" :data-category="project.category">
             <!-- Only render image if project.image exists -->
             <div v-if="project.image" class="project-img">
-              <img :src="project.image" :alt="project.title" class="img-fluid" />
+              <img :src="project.image" :alt="`Screenshot of ${project.title} project`" class="img-fluid" loading="lazy" />
             </div>
             <div class="project-info">
               <h3>{{ project.title }}</h3>
               <p>{{ project.description }}</p>
-              <div class="project-tags">
+              <div class="project-tags" role="list" aria-label="Technologies used">
                 <span
                   v-for="tag in project.tags"
                   :key="tag"
                   class="project-tag"
+                  role="listitem"
                 >
                   {{ tag }}
                 </span>
@@ -368,13 +365,14 @@
               <a
                 :href="project.codeLink"
                 target="_blank"
-                rel="noopener"
-                class="btn btn-danger"
+                rel="noopener noreferrer"
+                class="btn btn-danger project-btn"
+                :aria-label="`View ${project.title} source code on GitHub`"
               >
-                <i class="fab fa-github"></i> View Code
+                <i class="fab fa-github" aria-hidden="true"></i> View Code
               </a>
             </div>
-          </div>
+          </article>
         </div>
       </div> <!-- end row -->
 
@@ -382,76 +380,76 @@
   </section>
 </div>
     <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section" role="region" aria-labelledby="contact-title">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 id="contact-title" class="section-title" data-aos="fade-up">Get In Touch</h2>
             <div class="row">
-                <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
                     <div class="contact-info">
                         <h3>Contact Information</h3>
                         <p>Feel free to reach out to me for any questions or opportunities.</p>
 
                         <div class="contact-item">
-                            <div class="contact-icon">
+                            <div class="contact-icon" aria-hidden="true">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-text">
                                 <h4>Email</h4>
-                                <a href="mailto:shaun@example.com">shaunmathews21@gmail.com</a>
+                                <a href="mailto:shaunmathews21@gmail.com" aria-label="Send email to Shaun Mathew">shaunmathews21@gmail.com</a>
                             </div>
                         </div>
 
                         <div class="contact-item">
-                            <div class="contact-icon">
+                            <div class="contact-icon" aria-hidden="true">
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="contact-text">
                                 <h4>Phone</h4>
-                                <a href="tel:+1234567890">+1 732-618-8048</a>
+                                <a href="tel:+17326188048" aria-label="Call Shaun Mathew">+1 732-618-8048</a>
                             </div>
                         </div>
 
                         <div class="contact-item">
-                            <div class="contact-icon">
+                            <div class="contact-icon" aria-hidden="true">
                                 <i class="fab fa-linkedin-in"></i>
                             </div>
                             <div class="contact-text">
                                 <h4>LinkedIn</h4>
                                 <a href="https://www.linkedin.com/in/shaunm042"
-                                    target="_blank">linkedin.com/in/shaunm042</a>
+                                    target="_blank" rel="noopener noreferrer" aria-label="Visit Shaun Mathew's LinkedIn profile">linkedin.com/in/shaunm042</a>
                             </div>
                         </div>
 
                         <div class="contact-item">
-                            <div class="contact-icon">
+                            <div class="contact-icon" aria-hidden="true">
                                 <i class="fab fa-github"></i>
                             </div>
                             <div class="contact-text">
                                 <h4>GitHub</h4>
-                                <a href="https://github.com/ShaunM042" target="_blank"> github.com/ShaunM042</a>
+                                <a href="https://github.com/ShaunM042" target="_blank" rel="noopener noreferrer" aria-label="Visit Shaun Mathew's GitHub profile">github.com/ShaunM042</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
                     <div class="contact-form">
                         <h3>Send Me a Message</h3>
-                        <form>
+                        <form role="form" aria-label="Contact form">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                    <input type="text" class="form-control" placeholder="Your Name" required aria-label="Your name">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                    <input type="email" class="form-control" placeholder="Your Email" required aria-label="Your email address">
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Subject">
+                                <input type="text" class="form-control" placeholder="Subject" aria-label="Message subject">
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                                <textarea class="form-control" placeholder="Your Message" rows="5" required aria-label="Your message"></textarea>
                             </div>
-                            <button type="submit" class="submit-btn">Send Message</button>
+                            <button type="submit" class="submit-btn" aria-label="Send message">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -486,5 +484,19 @@
 
 
 </body>
+    <!-- Local JavaScript Files -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    
+    <!-- Custom Script -->
     <script src="script.js"></script>
+    
+    <!-- AOS Initialization -->
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </html>
