@@ -112,6 +112,45 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Rotating headline animation
+document.addEventListener('DOMContentLoaded', function() {
+    const rotatingTextElement = document.getElementById('rotatingText');
+    
+    if (rotatingTextElement) {
+        const headlines = [
+            'Full Stack Developer',
+            'Real-World Problem Solver',
+            'Sushi Enthusiast',
+            'Creative Tech Explorer',
+            'AWS Certified Developer'
+        ];
+        
+        let currentIndex = 0;
+        
+        function rotateText() {
+            // Add fade out animation
+            rotatingTextElement.classList.add('fade-out');
+            
+            setTimeout(() => {
+                // Change text after fade out completes
+                currentIndex = (currentIndex + 1) % headlines.length;
+                rotatingTextElement.textContent = headlines[currentIndex];
+                
+                // Remove fade out and trigger fade in
+                rotatingTextElement.classList.remove('fade-out');
+                
+                // Force reflow to restart animation
+                rotatingTextElement.offsetHeight;
+            }, 500); // Half second for fade out
+        }
+        
+        // Start rotation after initial load
+        setTimeout(() => {
+            setInterval(rotateText, 3000); // Change every 3 seconds
+        }, 2000); // Wait 2 seconds before starting rotation
+    }
+});
+
 const projectsData = {
   "filters": [
     { "label": "All", "value": "all" },
