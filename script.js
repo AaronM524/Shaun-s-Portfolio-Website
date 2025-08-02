@@ -112,12 +112,99 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Rotating headline animation
-document.addEventListener('DOMContentLoaded', function() {
-    const rotatingTextElement = document.getElementById('rotatingText');
+// Premium Cinematic Text Animation System
+class CinematicTextAnimator {
+    constructor(element, phrases, options = {}) {
+        this.element = element;
+        this.phrases = phrases;
+        this.currentPhraseIndex = 0;
+        this.isAnimating = false;
+        
+        // Configuration with professional timing
+        this.config = {
+            typeSpeed: 80,           // Speed of typing
+            eraseSpeed: 40,          // Speed of erasing
+            pauseDuration: 2500,     // Pause between phrases
+            erasePause: 800,         // Pause before erasing
+            staggerDelay: 50,        // Delay between letters
+            ...options
+        };
+        
+        this.init();
+    }
     
-    if (rotatingTextElement) {
-        const headlines = [
+    init() {
+        // Start the animation cycle after a brief delay
+        setTimeout(() => {
+            this.typePhrase(this.phrases[0]);
+        }, 1000);
+    }
+    
+    async typePhrase(phrase) {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+        
+        // Clear existing content
+        this.element.innerHTML = '';
+        
+        // Create letter elements
+        const letters = phrase.split('').map((char, index) => {
+            const letterSpan = document.createElement('span');
+            letterSpan.className = char === ' ' ? 'letter space' : 'letter';
+            letterSpan.textContent = char === ' ' ? '\u00A0' : char; // Non-breaking space
+            letterSpan.style.animationDelay = `${index * 0.05}s`;
+            return letterSpan;
+        });
+        
+        // Add letters to DOM
+        letters.forEach(letter => this.element.appendChild(letter));
+        
+        // Wait for animation to complete
+        const animationDuration = letters.length * 50 + 600; // Stagger + animation time
+        await this.delay(animationDuration);
+        
+        // Pause before erasing
+        await this.delay(this.config.pauseDuration);
+        
+        // Erase the text
+        await this.erasePhrase();
+        
+        // Move to next phrase
+        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
+        
+        // Small pause before next phrase
+        await this.delay(400);
+        
+        this.isAnimating = false;
+        
+        // Continue the cycle
+        this.typePhrase(this.phrases[this.currentPhraseIndex]);
+    }
+    
+    async erasePhrase() {
+        const letters = this.element.querySelectorAll('.letter');
+        
+        // Reverse erase animation
+        for (let i = letters.length - 1; i >= 0; i--) {
+            letters[i].classList.add('erasing');
+            await this.delay(30); // Fast erase
+        }
+        
+        // Wait for erase animation to complete
+        await this.delay(300);
+    }
+    
+    delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+}
+
+// Initialize the cinematic animation
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedTextElement = document.getElementById('animatedText');
+    
+    if (animatedTextElement) {
+        const phrases = [
             'Full Stack Developer',
             'Real-World Problem Solver',
             'Sushi Enthusiast',
@@ -125,29 +212,13 @@ document.addEventListener('DOMContentLoaded', function() {
             'AWS Certified Developer'
         ];
         
-        let currentIndex = 0;
-        
-        function rotateText() {
-            // Add fade out animation
-            rotatingTextElement.classList.add('fade-out');
-            
-            setTimeout(() => {
-                // Change text after fade out completes
-                currentIndex = (currentIndex + 1) % headlines.length;
-                rotatingTextElement.textContent = headlines[currentIndex];
-                
-                // Remove fade out and trigger fade in
-                rotatingTextElement.classList.remove('fade-out');
-                
-                // Force reflow to restart animation
-                rotatingTextElement.offsetHeight;
-            }, 500); // Half second for fade out
-        }
-        
-        // Start rotation after initial load
-        setTimeout(() => {
-            setInterval(rotateText, 3000); // Change every 3 seconds
-        }, 2000); // Wait 2 seconds before starting rotation
+        // Create the cinematic animator
+        new CinematicTextAnimator(animatedTextElement, phrases, {
+            typeSpeed: 60,
+            eraseSpeed: 30,
+            pauseDuration: 2800,
+            erasePause: 600
+        });
     }
 });
 
