@@ -66,10 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroSection = document.querySelector('.hero-section');
     
     if (video) {
+        let videoLoaded = false;
+        let fallbackApplied = false;
+        
+        video.addEventListener('loadeddata', function() {
+            console.log('Video loaded successfully');
+            videoLoaded = true;
+        });
+        
         video.addEventListener('error', function() {
             console.log('Video failed to load, using fallback background');
-            // Add gradient background as fallback
-            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+            if (!fallbackApplied) {
+                heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+                fallbackApplied = true;
+            }
         });
         
         video.addEventListener('loadstart', function() {
@@ -78,16 +88,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         video.addEventListener('canplay', function() {
             console.log('Video can start playing');
+            videoLoaded = true;
         });
         
-        // Force play attempt (some browsers need this)
+        // Give video more time to load before applying autoplay
         setTimeout(() => {
-            video.play().catch(e => {
-                console.log('Autoplay failed:', e);
-                // Add gradient background as fallback
+            if (!videoLoaded) {
+                video.play().catch(e => {
+                    console.log('Autoplay failed, but video might still load:', e);
+                    // Don't immediately apply fallback, give it more time
+                });
+            }
+        }, 2000);
+        
+        // Only apply fallback after significant delay if video truly failed
+        setTimeout(() => {
+            if (!videoLoaded && !fallbackApplied) {
+                console.log('Video taking too long, applying fallback');
                 heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
-            });
-        }, 1000);
+                fallbackApplied = true;
+            }
+        }, 8000);
     }
 });
 
