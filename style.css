@@ -162,6 +162,47 @@ body {
     margin-bottom: 1.5rem;
     max-width: 650px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.static-text {
+    display: inline;
+}
+
+.rotating-text {
+    display: inline-block;
+    color: #E3242B;
+    font-weight: 500;
+    min-width: 280px;
+    text-align: left;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.rotating-text.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
 
 
@@ -947,6 +988,11 @@ textarea.form-control {
         margin-bottom: 1.2rem;
     }
     
+    .rotating-text {
+        min-width: 200px;
+        font-size: 1rem;
+    }
+    
     .section {
         padding: 60px 0;
     }
@@ -996,6 +1042,11 @@ textarea.form-control {
     .hero-subtext {
         font-size: 0.95rem;
         line-height: 1.5;
+    }
+    
+    .rotating-text {
+        min-width: 180px;
+        font-size: 0.95rem;
     }
     
     .section-title {
