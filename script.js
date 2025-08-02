@@ -60,6 +60,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Video error handling and fallback
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('heroVideo');
+    const heroSection = document.querySelector('.hero-section');
+    
+    if (video) {
+        video.addEventListener('error', function() {
+            console.log('Video failed to load, using fallback background');
+            // Add gradient background as fallback
+            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+        });
+        
+        video.addEventListener('loadstart', function() {
+            console.log('Video loading started');
+        });
+        
+        video.addEventListener('canplay', function() {
+            console.log('Video can start playing');
+        });
+        
+        // Force play attempt (some browsers need this)
+        setTimeout(() => {
+            video.play().catch(e => {
+                console.log('Autoplay failed:', e);
+                // Add gradient background as fallback
+                heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+            });
+        }, 1000);
+    }
+});
+
 const projectsData = {
   "filters": [
     { "label": "All", "value": "all" },
