@@ -60,40 +60,71 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Video handling with improved loading
+// Video handling with GitHub CDN support
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('heroVideo');
     const heroSection = document.querySelector('.hero-section');
     
     if (video) {
+        console.log('Attempting to load video from:', video.querySelector('source').src);
+        
         // Ensure video properties are set
         video.muted = true;
         video.playsInline = true;
         video.loop = true;
+        video.autoplay = true;
         
-        // Force load the video
-        video.load();
+        let videoLoaded = false;
         
         video.addEventListener('loadeddata', function() {
             console.log('Video loaded successfully');
+            videoLoaded = true;
             // Try to play the video
-            video.play().catch(e => {
+            video.play().then(() => {
+                console.log('Video is playing');
+            }).catch(e => {
                 console.log('Video autoplay blocked:', e);
             });
         });
         
-        video.addEventListener('error', function(e) {
-            console.log('Video error:', e);
-            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+        video.addEventListener('canplay', function() {
+            console.log('Video can play');
+            videoLoaded = true;
         });
         
-        // Set a reasonable timeout for video loading
+        video.addEventListener('error', function(e) {
+            console.log('Video error:', e);
+            console.log('Error details:', video.error);
+            applyFallback();
+        });
+        
+        video.addEventListener('stalled', function() {
+            console.log('Video loading stalled');
+        });
+        
+        function applyFallback() {
+            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+            console.log('Applied fallback background');
+        }
+        
+        // Force load the video
+        video.load();
+        
+        // Increased timeout for CDN loading (15 seconds)
         setTimeout(() => {
-            if (video.readyState < 2) { // HAVE_CURRENT_DATA
-                console.log('Video taking too long to load, using fallback');
-                heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+            if (!videoLoaded) {
+                console.log('Video timeout - applying fallback after 15 seconds');
+                applyFallback();
             }
-        }, 5000);
+        }, 15000);
+        
+        // Also check if video is actually playing after some time
+        setTimeout(() => {
+            if (video.paused && !video.ended) {
+                console.log('Video appears to be paused, attempting to play');
+                video.play().catch(e => console.log('Play attempt failed:', e));
+            }
+        }, 3000);
     }
 });
 
