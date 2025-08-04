@@ -60,164 +60,111 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Video error handling and fallback
+// Video handling with improved loading
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('heroVideo');
     const heroSection = document.querySelector('.hero-section');
     
     if (video) {
-        let videoLoaded = false;
-        let fallbackApplied = false;
+        // Ensure video properties are set
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+        
+        // Force load the video
+        video.load();
         
         video.addEventListener('loadeddata', function() {
             console.log('Video loaded successfully');
-            videoLoaded = true;
+            // Try to play the video
+            video.play().catch(e => {
+                console.log('Video autoplay blocked:', e);
+            });
         });
         
-        video.addEventListener('error', function() {
-            console.log('Video failed to load, using fallback background');
-            if (!fallbackApplied) {
-                heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
-                fallbackApplied = true;
-            }
+        video.addEventListener('error', function(e) {
+            console.log('Video error:', e);
+            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
         });
         
-        video.addEventListener('loadstart', function() {
-            console.log('Video loading started');
-        });
-        
-        video.addEventListener('canplay', function() {
-            console.log('Video can start playing');
-            videoLoaded = true;
-        });
-        
-        // Give video more time to load before applying autoplay
+        // Set a reasonable timeout for video loading
         setTimeout(() => {
-            if (!videoLoaded) {
-                video.play().catch(e => {
-                    console.log('Autoplay failed, but video might still load:', e);
-                    // Don't immediately apply fallback, give it more time
-                });
-            }
-        }, 2000);
-        
-        // Only apply fallback after significant delay if video truly failed
-        setTimeout(() => {
-            if (!videoLoaded && !fallbackApplied) {
-                console.log('Video taking too long, applying fallback');
+            if (video.readyState < 2) { // HAVE_CURRENT_DATA
+                console.log('Video taking too long to load, using fallback');
                 heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
-                fallbackApplied = true;
             }
-        }, 8000);
+        }, 5000);
     }
 });
 
-// Premium Cinematic Text Animation System
-class CinematicTextAnimator {
+// Simple Typewriter Animation
+class SimpleTypewriter {
     constructor(element, phrases, options = {}) {
         this.element = element;
         this.phrases = phrases;
         this.currentPhraseIndex = 0;
-        this.isAnimating = false;
+        this.currentCharIndex = 0;
+        this.isDeleting = false;
+        this.typeSpeed = options.typeSpeed || 100;
+        this.deleteSpeed = options.deleteSpeed || 50;
+        this.pauseDelay = options.pauseDelay || 2000;
         
-        // Configuration with professional timing
-        this.config = {
-            typeSpeed: 80,           // Speed of typing
-            eraseSpeed: 40,          // Speed of erasing
-            pauseDuration: 2500,     // Pause between phrases
-            erasePause: 800,         // Pause before erasing
-            staggerDelay: 50,        // Delay between letters
-            ...options
-        };
-        
-        this.init();
+        this.type();
     }
     
-    init() {
-        // Start the animation cycle after a brief delay
-        setTimeout(() => {
-            this.typePhrase(this.phrases[0]);
-        }, 1000);
-    }
-    
-    async typePhrase(phrase) {
-        if (this.isAnimating) return;
-        this.isAnimating = true;
+    type() {
+        const currentPhrase = this.phrases[this.currentPhraseIndex];
         
-        // Clear existing content
-        this.element.innerHTML = '';
-        
-        // Create letter elements
-        const letters = phrase.split('').map((char, index) => {
-            const letterSpan = document.createElement('span');
-            letterSpan.className = char === ' ' ? 'letter space' : 'letter';
-            letterSpan.textContent = char === ' ' ? '\u00A0' : char; // Non-breaking space
-            letterSpan.style.animationDelay = `${index * 0.05}s`;
-            return letterSpan;
-        });
-        
-        // Add letters to DOM
-        letters.forEach(letter => this.element.appendChild(letter));
-        
-        // Wait for animation to complete
-        const animationDuration = letters.length * 50 + 600; // Stagger + animation time
-        await this.delay(animationDuration);
-        
-        // Pause before erasing
-        await this.delay(this.config.pauseDuration);
-        
-        // Erase the text
-        await this.erasePhrase();
-        
-        // Move to next phrase
-        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-        
-        // Small pause before next phrase
-        await this.delay(400);
-        
-        this.isAnimating = false;
-        
-        // Continue the cycle
-        this.typePhrase(this.phrases[this.currentPhraseIndex]);
-    }
-    
-    async erasePhrase() {
-        const letters = this.element.querySelectorAll('.letter');
-        
-        // Reverse erase animation
-        for (let i = letters.length - 1; i >= 0; i--) {
-            letters[i].classList.add('erasing');
-            await this.delay(30); // Fast erase
+        if (this.isDeleting) {
+            // Deleting characters
+            this.element.textContent = currentPhrase.substring(0, this.currentCharIndex - 1);
+            this.currentCharIndex--;
+            
+            if (this.currentCharIndex === 0) {
+                this.isDeleting = false;
+                this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
+                setTimeout(() => this.type(), 500);
+                return;
+            }
+            
+            setTimeout(() => this.type(), this.deleteSpeed);
+        } else {
+            // Typing characters
+            this.element.textContent = currentPhrase.substring(0, this.currentCharIndex + 1);
+            this.currentCharIndex++;
+            
+            if (this.currentCharIndex === currentPhrase.length) {
+                setTimeout(() => {
+                    this.isDeleting = true;
+                    this.type();
+                }, this.pauseDelay);
+                return;
+            }
+            
+            setTimeout(() => this.type(), this.typeSpeed);
         }
-        
-        // Wait for erase animation to complete
-        await this.delay(300);
-    }
-    
-    delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
 
-// Initialize the cinematic animation
+// Initialize the simple typewriter animation
 document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
     if (animatedTextElement) {
         const phrases = [
             'Full Stack Developer',
-            'Real-World Problem Solver',
+            'Problem Solver',
             'Sushi Enthusiast',
-            'Creative Tech Explorer',
-            'AWS Certified Developer'
+            'Lifelong Learner',
+            'Soccer Fan',
+            'AWS & Azure Certified Developer'
         ];
         
-        // Create the cinematic animator
-        new CinematicTextAnimator(animatedTextElement, phrases, {
-            typeSpeed: 60,
-            eraseSpeed: 30,
-            pauseDuration: 2800,
-            erasePause: 600
+        // Create the simple typewriter
+        new SimpleTypewriter(animatedTextElement, phrases, {
+            typeSpeed: 80,
+            deleteSpeed: 40,
+            pauseDelay: 2500
         });
     }
 });

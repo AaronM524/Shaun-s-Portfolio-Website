@@ -187,8 +187,7 @@ body {
     display: inline-block;
     color: #E3242B;
     font-weight: 600;
-    min-width: 280px;
-    text-align: left;
+    text-align: center;
     position: relative;
     background: linear-gradient(135deg, #E3242B 0%, #FF4757 50%, #E3242B 100%);
     background-size: 200% 200%;
@@ -214,80 +213,10 @@ body {
     box-shadow: 0 0 8px rgba(227, 36, 43, 0.6);
 }
 
-.letter {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px) scale(0.8);
-    animation: letterReveal 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.letter.space {
-    width: 0.3em;
-}
-
-/* Stagger the letter animations */
-.letter:nth-child(1) { animation-delay: 0.05s; }
-.letter:nth-child(2) { animation-delay: 0.1s; }
-.letter:nth-child(3) { animation-delay: 0.15s; }
-.letter:nth-child(4) { animation-delay: 0.2s; }
-.letter:nth-child(5) { animation-delay: 0.25s; }
-.letter:nth-child(6) { animation-delay: 0.3s; }
-.letter:nth-child(7) { animation-delay: 0.35s; }
-.letter:nth-child(8) { animation-delay: 0.4s; }
-.letter:nth-child(9) { animation-delay: 0.45s; }
-.letter:nth-child(10) { animation-delay: 0.5s; }
-.letter:nth-child(11) { animation-delay: 0.55s; }
-.letter:nth-child(12) { animation-delay: 0.6s; }
-.letter:nth-child(13) { animation-delay: 0.65s; }
-.letter:nth-child(14) { animation-delay: 0.7s; }
-.letter:nth-child(15) { animation-delay: 0.75s; }
-.letter:nth-child(16) { animation-delay: 0.8s; }
-.letter:nth-child(17) { animation-delay: 0.85s; }
-.letter:nth-child(18) { animation-delay: 0.9s; }
-.letter:nth-child(19) { animation-delay: 0.95s; }
-.letter:nth-child(20) { animation-delay: 1s; }
-
-.letter.erasing {
-    animation: letterErase 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
-}
+/* Clean typewriter effect - no complex animations */
 
 /* Keyframe Animations */
-@keyframes letterReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(20px) scale(0.8) rotateX(-90deg);
-        filter: blur(4px);
-    }
-    50% {
-        opacity: 0.7;
-        transform: translateY(-5px) scale(1.05) rotateX(-30deg);
-        filter: blur(1px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1) rotateX(0deg);
-        filter: blur(0);
-    }
-}
-
-@keyframes letterErase {
-    0% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-    }
-    50% {
-        opacity: 0.3;
-        transform: translateY(-10px) scale(0.9);
-        filter: blur(2px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-20px) scale(0.7);
-        filter: blur(4px);
-    }
-}
+/* Removed complex letter animations */
 
 @keyframes blink {
     0%, 50% { opacity: 1; }
@@ -310,7 +239,6 @@ body {
     }
     
     .animated-text {
-        min-width: 200px;
         font-size: 1rem;
     }
     
@@ -326,7 +254,6 @@ body {
     }
     
     .animated-text {
-        min-width: 180px;
         font-size: 0.95rem;
     }
 }
@@ -1117,7 +1044,6 @@ textarea.form-control {
     }
     
     .animated-text {
-        min-width: 200px;
         font-size: 1rem;
     }
     
@@ -1179,7 +1105,6 @@ textarea.form-control {
     }
     
     .animated-text {
-        min-width: 180px;
         font-size: 0.95rem;
     }
     
