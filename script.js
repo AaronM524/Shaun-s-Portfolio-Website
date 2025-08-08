@@ -1,6 +1,7 @@
 // Navbar scroll behavior and active navigation
 window.addEventListener('scroll', function () {
     const navbar = document.querySelector('.navbar');
+    const backToTop = document.getElementById('backToTop');
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
     } else {
@@ -26,10 +27,28 @@ window.addEventListener('scroll', function () {
             link.classList.add('active');
         }
     });
+
+    // Toggle Back-to-Top button visibility
+    if (backToTop) {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    }
 });
 
 // Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Back-to-Top click behavior
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
     const icon = themeToggle.querySelector('i');
@@ -120,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const headlines = [
             'Full Stack Developer',
             'Real-World Problem Solver',
-            'Sushi Enthusiast',
             'Creative Tech Explorer',
             'AWS Certified Developer'
         ];
@@ -217,13 +235,18 @@ new Vue({
   data: {
     filters: projectsData.filters,
     projects: projectsData.projects,
-    activeFilter: 'all'
+    activeFilter: localStorage.getItem('activeProjectFilter') || 'all'
   },
   computed: {
     filteredProjects() {
       return this.activeFilter === 'all'
         ? this.projects
         : this.projects.filter(p => p.category === this.activeFilter);
+    }
+  },
+  watch: {
+    activeFilter(newVal) {
+      localStorage.setItem('activeProjectFilter', newVal);
     }
   }
 });
