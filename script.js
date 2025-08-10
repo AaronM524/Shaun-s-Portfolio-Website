@@ -79,55 +79,143 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Video error handling and fallback
+// Video handling with GitHub CDN support
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('heroVideo');
     const heroSection = document.querySelector('.hero-section');
     
     if (video) {
+        console.log('Attempting to load video from:', video.querySelector('source').src);
+        
+        // Ensure video properties are set
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.autoplay = true;
+        
         let videoLoaded = false;
-        let fallbackApplied = false;
         
         video.addEventListener('loadeddata', function() {
             console.log('Video loaded successfully');
             videoLoaded = true;
-        });
-        
-        video.addEventListener('error', function() {
-            console.log('Video failed to load, using fallback background');
-            if (!fallbackApplied) {
-                heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
-                fallbackApplied = true;
-            }
-        });
-        
-        video.addEventListener('loadstart', function() {
-            console.log('Video loading started');
+            // Try to play the video
+            video.play().then(() => {
+                console.log('Video is playing');
+            }).catch(e => {
+                console.log('Video autoplay blocked:', e);
+            });
         });
         
         video.addEventListener('canplay', function() {
-            console.log('Video can start playing');
+            console.log('Video can play');
             videoLoaded = true;
         });
         
-        // Give video more time to load before applying autoplay
+        video.addEventListener('error', function(e) {
+            console.log('Video error:', e);
+            console.log('Error details:', video.error);
+            applyFallback();
+        });
+        
+        video.addEventListener('stalled', function() {
+            console.log('Video loading stalled');
+        });
+        
+        function applyFallback() {
+            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
+            console.log('Applied fallback background');
+        }
+        
+        // Force load the video
+        video.load();
+        
+        // Increased timeout for CDN loading (15 seconds)
         setTimeout(() => {
             if (!videoLoaded) {
-                video.play().catch(e => {
-                    console.log('Autoplay failed, but video might still load:', e);
-                    // Don't immediately apply fallback, give it more time
-                });
+                console.log('Video timeout - applying fallback after 15 seconds');
+                applyFallback();
             }
-        }, 2000);
+        }, 15000);
         
-        // Only apply fallback after significant delay if video truly failed
+        // Also check if video is actually playing after some time
         setTimeout(() => {
-            if (!videoLoaded && !fallbackApplied) {
-                console.log('Video taking too long, applying fallback');
-                heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
-                fallbackApplied = true;
+            if (video.paused && !video.ended) {
+                console.log('Video appears to be paused, attempting to play');
+                video.play().catch(e => console.log('Play attempt failed:', e));
             }
-        }, 8000);
+        }, 3000);
+    }
+});
+
+// Simple Typewriter Animation
+class SimpleTypewriter {
+    constructor(element, phrases, options = {}) {
+        this.element = element;
+        this.phrases = phrases;
+        this.currentPhraseIndex = 0;
+        this.currentCharIndex = 0;
+        this.isDeleting = false;
+        this.typeSpeed = options.typeSpeed || 100;
+        this.deleteSpeed = options.deleteSpeed || 50;
+        this.pauseDelay = options.pauseDelay || 2000;
+        
+        this.type();
+    }
+    
+    type() {
+        const currentPhrase = this.phrases[this.currentPhraseIndex];
+        
+        if (this.isDeleting) {
+            // Deleting characters
+            this.element.textContent = currentPhrase.substring(0, this.currentCharIndex - 1);
+            this.currentCharIndex--;
+            
+            if (this.currentCharIndex === 0) {
+                this.isDeleting = false;
+                this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
+                setTimeout(() => this.type(), 500);
+                return;
+            }
+            
+            setTimeout(() => this.type(), this.deleteSpeed);
+        } else {
+            // Typing characters
+            this.element.textContent = currentPhrase.substring(0, this.currentCharIndex + 1);
+            this.currentCharIndex++;
+            
+            if (this.currentCharIndex === currentPhrase.length) {
+                setTimeout(() => {
+                    this.isDeleting = true;
+                    this.type();
+                }, this.pauseDelay);
+                return;
+            }
+            
+            setTimeout(() => this.type(), this.typeSpeed);
+        }
+    }
+}
+
+// Initialize the simple typewriter animation
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedTextElement = document.getElementById('animatedText');
+    
+    if (animatedTextElement) {
+        const phrases = [
+            'Full Stack Developer',
+            'Problem Solver',
+            'Sushi Enthusiast',
+            'Lifelong Learner',
+            'Soccer Fan',
+            'AWS & Azure Certified Developer'
+        ];
+        
+        // Create the simple typewriter
+        new SimpleTypewriter(animatedTextElement, phrases, {
+            typeSpeed: 80,
+            deleteSpeed: 40,
+            pauseDelay: 2500
+        });
     }
 });
 
