@@ -147,77 +147,109 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Typewriter Animation
-class TypewriterAnimation {
+// Modern Text Animation with Smooth Transitions
+class ModernTextAnimator {
     constructor(element, phrases, options = {}) {
         this.element = element;
         this.phrases = phrases;
-        this.currentPhraseIndex = 0;
-        this.currentCharIndex = 0;
-        this.isDeleting = false;
-        this.typeSpeed = options.typeSpeed || 80;
-        this.deleteSpeed = options.deleteSpeed || 40;
-        this.pauseDelay = options.pauseDelay || 2000;
-        this.deleteDelay = options.deleteDelay || 1000;
-        this.timerId = null;
+        this.currentIndex = 0;
+        this.isAnimating = false;
+        this.options = {
+            duration: options.duration || 3000,
+            transitionDuration: options.transitionDuration || 800,
+            ...options
+        };
         
-        // Start the animation
-        this.start();
+        this.init();
     }
     
-    start() {
-        this.schedule(500); // Small initial delay
-    }
-    
-    schedule(delayMs) {
-        if (this.timerId) {
-            clearTimeout(this.timerId);
-            this.timerId = null;
-        }
-        this.timerId = setTimeout(() => this.animate(), delayMs);
-    }
-    
-    animate() {
-        const currentPhrase = this.phrases[this.currentPhraseIndex];
+    init() {
+        this.element.style.opacity = '0';
+        this.element.style.transform = 'translateY(20px)';
+        this.element.style.transition = `all ${this.options.transitionDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
         
-        if (this.isDeleting) {
-            // Deleting characters
-            this.element.textContent = currentPhrase.substring(0, this.currentCharIndex - 1);
-            this.currentCharIndex--;
-            
-            if (this.currentCharIndex === 0) {
-                this.isDeleting = false;
-                this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-                this.schedule(500); // Brief pause before typing next phrase
-                return;
-            }
-            
-            this.schedule(this.deleteSpeed);
-        } else {
-            // Typing characters
-            this.element.textContent = currentPhrase.substring(0, this.currentCharIndex + 1);
-            this.currentCharIndex++;
-            
-            if (this.currentCharIndex === currentPhrase.length) {
-                // Finished typing current phrase, start deleting after pause
-                this.schedule(this.pauseDelay);
-                this.isDeleting = true;
-                return;
-            }
-            
-            this.schedule(this.typeSpeed);
-        }
+        // Start animation after brief delay
+        setTimeout(() => this.showNextPhrase(), 300);
     }
     
-    destroy() {
-        if (this.timerId) {
-            clearTimeout(this.timerId);
-            this.timerId = null;
-        }
+    showNextPhrase() {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+        
+        const currentPhrase = this.phrases[this.currentIndex];
+        
+        // Fade out current text
+        this.element.style.opacity = '0';
+        this.element.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+            // Change text and animate in
+            this.element.textContent = currentPhrase;
+            this.element.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                this.element.style.opacity = '1';
+                this.element.style.transform = 'translateY(0)';
+                
+                // Schedule next phrase
+                setTimeout(() => {
+                    this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+                    this.isAnimating = false;
+                    this.showNextPhrase();
+                }, this.options.duration);
+            }, 50);
+        }, this.options.transitionDuration / 2);
     }
 }
 
-// Initialize the typewriter animation
+// Advanced Gradient Text Animation
+class GradientTextAnimator {
+    constructor(element, phrases, options = {}) {
+        this.element = element;
+        this.phrases = phrases;
+        this.currentIndex = 0;
+        this.options = {
+            cycleDuration: options.cycleDuration || 4000,
+            ...options
+        };
+        
+        this.setupStyles();
+        this.startAnimation();
+    }
+    
+    setupStyles() {
+        this.element.style.background = 'linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)';
+        this.element.style.backgroundSize = '400% 400%';
+        this.element.style.webkitBackgroundClip = 'text';
+        this.element.style.backgroundClip = 'text';
+        this.element.style.webkitTextFillColor = 'transparent';
+        this.element.style.animation = 'gradientShift 8s ease infinite';
+        this.element.style.fontWeight = '700';
+        this.element.style.letterSpacing = '0.5px';
+    }
+    
+    startAnimation() {
+        this.updateText();
+        setInterval(() => this.updateText(), this.options.cycleDuration);
+    }
+    
+    updateText() {
+        const currentPhrase = this.phrases[this.currentIndex];
+        
+        // Create smooth text transition
+        this.element.style.transform = 'scale(0.95)';
+        this.element.style.opacity = '0.7';
+        
+        setTimeout(() => {
+            this.element.textContent = currentPhrase;
+            this.element.style.transform = 'scale(1)';
+            this.element.style.opacity = '1';
+            this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+        }, 200);
+    }
+}
+
+// Initialize modern text animation
 document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
@@ -228,15 +260,12 @@ document.addEventListener('DOMContentLoaded', function() {
             'Creative Tech Explorer',
             'Lifelong Learner',
             'Soccer Fan',
-            'AWS & Azure Certified Developer'
+            'AWS & Azure Certified'
         ];
         
-        // Create single typewriter instance
-        new TypewriterAnimation(animatedTextElement, phrases, {
-            typeSpeed: 80,
-            deleteSpeed: 40,
-            pauseDelay: 2500,
-            deleteDelay: 1000
+        // Use gradient animation for big tech feel
+        new GradientTextAnimator(animatedTextElement, phrases, {
+            cycleDuration: 3500
         });
     }
 });
