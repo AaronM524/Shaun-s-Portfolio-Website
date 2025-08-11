@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const typingSpeedMs = 65;
     const erasingSpeedMs = 40;
-    const holdMs = 1200;
+    const holdMs = 900;
     let phraseIndex = 0;
     let charIndex = 0;
     let isErasing = false;
@@ -245,18 +245,24 @@ document.addEventListener('DOMContentLoaded', function() {
             charIndex++;
             if (charIndex === phrase.length) {
                 isErasing = true;
-                setTimeout(tick, holdMs);
+                setTimeout(() => {
+                    // Ensure we don't append while erasing begins
+                    tick();
+                }, holdMs);
                 return;
             }
         } else {
-            target.textContent = phrase.substring(0, charIndex - 1);
+            target.textContent = phrase.substring(0, Math.max(0, charIndex - 1));
             charIndex--;
             if (charIndex === 0) {
                 isErasing = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
             }
         }
-        setTimeout(tick, isErasing ? erasingSpeedMs : typingSpeedMs);
+        // Use rAF to reduce visual tearing and jitter
+        setTimeout(() => {
+            window.requestAnimationFrame(tick);
+        }, isErasing ? erasingSpeedMs : typingSpeedMs);
     }
 
     tick();

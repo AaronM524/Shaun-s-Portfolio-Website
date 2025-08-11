@@ -227,6 +227,7 @@ body {
     background-clip: text;
     animation: gradientShift 3s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(227, 36, 43, 0.3));
+    white-space: nowrap;
 }
 
 .cursor-blink {
