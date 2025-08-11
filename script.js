@@ -147,22 +147,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Simple Typewriter Animation
-class SimpleTypewriter {
+// Typewriter Animation
+class TypewriterAnimation {
     constructor(element, phrases, options = {}) {
         this.element = element;
         this.phrases = phrases;
         this.currentPhraseIndex = 0;
         this.currentCharIndex = 0;
         this.isDeleting = false;
-        this.typeSpeed = options.typeSpeed || 100;
-        this.deleteSpeed = options.deleteSpeed || 50;
+        this.typeSpeed = options.typeSpeed || 80;
+        this.deleteSpeed = options.deleteSpeed || 40;
         this.pauseDelay = options.pauseDelay || 2000;
+        this.deleteDelay = options.deleteDelay || 1000;
+        this.timerId = null;
         
-        this.type();
+        // Start the animation
+        this.start();
     }
     
-    type() {
+    start() {
+        this.schedule(500); // Small initial delay
+    }
+    
+    schedule(delayMs) {
+        if (this.timerId) {
+            clearTimeout(this.timerId);
+            this.timerId = null;
+        }
+        this.timerId = setTimeout(() => this.animate(), delayMs);
+    }
+    
+    animate() {
         const currentPhrase = this.phrases[this.currentPhraseIndex];
         
         if (this.isDeleting) {
@@ -173,30 +188,36 @@ class SimpleTypewriter {
             if (this.currentCharIndex === 0) {
                 this.isDeleting = false;
                 this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-                setTimeout(() => this.type(), 500);
+                this.schedule(500); // Brief pause before typing next phrase
                 return;
             }
             
-            setTimeout(() => this.type(), this.deleteSpeed);
+            this.schedule(this.deleteSpeed);
         } else {
             // Typing characters
             this.element.textContent = currentPhrase.substring(0, this.currentCharIndex + 1);
             this.currentCharIndex++;
             
             if (this.currentCharIndex === currentPhrase.length) {
-                setTimeout(() => {
-                    this.isDeleting = true;
-                    this.type();
-                }, this.pauseDelay);
+                // Finished typing current phrase, start deleting after pause
+                this.schedule(this.pauseDelay);
+                this.isDeleting = true;
                 return;
             }
             
-            setTimeout(() => this.type(), this.typeSpeed);
+            this.schedule(this.typeSpeed);
+        }
+    }
+    
+    destroy() {
+        if (this.timerId) {
+            clearTimeout(this.timerId);
+            this.timerId = null;
         }
     }
 }
 
-// Initialize the simple typewriter animation
+// Initialize the typewriter animation
 document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
@@ -204,74 +225,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const phrases = [
             'Full Stack Developer',
             'Problem Solver',
-            'Sushi Enthusiast',
+            'Creative Tech Explorer',
             'Lifelong Learner',
             'Soccer Fan',
             'AWS & Azure Certified Developer'
         ];
         
-        // Create the simple typewriter
-        new SimpleTypewriter(animatedTextElement, phrases, {
+        // Create single typewriter instance
+        new TypewriterAnimation(animatedTextElement, phrases, {
             typeSpeed: 80,
             deleteSpeed: 40,
-            pauseDelay: 2500
+            pauseDelay: 2500,
+            deleteDelay: 1000
         });
     }
-});
-
-// Typewriter headline animation
-document.addEventListener('DOMContentLoaded', function() {
-    const target = document.getElementById('animatedText');
-    if (!target) return;
-
-    const phrases = [
-        'Full Stack Developer',
-        'Real-World Problem Solver',
-        'Creative Tech Explorer',
-        'AWS Certified Developer'
-    ];
-
-    const typingSpeedMs = 70;
-    const erasingSpeedMs = 45;
-    const holdMs = 900;
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isErasing = false;
-    let timerId = null;
-
-    function schedule(delayMs) {
-        if (timerId) {
-            clearTimeout(timerId);
-        }
-        timerId = setTimeout(tick, delayMs);
-    }
-
-    function tick() {
-        const phrase = phrases[phraseIndex];
-        if (!isErasing) {
-            target.textContent = phrase.slice(0, charIndex + 1);
-            charIndex += 1;
-            if (charIndex >= phrase.length) {
-                isErasing = true;
-                schedule(holdMs);
-                return;
-            }
-        } else {
-            target.textContent = phrase.slice(0, Math.max(0, charIndex - 1));
-            charIndex -= 1;
-            if (charIndex <= 0) {
-                target.textContent = '';
-                isErasing = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                schedule(typingSpeedMs);
-                return;
-            }
-        }
-        schedule(isErasing ? erasingSpeedMs : typingSpeedMs);
-    }
-
-    // Kick off
-    schedule(typingSpeedMs);
 });
 
 const projectsData = {
