@@ -231,41 +231,47 @@ document.addEventListener('DOMContentLoaded', function() {
         'AWS Certified Developer'
     ];
 
-    const typingSpeedMs = 65;
-    const erasingSpeedMs = 40;
+    const typingSpeedMs = 70;
+    const erasingSpeedMs = 45;
     const holdMs = 900;
     let phraseIndex = 0;
     let charIndex = 0;
     let isErasing = false;
+    let timerId = null;
+
+    function schedule(delayMs) {
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+        timerId = setTimeout(tick, delayMs);
+    }
 
     function tick() {
         const phrase = phrases[phraseIndex];
         if (!isErasing) {
-            target.textContent = phrase.substring(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === phrase.length) {
+            target.textContent = phrase.slice(0, charIndex + 1);
+            charIndex += 1;
+            if (charIndex >= phrase.length) {
                 isErasing = true;
-                setTimeout(() => {
-                    // Ensure we don't append while erasing begins
-                    tick();
-                }, holdMs);
+                schedule(holdMs);
                 return;
             }
         } else {
-            target.textContent = phrase.substring(0, Math.max(0, charIndex - 1));
-            charIndex--;
-            if (charIndex === 0) {
+            target.textContent = phrase.slice(0, Math.max(0, charIndex - 1));
+            charIndex -= 1;
+            if (charIndex <= 0) {
+                target.textContent = '';
                 isErasing = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
+                schedule(typingSpeedMs);
+                return;
             }
         }
-        // Use rAF to reduce visual tearing and jitter
-        setTimeout(() => {
-            window.requestAnimationFrame(tick);
-        }, isErasing ? erasingSpeedMs : typingSpeedMs);
+        schedule(isErasing ? erasingSpeedMs : typingSpeedMs);
     }
 
-    tick();
+    // Kick off
+    schedule(typingSpeedMs);
 });
 
 const projectsData = {

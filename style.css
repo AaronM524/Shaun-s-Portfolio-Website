@@ -212,6 +212,7 @@ body {
     position: relative;
     min-height: 1.6em;
     overflow: hidden;
+    isolation: isolate; /* prevent blending artifacts */
 }
 
 .animated-text {
@@ -220,6 +221,7 @@ body {
     font-weight: 600;
     text-align: center;
     position: relative;
+    z-index: 1;
     background: linear-gradient(135deg, #E3242B 0%, #FF4757 50%, #E3242B 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -239,6 +241,7 @@ body {
     animation: blink 1.2s step-end infinite;
     border-radius: 1px;
     box-shadow: 0 0 8px rgba(227, 36, 43, 0.6);
+    z-index: 1;
 }
 
 @keyframes blink {
