@@ -236,14 +236,16 @@ body {
 
 .cursor-blink {
     display: inline-block;
-    width: 2px;
+    width: 3px;
     height: 1.2em;
-    background: linear-gradient(180deg, #E3242B 0%, #FF4757 100%);
-    margin-left: 2px;
-    animation: blink 1.2s step-end infinite;
-    border-radius: 1px;
-    box-shadow: 0 0 8px rgba(227, 36, 43, 0.6);
+    background: linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 400% 400%;
+    margin-left: 4px;
+    animation: gradientCursor 2s ease infinite, cursorPulse 1.5s ease-in-out infinite;
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(103, 126, 234, 0.6);
     z-index: 1;
+    position: relative;
 }
 
 @keyframes blink {
@@ -255,6 +257,25 @@ body {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientCursor {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes cursorPulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scaleY(1);
+        box-shadow: 0 0 12px rgba(103, 126, 234, 0.6);
+    }
+    50% { 
+        opacity: 0.3; 
+        transform: scaleY(0.95);
+        box-shadow: 0 0 20px rgba(103, 126, 234, 0.8);
+    }
 }
 
 @media (max-width: 768px) {
