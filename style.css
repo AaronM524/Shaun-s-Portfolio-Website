@@ -205,6 +205,71 @@ body {
     }
 }
 
+/* Typewriter hero animation */
+.animated-text-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    min-height: 1.6em;
+    overflow: hidden;
+}
+
+.animated-text {
+    display: inline-block;
+    color: #E3242B;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, #E3242B 0%, #FF4757 50%, #E3242B 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(227, 36, 43, 0.3));
+}
+
+.cursor-blink {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: linear-gradient(180deg, #E3242B 0%, #FF4757 100%);
+    margin-left: 2px;
+    animation: blink 1.2s step-end infinite;
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(227, 36, 43, 0.6);
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 768px) {
+    .hero-subtext {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .animated-text { font-size: 1rem; }
+}
+
+@media (max-width: 576px) {
+    .hero-subtext {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    .animated-text { font-size: 0.95rem; }
+}
+
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {

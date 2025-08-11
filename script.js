@@ -219,42 +219,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Rotating headline animation
+// Typewriter headline animation
 document.addEventListener('DOMContentLoaded', function() {
-    const rotatingTextElement = document.getElementById('rotatingText');
-    
-    if (rotatingTextElement) {
-        const headlines = [
-            'Full Stack Developer',
-            'Real-World Problem Solver',
-            'Creative Tech Explorer',
-            'AWS Certified Developer'
-        ];
-        
-        let currentIndex = 0;
-        
-        function rotateText() {
-            // Add fade out animation
-            rotatingTextElement.classList.add('fade-out');
-            
-            setTimeout(() => {
-                // Change text after fade out completes
-                currentIndex = (currentIndex + 1) % headlines.length;
-                rotatingTextElement.textContent = headlines[currentIndex];
-                
-                // Remove fade out and trigger fade in
-                rotatingTextElement.classList.remove('fade-out');
-                
-                // Force reflow to restart animation
-                rotatingTextElement.offsetHeight;
-            }, 500); // Half second for fade out
+    const target = document.getElementById('animatedText');
+    if (!target) return;
+
+    const phrases = [
+        'Full Stack Developer',
+        'Real-World Problem Solver',
+        'Creative Tech Explorer',
+        'AWS Certified Developer'
+    ];
+
+    const typingSpeedMs = 65;
+    const erasingSpeedMs = 40;
+    const holdMs = 1200;
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isErasing = false;
+
+    function tick() {
+        const phrase = phrases[phraseIndex];
+        if (!isErasing) {
+            target.textContent = phrase.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === phrase.length) {
+                isErasing = true;
+                setTimeout(tick, holdMs);
+                return;
+            }
+        } else {
+            target.textContent = phrase.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+                isErasing = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
         }
-        
-        // Start rotation after initial load
-        setTimeout(() => {
-            setInterval(rotateText, 3000); // Change every 3 seconds
-        }, 2000); // Wait 2 seconds before starting rotation
+        setTimeout(tick, isErasing ? erasingSpeedMs : typingSpeedMs);
     }
+
+    tick();
 });
 
 const projectsData = {
