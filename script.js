@@ -645,10 +645,232 @@ class TooltipManager {
     }
 }
 
+// Professional Contact Form Manager
+class ContactFormManager {
+    constructor() {
+        this.form = document.querySelector('.contact-form form');
+        this.submitButton = null;
+        this.statusMessage = null;
+        this.init();
+    }
+    
+    init() {
+        if (!this.form) return;
+        
+        this.enhanceForm();
+        this.attachEventListeners();
+        this.createStatusMessage();
+    }
+    
+    enhanceForm() {
+        // Add IDs and enhanced attributes to form elements
+        const nameInput = this.form.querySelector('input[placeholder*="Name"], input[placeholder*="name"]');
+        const emailInput = this.form.querySelector('input[type="email"], input[placeholder*="Email"], input[placeholder*="email"]');
+        const subjectInput = this.form.querySelector('input[placeholder*="Subject"], input[placeholder*="subject"]');
+        const messageInput = this.form.querySelector('textarea');
+        
+        if (nameInput) {
+            nameInput.id = 'contact-name';
+            nameInput.required = true;
+            nameInput.setAttribute('aria-label', 'Full Name');
+        }
+        
+        if (emailInput) {
+            emailInput.id = 'contact-email';
+            emailInput.type = 'email';
+            emailInput.required = true;
+            emailInput.setAttribute('aria-label', 'Email Address');
+        }
+        
+        if (subjectInput) {
+            subjectInput.id = 'contact-subject';
+            subjectInput.required = true;
+            subjectInput.setAttribute('aria-label', 'Subject');
+        }
+        
+        if (messageInput) {
+            messageInput.id = 'contact-message';
+            messageInput.required = true;
+            messageInput.setAttribute('aria-label', 'Message');
+            messageInput.setAttribute('minlength', '10');
+        }
+        
+        // Find or create submit button
+        this.submitButton = this.form.querySelector('button[type="submit"], input[type="submit"]');
+        if (!this.submitButton) {
+            this.submitButton = document.createElement('button');
+            this.submitButton.type = 'submit';
+            this.submitButton.className = 'btn btn-primary btn-lg';
+            this.submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            this.form.appendChild(this.submitButton);
+        }
+    }
+    
+    createStatusMessage() {
+        this.statusMessage = document.createElement('div');
+        this.statusMessage.className = 'form-status-message';
+        this.statusMessage.style.display = 'none';
+        this.form.appendChild(this.statusMessage);
+    }
+    
+    attachEventListeners() {
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        
+        // Real-time validation
+        this.form.querySelectorAll('input, textarea').forEach(field => {
+            field.addEventListener('blur', () => this.validateField(field));
+            field.addEventListener('input', () => this.clearFieldError(field));
+        });
+    }
+    
+    validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let errorMessage = '';
+        
+        // Clear previous errors
+        this.clearFieldError(field);
+        
+        // Required field validation
+        if (field.required && !value) {
+            isValid = false;
+            errorMessage = 'This field is required';
+        }
+        
+        // Email validation
+        if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address';
+            }
+        }
+        
+        // Message length validation
+        if (field.tagName === 'TEXTAREA' && value && value.length < 10) {
+            isValid = false;
+            errorMessage = 'Message must be at least 10 characters long';
+        }
+        
+        // Name validation
+        if (field.id === 'contact-name' && value && value.length < 2) {
+            isValid = false;
+            errorMessage = 'Name must be at least 2 characters long';
+        }
+        
+        if (!isValid) {
+            this.showFieldError(field, errorMessage);
+        }
+        
+        return isValid;
+    }
+    
+    showFieldError(field, message) {
+        field.classList.add('error');
+        
+        // Remove existing error message
+        const existingError = field.parentNode.querySelector('.field-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Add new error message
+        const errorElement = document.createElement('div');
+        errorElement.className = 'field-error';
+        errorElement.textContent = message;
+        field.parentNode.appendChild(errorElement);
+    }
+    
+    clearFieldError(field) {
+        field.classList.remove('error');
+        const errorElement = field.parentNode.querySelector('.field-error');
+        if (errorElement) {
+            errorElement.remove();
+        }
+    }
+    
+    validateForm() {
+        const fields = this.form.querySelectorAll('input[required], textarea[required]');
+        let isValid = true;
+        
+        fields.forEach(field => {
+            if (!this.validateField(field)) {
+                isValid = false;
+            }
+        });
+        
+        return isValid;
+    }
+    
+    async handleSubmit(e) {
+        e.preventDefault();
+        
+        if (!this.validateForm()) {
+            this.showStatus('Please fix the errors above', 'error');
+            return;
+        }
+        
+        // Show loading state
+        this.setLoading(true);
+        this.showStatus('Sending message...', 'loading');
+        
+        // Simulate form submission (replace with actual endpoint)
+        try {
+            await this.submitForm();
+            this.showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+            this.form.reset();
+        } catch (error) {
+            this.showStatus('Failed to send message. Please try again or contact me directly.', 'error');
+        } finally {
+            this.setLoading(false);
+        }
+    }
+    
+    async submitForm() {
+        // Simulate API call - replace with actual form submission
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // For demo purposes, randomly succeed or fail
+                if (Math.random() > 0.1) {
+                    resolve();
+                } else {
+                    reject(new Error('Simulated network error'));
+                }
+            }, 2000);
+        });
+    }
+    
+    setLoading(loading) {
+        const originalText = this.submitButton.innerHTML;
+        
+        if (loading) {
+            this.submitButton.disabled = true;
+            this.submitButton.innerHTML = '<span class="loading-spinner"></span> Sending...';
+        } else {
+            this.submitButton.disabled = false;
+            this.submitButton.innerHTML = originalText;
+        }
+    }
+    
+    showStatus(message, type) {
+        this.statusMessage.textContent = message;
+        this.statusMessage.className = `form-status-message ${type}`;
+        this.statusMessage.style.display = 'block';
+        
+        // Auto-hide success messages
+        if (type === 'success') {
+            setTimeout(() => {
+                this.statusMessage.style.display = 'none';
+            }, 5000);
+        }
+    }
+}
+
 // Initialize advanced features
 document.addEventListener('DOMContentLoaded', function() {
     new ProjectModalManager();
     new TooltipManager();
+    new ContactFormManager();
 });
 
 
