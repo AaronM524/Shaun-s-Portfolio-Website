@@ -1,11 +1,11 @@
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --dark-color: #1e293b;
+    --primary-color: #E3242B;
+    --secondary-color: #c51e24;
+    --dark-color: #1f2937;
     --light-color: #f8fafc;
-    --accent-color: #3b82f6;
-    --text-color: #334155;
-    --text-light: #64748b;
+    --accent-color: #E3242B;
+    --text-color: #374151;
+    --text-light: #6b7280;
 }
 
 
@@ -194,7 +194,7 @@ body {
     display: inline-block;
     width: 3px;
     height: 1.2em;
-    background: linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background: linear-gradient(-45deg, #E3242B 0%, #dc2626 25%, #991b1b 50%, #E3242B 75%, #dc2626 100%);
     background-size: 400% 400%;
     margin-left: 4px;
     animation: gradientCursor 2s ease infinite, cursorPulse 1.5s ease-in-out infinite;
@@ -336,7 +336,7 @@ body {
 
 .navbar.scrolled .navbar-brand,
 .navbar.scrolled .nav-link {
-    color: #cc0033 !important;
+    color: #E3242B !important;
 }
 
 .navbar.scrolled .nav-link:hover {
@@ -394,7 +394,7 @@ body {
 }
 
 .navbar.scrolled .nav-link.active {
-    color: #cc0033 !important;
+    color: #E3242B !important;
 }
 
 /* Section Common Styles */
@@ -762,8 +762,8 @@ body {
 
 .filter-btn {
     background: transparent;
-    border: 1px solid #cc0033;
-    color: #cc0033;
+    border: 1px solid #E3242B;
+    color: #E3242B;
     padding: 8px 20px;
     border-radius: 30px;
     font-size: 0.9rem;
@@ -833,7 +833,7 @@ body {
 
 .project-tag {
     background-color: var(--light-color);
-    color: #cc0333;
+    color: #E3242B;
     padding: 3px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -852,13 +852,13 @@ body {
 }
 
 .project-links a:first-child {
-    background-color: #cc0033;
+    background-color: #E3242B;
     color: white;
 }
 
 .project-links a:last-child {
-    border: 1px solid #cc0033;
-    color: #cc0333;
+    border: 1px solid #E3242B;
+    color: #E3242B;
 }
 
 .project-links a:hover {
@@ -921,7 +921,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 20px;
-    color: #cc0033;
+    color: #E3242B;
     font-size: 1.2rem;
 }
 
@@ -938,7 +938,7 @@ body {
 }
 
 .contact-text a:hover {
-    color: #cc0033;
+    color: #E3242B;
 }
 
 .contact-form {
@@ -958,7 +958,7 @@ body {
 
 .form-control:focus {
     box-shadow: none;
-    border-color: #cc0033;
+    border-color: #E3242B;
 }
 
 textarea.form-control {
@@ -967,7 +967,7 @@ textarea.form-control {
 }
 
 .submit-btn {
-    background-color: #cc0033;
+    background-color: #E3242B;
     color: white;
     border: none;
     padding: 12px 30px;
@@ -1029,7 +1029,7 @@ textarea.form-control {
     content: '';
     width: 40px;
     height: 2px;
-    background: #cc0033;
+    background: #E3242B;
     display: block;
     margin: 8px auto 0;
 }
@@ -1412,7 +1412,7 @@ textarea.form-control {
     bottom: 0;
     left: 50%;
     width: 4px;
-    background-color: #cc0033;
+    background-color: #E3242B;
     transform: translateX(-50%);
 }
 
@@ -1441,7 +1441,7 @@ textarea.form-control {
     width: 20px;
     height: 20px;
     background-color: white;
-    border: 4px solid #cc0033;
+    border: 4px solid #E3242B;
     border-radius: 50%;
     z-index: 1;
 }
@@ -1457,7 +1457,7 @@ textarea.form-control {
 /* Date */
 .timeline-date {
     font-weight: bold;
-    color: #cc0033;
+    color: #E3242B;
     font-size: 1.1rem;
     margin-bottom: 10px;
 }
@@ -1573,7 +1573,7 @@ textarea.form-control {
     transform: translateX(-50%);
     width: 70px;
     height: 4px;
-    background: #cc0033;
+    background: #E3242B;
     border-radius: 2px;
 }
 
@@ -1593,13 +1593,13 @@ textarea.form-control {
 .skill-card:hover {
     transform: translateY(-12px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    border-bottom: 3px solid #cc0033;
+    border-bottom: 3px solid #E3242B;
 }
 
 .skill-icon {
     font-size: 2.8rem;
     margin-bottom: 1.5rem;
-    color: #cc0033;
+    color: #E3242B;
     height: 75px;
     width: 75px;
     line-height: 75px;
@@ -1612,7 +1612,7 @@ textarea.form-control {
 }
 
 .skill-card:hover .skill-icon {
-    background-color: #cc0033;
+    background-color: #E3242B;
     color: white;
     transform: scale(1.1);
 }
@@ -1625,7 +1625,7 @@ textarea.form-control {
 }
 
 .skill-card:hover h3 {
-    color: #cc0033;
+    color: #E3242B;
 }
 
 .skill-card p {
