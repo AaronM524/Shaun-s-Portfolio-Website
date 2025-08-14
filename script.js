@@ -270,6 +270,113 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Professional Scroll Reveal Animation System
+class ScrollRevealAnimator {
+    constructor() {
+        this.observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        this.observer = new IntersectionObserver(
+            this.handleIntersection.bind(this),
+            this.observerOptions
+        );
+        
+        this.init();
+    }
+    
+    init() {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.observeElements());
+        } else {
+            this.observeElements();
+        }
+    }
+    
+    observeElements() {
+        const revealElements = document.querySelectorAll(
+            '.reveal, .reveal-left, .reveal-right, .reveal-scale'
+        );
+        
+        revealElements.forEach(element => {
+            this.observer.observe(element);
+        });
+    }
+    
+    handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                this.observer.unobserve(entry.target);
+            }
+        });
+    }
+}
+
+// Enhanced Theme Switcher with localStorage
+class ThemeSwitcher {
+    constructor() {
+        this.themeToggle = document.getElementById('themeToggle');
+        this.body = document.body;
+        this.icon = this.themeToggle?.querySelector('i');
+        
+        this.init();
+    }
+    
+    init() {
+        // Get saved theme or default to light
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+        this.setTheme(savedTheme);
+        
+        // Add event listener
+        if (this.themeToggle) {
+            this.themeToggle.addEventListener('click', () => this.toggleTheme());
+        }
+    }
+    
+    setTheme(theme) {
+        this.body.setAttribute('data-theme', theme);
+        localStorage.setItem('portfolio-theme', theme);
+        
+        // Update icon
+        if (this.icon) {
+            this.icon.classList.remove('fa-moon', 'fa-sun');
+            this.icon.classList.add(theme === 'dark' ? 'fa-sun' : 'fa-moon');
+        }
+    }
+    
+    toggleTheme() {
+        const currentTheme = this.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
+    }
+}
+
+// Initialize professional UI enhancements
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize scroll reveal animations
+    new ScrollRevealAnimator();
+    
+    // Initialize enhanced theme switcher
+    new ThemeSwitcher();
+    
+    // Add smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
 const projectsData = {
   "filters": [
     { "label": "All", "value": "all" },
