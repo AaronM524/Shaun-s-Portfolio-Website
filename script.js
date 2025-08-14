@@ -459,4 +459,196 @@ new Vue({
   }
 });
 
+// Professional Project Modal System
+class ProjectModalManager {
+    constructor() {
+        this.modal = null;
+        this.overlay = null;
+        this.currentProject = null;
+        this.init();
+    }
+    
+    init() {
+        this.createModal();
+        this.attachEventListeners();
+    }
+    
+    createModal() {
+        // Create modal overlay
+        this.overlay = document.createElement('div');
+        this.overlay.className = 'project-modal-overlay';
+        this.overlay.innerHTML = `
+            <div class="project-modal">
+                <div class="modal-header">
+                    <h2 class="modal-title"></h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-image-container">
+                        <img class="project-modal-image" src="" alt="">
+                    </div>
+                    <div class="project-details">
+                        <p class="project-description"></p>
+                        <div class="tech-stack">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-badges"></div>
+                        </div>
+                        <div class="project-features">
+                            <h4>Key Features</h4>
+                            <ul class="features-list"></ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary code-link" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="btn btn-outline-primary demo-link" target="_blank" style="display: none;">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(this.overlay);
+        this.modal = this.overlay.querySelector('.project-modal');
+    }
+    
+    attachEventListeners() {
+        // Close modal events
+        this.overlay.querySelector('.modal-close').addEventListener('click', () => this.closeModal());
+        this.overlay.addEventListener('click', (e) => {
+            if (e.target === this.overlay) this.closeModal();
+        });
+        
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+        
+        // Attach to project cards
+        document.addEventListener('click', (e) => {
+            const projectCard = e.target.closest('.project-card');
+            if (projectCard) {
+                const projectId = parseInt(projectCard.dataset.projectId);
+                if (projectId) {
+                    this.showProject(projectId);
+                }
+            }
+        });
+    }
+    
+    showProject(projectId) {
+        const project = projectsData.projects.find(p => p.id === projectId);
+        if (!project) return;
+        
+        this.currentProject = project;
+        this.populateModal(project);
+        this.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    populateModal(project) {
+        // Set title and description
+        this.modal.querySelector('.modal-title').textContent = project.title;
+        this.modal.querySelector('.project-description').textContent = project.description;
+        
+        // Set image
+        const img = this.modal.querySelector('.project-modal-image');
+        img.src = project.image ? `images/${project.image}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+        img.alt = project.title;
+        
+        // Populate tech stack
+        const techBadges = this.modal.querySelector('.tech-badges');
+        techBadges.innerHTML = project.tags.map(tag => 
+            `<span class="tech-badge" data-tooltip="${tag}">${tag}</span>`
+        ).join('');
+        
+        // Populate features
+        const featuresList = this.modal.querySelector('.features-list');
+        const features = project.features || ['Advanced functionality', 'Clean code architecture', 'Responsive design'];
+        featuresList.innerHTML = features.map(feature => `<li>${feature}</li>`).join('');
+        
+        // Set links
+        this.modal.querySelector('.code-link').href = project.codeLink;
+        const demoLink = this.modal.querySelector('.demo-link');
+        if (project.liveDemo) {
+            demoLink.href = project.liveDemo;
+            demoLink.style.display = 'inline-block';
+        } else {
+            demoLink.style.display = 'none';
+        }
+    }
+    
+    closeModal() {
+        this.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Tooltip System for Tech Badges
+class TooltipManager {
+    constructor() {
+        this.tooltip = null;
+        this.init();
+    }
+    
+    init() {
+        this.createTooltip();
+        this.attachEventListeners();
+    }
+    
+    createTooltip() {
+        this.tooltip = document.createElement('div');
+        this.tooltip.className = 'custom-tooltip';
+        document.body.appendChild(this.tooltip);
+    }
+    
+    attachEventListeners() {
+        document.addEventListener('mouseenter', (e) => {
+            if (e.target.hasAttribute('data-tooltip')) {
+                this.showTooltip(e.target, e.target.getAttribute('data-tooltip'));
+            }
+        }, true);
+        
+        document.addEventListener('mouseleave', (e) => {
+            if (e.target.hasAttribute('data-tooltip')) {
+                this.hideTooltip();
+            }
+        }, true);
+        
+        document.addEventListener('mousemove', (e) => {
+            if (this.tooltip.classList.contains('visible')) {
+                this.positionTooltip(e);
+            }
+        });
+    }
+    
+    showTooltip(element, text) {
+        this.tooltip.textContent = text;
+        this.tooltip.classList.add('visible');
+    }
+    
+    hideTooltip() {
+        this.tooltip.classList.remove('visible');
+    }
+    
+    positionTooltip(e) {
+        const tooltipRect = this.tooltip.getBoundingClientRect();
+        const x = e.clientX + 10;
+        const y = e.clientY - tooltipRect.height - 10;
+        
+        this.tooltip.style.left = `${x}px`;
+        this.tooltip.style.top = `${y}px`;
+    }
+}
+
+// Initialize advanced features
+document.addEventListener('DOMContentLoaded', function() {
+    new ProjectModalManager();
+    new TooltipManager();
+});
+
 
