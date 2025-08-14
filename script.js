@@ -866,11 +866,155 @@ class ContactFormManager {
     }
 }
 
-// Initialize advanced features
+// GitHub Activity Feed
+class GitHubActivityFeed {
+    constructor() {
+        this.username = 'ShaunM042'; // Your GitHub username
+        this.container = null;
+        this.maxCommits = 5;
+        this.init();
+    }
+    
+    init() {
+        this.createContainer();
+        this.fetchActivity();
+    }
+    
+    createContainer() {
+        // Find a good spot to inject the feed (after hero section)
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+        
+        // Create the activity section
+        const activitySection = document.createElement('section');
+        activitySection.className = 'activity-section py-5';
+        activitySection.innerHTML = `
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="activity-feed reveal">
+                            <h3><i class="fab fa-github"></i> Recent Activity</h3>
+                            <div class="activity-content">
+                                <div class="loading-state">
+                                    <span class="loading-spinner"></span> Loading recent commits...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Insert after hero section
+        heroSection.insertAdjacentElement('afterend', activitySection);
+        this.container = activitySection.querySelector('.activity-content');
+    }
+    
+    async fetchActivity() {
+        try {
+            // Fetch recent commits from public repos
+            const response = await fetch(`https://api.github.com/users/${this.username}/events/public?per_page=30`);
+            
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+            
+            const events = await response.json();
+            const pushEvents = events
+                .filter(event => event.type === 'PushEvent')
+                .slice(0, this.maxCommits);
+            
+            this.renderActivity(pushEvents);
+        } catch (error) {
+            console.error('Failed to fetch GitHub activity:', error);
+            this.renderError();
+        }
+    }
+    
+    renderActivity(events) {
+        if (events.length === 0) {
+            this.container.innerHTML = `
+                <div class="no-activity">
+                    <i class="fas fa-code"></i>
+                    <p>No recent commits found. Check back soon!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        const activitiesHTML = events.map(event => {
+            const commit = event.payload.commits[0];
+            const repoName = event.repo.name.split('/')[1];
+            const timeAgo = this.getTimeAgo(new Date(event.created_at));
+            
+            return `
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-header">
+                            <a href="https://github.com/${event.repo.name}" target="_blank" class="repo-link">
+                                ${repoName}
+                            </a>
+                            <span class="activity-time">${timeAgo}</span>
+                        </div>
+                        <div class="commit-message">
+                            ${this.truncateMessage(commit.message)}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        this.container.innerHTML = `
+            <div class="activity-list">
+                ${activitiesHTML}
+            </div>
+            <div class="activity-footer">
+                <a href="https://github.com/${this.username}" target="_blank" class="btn btn-outline-primary">
+                    <i class="fab fa-github"></i> View All Activity
+                </a>
+            </div>
+        `;
+    }
+    
+    renderError() {
+        this.container.innerHTML = `
+            <div class="activity-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Unable to load recent activity</p>
+                <a href="https://github.com/${this.username}" target="_blank" class="btn btn-outline-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        `;
+    }
+    
+    truncateMessage(message) {
+        const maxLength = 80;
+        if (message.length <= maxLength) return message;
+        return message.substring(0, maxLength) + '...';
+    }
+    
+    getTimeAgo(date) {
+        const now = new Date();
+        const diffInSeconds = Math.floor((now - date) / 1000);
+        
+        if (diffInSeconds < 60) return 'just now';
+        if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+        if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+        if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+        return date.toLocaleDateString();
+    }
+}
+
+// Initialize essential features only
 document.addEventListener('DOMContentLoaded', function() {
-    new ProjectModalManager();
-    new TooltipManager();
+    new ScrollRevealAnimator();
+    new ThemeSwitcher();
     new ContactFormManager();
+    new GitHubActivityFeed();
 });
 
 
