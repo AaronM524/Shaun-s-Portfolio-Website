@@ -1,502 +1,929 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Shaun Mathew - Full Stack Developer | Computer Science Student at Rutgers</title>
+  <head>
+    <title>
+      Shaun Mathew - Full Stack Developer | Computer Science Student at Rutgers
+    </title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Shaun Mathew is a Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS. View my projects and experience.">
-    <meta name="keywords" content="Shaun Mathew, Full Stack Developer, Computer Science, Rutgers University, Java, Python, JavaScript, React Native, AWS, Software Engineer, Portfolio">
-    <meta name="author" content="Shaun Mathew">
-    <meta name="robots" content="index, follow">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Shaun Mathew is a Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS. View my projects and experience."
+    />
+    <meta
+      name="keywords"
+      content="Shaun Mathew, Full Stack Developer, Computer Science, Rutgers University, Java, Python, JavaScript, React Native, AWS, Software Engineer, Portfolio"
+    />
+    <meta name="author" content="Shaun Mathew" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#E3242B" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shaunmathew.me/">
-    <meta property="og:title" content="Shaun Mathew - Full Stack Developer | Computer Science Student">
-    <meta property="og:description" content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS.">
-    <meta property="og:image" content="https://shaunmathew.me/images/og-image.png">
-    <meta property="og:site_name" content="Shaun Mathew Portfolio">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shaunmathew.me/" />
+    <meta
+      property="og:title"
+      content="Shaun Mathew - Full Stack Developer | Computer Science Student"
+    />
+    <meta
+      property="og:description"
+      content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS."
+    />
+    <meta
+      property="og:image"
+      content="https://shaunmathew.me/images/og-image.png"
+    />
+    <meta property="og:site_name" content="Shaun Mathew Portfolio" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://shaunmathew.me/">
-    <meta property="twitter:title" content="Shaun Mathew - Full Stack Developer | Computer Science Student">
-    <meta property="twitter:description" content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS.">
-    <meta property="twitter:image" content="https://shaunmathew.me/images/og-image.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://shaunmathew.me/" />
+    <meta
+      property="twitter:title"
+      content="Shaun Mathew - Full Stack Developer | Computer Science Student"
+    />
+    <meta
+      property="twitter:description"
+      content="Computer Science student at Rutgers University graduating in 2026. Full-stack developer skilled in Java, Python, JavaScript, React Native, and AWS."
+    />
+    <meta
+      property="twitter:image"
+      content="https://shaunmathew.me/images/og-image.png"
+    />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://shaunmathew.me/">
+    <link rel="canonical" href="https://shaunmathew.me/" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="manifest.json" />
 
-    <!-- Local CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/fontawesome.min.css" rel="stylesheet">
-    <link href="fonts/poppins.css" rel="stylesheet">
-    <link href="css/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <!-- Local JavaScript -->
-    <script src="js/vue.min.js"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-</head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shaun Mathew",
+        "url": "https://shaunmathew.me/",
+        "jobTitle": "Full Stack Developer",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "Rutgers University"
+        },
+        "sameAs": [
+          "https://github.com/ShaunM042",
+          "https://www.linkedin.com/in/shaunm042"
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top" role="navigation" aria-label="Main navigation">
-        <div class="container">
-            <a class="navbar-brand" href="#home" aria-label="Shaun Mathew - Home">Shaun Mathew</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link resume-btn" href="resume.pdf" target="_blank" rel="noopener noreferrer" 
-                           aria-label="Download Resume PDF">
-                            <i class="fas fa-download me-1"></i>Resume
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+    <nav
+      class="navbar navbar-expand-lg fixed-top"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#home" aria-label="Shaun Mathew - Home"
+          >Shaun Mathew</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link resume-btn"
+                href="resume.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Resume"
+              >
+                <i class="fas fa-download me-1"></i>Resume
+              </a>
+            </li>
+            <li class="nav-item">
+              <button
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle dark mode"
+              >
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section" role="banner">
-        <video autoplay loop muted playsinline class="hero-video" aria-hidden="true">
-            <source src="images/3129957-uhd_3840_2160_25fps.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <h1 data-aos="fade-up" data-aos-delay="200">Shaun Mathew</h1>
-            <p class="hero-subtext" data-aos="fade-up" data-aos-delay="400">Full Stack Developer | Creative Problem Solver | Tech Enthusiast</p>
-            <a href="#about" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="600" aria-label="Explore my work and projects">Explore My Work</a>
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="hero-video"
+        aria-hidden="true"
+        id="heroVideo"
+        preload="metadata"
+        crossorigin="anonymous"
+      >
+        <source src="images/hero-background-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <h1 data-aos="fade-up" data-aos-delay="200">Shaun Mathew</h1>
+        <div class="hero-subtext" data-aos="fade-up" data-aos-delay="400">
+            <span class="static-text">I'm a </span>
+            <div class="animated-text-container">
+              <span class="animated-text" id="animatedText"></span>
+              <span class="cursor-blink">|</span>
+            </div>
         </div>
-        <a href="#about" class="scroll-down" aria-label="Scroll to about section">
-            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-        </a>
+        <a href="#about" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="600" aria-label="Explore my work and projects">Explore My Work</a>
+      </div>
+      <a href="#about" class="scroll-down" aria-label="Scroll to about section">
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </a>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section about-section" role="main">
-        <div class="container">
-            <h2 class="section-title text-center mb-5" data-aos="fade-up">About Me</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
-                    <div class="profile-image-container">
-                        <img src="images/rutgers-scarlet-knights-logo-png-transparent.png" 
-                             alt="Rutgers University Scarlet Knights logo representing Shaun Mathew's education" 
-                             class="profile-img"
-                             loading="lazy">
-                        <div class="profile-backdrop"></div>
-                    </div>
-                </div>
-                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
-                    <div class="about-content">
-                        <h2 class="name-heading">Hey, I'm <span class="highlight">Shaun</span></h2>
-                        <p>Full-stack developer by day, tech explorer by night. I build web experiences that make both
-                            users and developers smile. After cutting my teeth at Rutgers (go Scarlet Knights!), I've
-                            been on a mission to create digital solutions that are as functional as they are beautiful.
-                            What gets me out of bed in the morning? Solving those puzzling bugs that make everyone else
-                            want to throw their laptop out the window, architecting systems that scale beautifully, and
-                            constantly learning new ways to make the web more awesome. When I'm not deep in code, you might find me tinkering with a Raspberry Pi project,
-                            contributing to open-source, or helping fellow devs level up their skills. I'm also slightly
-                            obsessed with finding the perfect keyboard setup (current count: 3 too many, according to my
-                            roommate).</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">
+          About Me
+        </h2>
+        <div class="row align-items-center">
+          <div
+            class="col-lg-5 mb-5 mb-lg-0"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            <div class="profile-image-container">
+              <img
+                src="images/rutgers-scarlet-knights-logo-png-transparent.png"
+                alt="Rutgers University Scarlet Knights logo representing Shaun Mathew's education"
+                class="profile-img"
+                loading="lazy"
+              />
+              <div class="profile-backdrop"></div>
             </div>
+          </div>
+          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
+            <div class="about-content">
+              <h2 class="name-heading">
+                Hey, I'm <span class="highlight">Shaun</span>
+              </h2>
+              <p>
+                Full-stack developer who just really enjoys building things that work. I like clean code, smooth user 
+                experiences, and solving the kinds of problems that make other people want to walk away from their keyboard. 
+                I got into this at Rutgers, where I studied computer science and realized I’m happiest when I’m deep in code — figuring out how to make 
+                something faster, simpler, or more reliable. Since then, I’ve worked with tools like Flask, React, Spring Boot, and SQL to bring ideas to life, 
+                whether it’s for a real product or a project I spun up at 1AM just to see if I could.
+              </p>
+            </div>
+          </div>
         </div>
-    </section>
-<!-- Timeline Section -->
-<section id="timeline" class="section timeline-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">My Journey</h2>
-        
-        <div class="timeline-container">
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">June 2022</div>
-                <div class="timeline-content">
-                    <h3>High School Diploma</h3>
-                    <p>Successfully graduated high school with honors, setting the foundation for my academic journey.</p>
-                </div>
-            </div>
-            
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">August 2023</div>
-                <div class="timeline-content">
-                    <h3>AWS Certificate</h3>
-                    <p>Earned AWS certification, expanding my cloud computing expertise and enhancing my technical skillset.</p>
-                </div>
-            </div>
-            
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">October 2024</div>
-                <div class="timeline-content">
-                    <h3>UBS Internship</h3>
-                    <p>Completed an internship at UBS, gaining valuable industry experience in financial technology.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">June 2025</div>
-                <div class="timeline-content">
-                    <h3>Summer Internship</h3>
-                    <p>Starting my upcoming summer internship, excited to gain valuable experience and expand my skillset.</p>
-                </div>
-            </div>
-            
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="600">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">June 2026 (Expected)</div>
-                <div class="timeline-content">
-                    <h3>Bachelor's Degree in CS</h3>
-                    <p>Anticipated graduation with a Bachelor's degree in Computer Science from Rutgers University.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-   <!-- Skills Section -->
-<section id="skills" class="section skills-section">
-    <div class="container">
-        <h2 class="section-title text-center mb-5" data-aos="fade-up">My Skills</h2>
-        
-        <div class="row">
-            <!-- Programming Languages -->
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-java" aria-hidden="true"></i>
-                    </div>
-                    <h3>Java</h3>
-                    <p>Object-oriented programming with strong focus on building scalable and maintainable applications.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-python" aria-hidden="true"></i>
-                    </div>
-                    <h3>Python</h3>
-                    <p>Data analysis, backend development, and automation using frameworks like Flask and libraries like spaCy and Pandas.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code" aria-hidden="true"></i>
-                    </div>
-                    <h3>C</h3>
-                    <p>System-level programming with focus on memory management and performance optimization.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-js-square" aria-hidden="true"></i>
-                    </div>
-                    <h3>JavaScript & Frameworks</h3>
-                    <p>Modern JavaScript development with jQuery, React Native, and Firebase for web and mobile applications.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-html5" aria-hidden="true"></i>
-                    </div>
-                    <h3>HTML/CSS</h3>
-                    <p>Creating responsive, accessible, and visually appealing front-end interfaces and web experiences.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-flask" aria-hidden="true"></i>
-                    </div>
-                    <h3>Flask</h3>
-                    <p>Building lightweight web applications and RESTful APIs with Python's Flask framework.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                    </div>
-                    <h3>Data Analysis</h3>
-                    <p>Working with data using spaCy for NLP and Pandas for manipulation, analysis, and visualization.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-react" aria-hidden="true"></i>
-                    </div>
-                    <h3>React Native</h3>
-                    <p>Developing cross-platform mobile applications with seamless native-like experiences.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-git-alt" aria-hidden="true"></i>
-                    </div>
-                    <h3>Git & GitHub</h3>
-                    <p>Version control, collaborative development, and project management with Git and GitHub.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-tools" aria-hidden="true"></i>
-                    </div>
-                    <h3>Development Tools</h3>
-                    <p>Experienced with Postman for API testing and Microsoft Office suite for documentation.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-aws" aria-hidden="true"></i>
-                    </div>
-                    <h3>AWS</h3>
-                    <p>Cloud infrastructure and services with AWS. Certified AWS Cloud Practitioner.</p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-fire" aria-hidden="true"></i>
-                    </div>
-                    <h3>Firebase</h3>
-                    <p>Backend-as-a-service for web and mobile apps with real-time database and authentication.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
- <div id="app">
-  <section id="projects" class="section projects-section" role="region" aria-labelledby="projects-title">
-    <div class="container">
-      <h2 id="projects-title" class="section-title" data-aos="fade-up">My Projects</h2>
-      <div class="project-filter" data-aos="fade-up" data-aos-delay="200" role="tablist" aria-label="Project category filters">
-        <button
-          v-for="filter in filters"
-          :key="filter.value"
-          @click="activeFilter = filter.value"
-          :class="['filter-btn', { active: activeFilter === filter.value }]"
-          role="tab"
-          :aria-selected="activeFilter === filter.value"
-          :aria-controls="`projects-${filter.value}`"
-        >
-          {{ filter.label }}
-        </button>
       </div>
+    </section>
+    <!-- Timeline Section -->
+    <section id="timeline" class="section timeline-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">My Journey</h2>
 
-      <!-- Row container for Bootstrap grid -->
-      <div class="row" :id="`projects-${activeFilter}`" role="tabpanel" :aria-labelledby="`filter-${activeFilter}`">
-        <div
-          v-for="(project, index) in filteredProjects"
-          :key="project.id"
-          class="col-lg-4 col-md-6 mb-4"
-          data-aos="fade-up"
-          :data-aos-delay="100 + (index * 100)"
-        >
-          <article class="project-card" :data-category="project.category">
-            <!-- Only render image if project.image exists -->
-            <div v-if="project.image" class="project-img">
-              <img :src="project.image" :alt="`Screenshot of ${project.title} project`" class="img-fluid" loading="lazy" />
+        <div class="timeline-container">
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">June 2022</div>
+            <div class="timeline-content">
+              <h3>High School Diploma</h3>
+              <p>
+                Graduated high school and continued on to Rutgers,  where I began building my computer science foundation 
+                and diving deeper into the world of software development.
+              </p>
             </div>
-            <div class="project-info">
-              <h3>{{ project.title }}</h3>
-              <p>{{ project.description }}</p>
-              <div class="project-tags" role="list" aria-label="Technologies used">
-                <span
-                  v-for="tag in project.tags"
-                  :key="tag"
-                  class="project-tag"
-                  role="listitem"
-                >
-                  {{ tag }}
-                </span>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">September 2022</div>
+            <div class="timeline-content">
+              <h3>Start of College</h3>
+              <p>
+                Graduated high school and continued on to Rutgers,  where I began building my computer science foundation 
+                and diving deeper into the world of software development.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">August 2023</div>
+            <div class="timeline-content">
+              <h3>AWS Certificate</h3>
+              <p>
+                Earned AWS certification, expanding my cloud computing expertise
+                and enhancing my technical skillset.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">October 2024</div>
+            <div class="timeline-content">
+              <h3>UBS Internship</h3>
+              <p>
+                Completed an internship at UBS, gaining valuable industry
+                experience in financial technology.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">June 2025</div>
+            <div class="timeline-content">
+              <h3>Summer Internship</h3>
+              <p>
+                Starting my upcoming summer internship, excited to gain valuable
+                experience and expand my skillset.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">June 2026 (Expected)</div>
+            <div class="timeline-content">
+              <h3>Bachelor's Degree in CS</h3>
+              <p>
+                Anticipated graduation with a Bachelor's degree in Computer
+                Science from Rutgers University.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">
+          My Skills
+        </h2>
+
+        <div class="row">
+          <!-- Programming Languages -->
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fab fa-java" aria-hidden="true"></i>
               </div>
-              <a
-                :href="project.codeLink"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-danger project-btn"
-                :aria-label="`View ${project.title} source code on GitHub`"
-              >
-                <i class="fab fa-github" aria-hidden="true"></i> View Code
-              </a>
+              <h3>Java</h3>
+              <p>
+                Object-oriented programming with strong focus on building
+                scalable and maintainable applications.
+              </p>
             </div>
-          </article>
-        </div>
-      </div> <!-- end row -->
+          </div>
 
-    </div> <!-- end container -->
-  </section>
-</div>
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section" role="region" aria-labelledby="contact-title">
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fab fa-python" aria-hidden="true"></i>
+              </div>
+              <h3>Python</h3>
+              <p>
+                Data analysis, backend development, and automation using
+                frameworks like Flask and libraries like spaCy and Pandas.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-database" aria-hidden="true"></i>
+              </div>
+              <h3>SQL</h3>
+              <p>
+                Database design, queries, and optimization for efficient data
+                storage and retrieval in relational databases.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fab fa-js-square" aria-hidden="true"></i>
+              </div>
+              <h3>JavaScript & Node.js</h3>
+              <p>
+                Modern JavaScript development with Node.js for backend services
+                and full-stack web applications.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fab fa-html5" aria-hidden="true"></i>
+              </div>
+              <h3>HTML/CSS</h3>
+              <p>
+                Creating responsive, accessible, and visually appealing
+                front-end interfaces and web experiences.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fab fa-react" aria-hidden="true"></i>
+              </div>
+              <h3>React & Next.js</h3>
+              <p>
+                Building modern web applications with React and Next.js for
+                server-side rendering and optimized performance.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i>
+              </div>
+              <h3>Data Analysis</h3>
+              <p>
+                Working with NumPy, Pandas, and spaCy for data manipulation,
+                analysis, visualization, and natural language processing.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+              </div>
+              <h3>React Native</h3>
+              <p>
+                Developing cross-platform mobile applications with seamless
+                native-like experiences.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fab fa-git-alt" aria-hidden="true"></i>
+              </div>
+              <h3>Git & GitHub</h3>
+              <p>
+                Version control, collaborative development, and project
+                management with Git and GitHub.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-server" aria-hidden="true"></i>
+              </div>
+              <h3>Backend Frameworks</h3>
+              <p>
+                Building robust APIs and services with Flask, FastAPI, and
+                Spring Boot for scalable backend development.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-cloud" aria-hidden="true"></i>
+              </div>
+              <h3>Cloud Computing</h3>
+              <p>
+                AWS and Microsoft Azure cloud services. Certified AWS Cloud
+                Practitioner and Azure Fundamentals.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-fire" aria-hidden="true"></i>
+              </div>
+              <h3>Firebase</h3>
+              <p>
+                Backend-as-a-service for web and mobile apps with real-time
+                database and authentication.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-tools" aria-hidden="true"></i>
+              </div>
+              <h3>Development Tools</h3>
+              <p>
+                Git, GitHub, GitLab, Postman for API testing, Maven for project
+                management, and CI/CD for automated deployments.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-vial" aria-hidden="true"></i>
+              </div>
+              <h3>Testing & Quality</h3>
+              <p>
+                Unit testing with JUnit, API testing with Postman, and
+                maintaining code quality through automated testing pipelines.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-network-wired" aria-hidden="true"></i>
+              </div>
+              <h3>System Architecture</h3>
+              <p>
+                REST APIs, Microservices, Distributed Systems design, and
+                scalable architecture patterns for modern applications.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-rocket" aria-hidden="true"></i>
+              </div>
+              <h3>Deployment & Hosting</h3>
+              <p>
+                Cloud deployment with Render and Vercel, plus experience with
+                Firebase for backend-as-a-service solutions.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+              </div>
+              <h3>Data Visualization</h3>
+              <p>
+                Creating interactive charts and dashboards using Chart.js and
+                other visualization libraries for data insights.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="fas fa-users-cog" aria-hidden="true"></i>
+              </div>
+              <h3>Agile Development</h3>
+              <p>
+                Experienced with Agile methodologies, particularly Scrum, for
+                collaborative team development and iterative project delivery.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="app">
+      <section
+        id="projects"
+        class="section projects-section"
+        role="region"
+        aria-labelledby="projects-title"
+      >
         <div class="container">
-            <h2 id="contact-title" class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <div class="row">
-                <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
-                    <div class="contact-info">
-                        <h3>Contact Information</h3>
-                        <p>Feel free to reach out to me for any questions or opportunities.</p>
+          <h2 id="projects-title" class="section-title" data-aos="fade-up">
+            My Projects
+          </h2>
+          <div
+            class="project-filter"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            role="tablist"
+            aria-label="Project category filters"
+          >
+            <button
+              v-for="filter in filters"
+              :key="filter.value"
+              @click="activeFilter = filter.value"
+              :class="['filter-btn', { active: activeFilter === filter.value }]"
+              role="tab"
+              :aria-selected="activeFilter === filter.value"
+              :aria-controls="`projects-${filter.value}`"
+            >
+              {{ filter.label }}
+            </button>
+          </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-hidden="true">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <a href="mailto:shaunmathews21@gmail.com" aria-label="Send email to Shaun Mathew">shaunmathews21@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-hidden="true">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <a href="tel:+17326188048" aria-label="Call Shaun Mathew">+1 732-618-8048</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-hidden="true">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/shaunm042"
-                                    target="_blank" rel="noopener noreferrer" aria-label="Visit Shaun Mathew's LinkedIn profile">linkedin.com/in/shaunm042</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon" aria-hidden="true">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/ShaunM042" target="_blank" rel="noopener noreferrer" aria-label="Visit Shaun Mathew's GitHub profile">github.com/ShaunM042</a>
-                            </div>
-                        </div>
-                    </div>
+          <!-- Row container for Bootstrap grid -->
+          <div
+            class="row"
+            :id="`projects-${activeFilter}`"
+            role="tabpanel"
+            :aria-labelledby="`filter-${activeFilter}`"
+          >
+            <div
+              v-for="(project, index) in filteredProjects"
+              :key="project.id"
+              class="col-lg-4 col-md-6 mb-4"
+              data-aos="fade-up"
+              :data-aos-delay="100 + (index * 100)"
+            >
+              <article class="project-card" :data-category="project.category">
+                <!-- Only render image if project.image exists -->
+                <div v-if="project.image" class="project-img">
+                  <img
+                    :src="project.image"
+                    :alt="`Screenshot of ${project.title} project`"
+                    class="img-fluid"
+                    loading="lazy"
+                  />
                 </div>
-                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
-                    <div class="contact-form">
-                        <h3>Send Me a Message</h3>
-                        <form role="form" aria-label="Contact form">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Your Name" required aria-label="Your name">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control" placeholder="Your Email" required aria-label="Your email address">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Subject" aria-label="Message subject">
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" placeholder="Your Message" rows="5" required aria-label="Your message"></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn" aria-label="Send message">Send Message</button>
-                        </form>
-                    </div>
+                <div class="project-info">
+                  <h3>{{ project.title }}</h3>
+                  <p>{{ project.description }}</p>
+                  <div
+                    class="project-tags"
+                    role="list"
+                    aria-label="Technologies used"
+                  >
+                    <span
+                      v-for="tag in project.tags"
+                      :key="tag"
+                      class="project-tag"
+                      role="listitem"
+                    >
+                      {{ tag }}
+                    </span>
+                  </div>
+                  <a
+                    :href="project.codeLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-danger project-btn"
+                    :aria-label="`View ${project.title} source code on GitHub`"
+                  >
+                    <i class="fab fa-github" aria-hidden="true"></i> View Code
+                  </a>
                 </div>
+              </article>
             </div>
+          </div>
+          <!-- end row -->
         </div>
+        <!-- end container -->
+      </section>
+    </div>
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="section contact-section"
+      role="region"
+      aria-labelledby="contact-title"
+    >
+      <div class="container">
+        <h2 id="contact-title" class="section-title" data-aos="fade-up">
+          Get In Touch
+        </h2>
+        <div class="row">
+          <div
+            class="col-lg-5 mb-4 mb-lg-0"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            <div class="contact-info">
+              <h3>Contact Information</h3>
+              <p>
+                Feel free to reach out to me for any questions or opportunities.
+              </p>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <a
+                    href="mailto:shaunmathew04@outlook.com"
+                    aria-label="Send email to Shaun Mathew"
+                    >shaunmathew04@outlook.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Phone</h4>
+                  <a href="tel:+17326188048" aria-label="Call Shaun Mathew"
+                    >+1 732-618-8048</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>LinkedIn</h4>
+                  <a
+                    href="https://www.linkedin.com/in/shaunm042"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit Shaun Mathew's LinkedIn profile"
+                    >linkedin.com/in/shaunm042</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>GitHub</h4>
+                  <a
+                    href="https://github.com/ShaunM042"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit Shaun Mathew's GitHub profile"
+                    >github.com/ShaunM042</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
+            <div class="contact-form">
+              <h3>Send Me a Message</h3>
+              <form role="form" aria-label="Contact form">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Your Name"
+                      required
+                      aria-label="Your name"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Your Email"
+                      required
+                      aria-label="Your email address"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Subject"
+                    aria-label="Message subject"
+                  />
+                </div>
+                <div class="mb-3">
+                  <textarea
+                    class="form-control"
+                    placeholder="Your Message"
+                    rows="5"
+                    required
+                    aria-label="Your message"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="submit-btn"
+                  aria-label="Send message"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container text-center">
-            <div class="footer-logo">Shaun Mathew</div>
-            <p class="footer-description">
-                Full stack developer creating modern, responsive web applications with clean code and intuitive user
-                experiences.
-            </p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/shaunm042"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/ShaunM042"><i class="fab fa-github"></i></a>
-            </div>
-            <div class="footer-links mt-4">
-                <h4>Quick Links</h4>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#home">Home</a></li>
-                    <li class="list-inline-item"><a href="#about">About</a></li>
-                    <li class="list-inline-item"><a href="#skills">Skills</a></li>
-                    <li class="list-inline-item"><a href="#projects">Projects</a></li>
-                    <li class="list-inline-item"><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+      <div class="container text-center">
+        <div class="footer-logo">Shaun Mathew</div>
+        <p class="footer-description">
+          Full stack developer focused on building scalable, user-friendly web applications with clean code and modern design.
+          Passionate about backend systems and turning real-world complexity into intuitive tools.
+        </p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/shaunm042" target="_blank" rel="noopener noreferrer" aria-label="Open Shaun's LinkedIn profile in a new tab">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/ShaunM042" target="_blank" rel="noopener noreferrer" aria-label="Open Shaun's GitHub profile in a new tab">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
         </div>
+        <div class="footer-links mt-4">
+          <h4>Quick Links</h4>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#home">Home</a></li>
+            <li class="list-inline-item"><a href="#about">About</a></li>
+            <li class="list-inline-item"><a href="#skills">Skills</a></li>
+            <li class="list-inline-item"><a href="#projects">Projects</a></li>
+            <li class="list-inline-item"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTop" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </a>
+  </body>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
-    <!-- Local JavaScript Files -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/aos.js"></script>
-    
-    <!-- Custom Script -->
-    <script src="script.js"></script>
-    
-    <!-- AOS Initialization -->
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-    </script>
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+
+  <!-- AOS Initialization -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+    });
+  </script>
 </html>

@@ -7,6 +7,20 @@
   "background_color": "#f8fafc",
   "theme_color": "#E3242B",
   "orientation": "portrait-primary",
+  "shortcuts": [
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "url": "/#projects",
+      "icons": [{ "src": "images/favicon.png", "sizes": "32x32", "type": "image/png" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/#contact",
+      "icons": [{ "src": "images/favicon.png", "sizes": "32x32", "type": "image/png" }]
+    }
+  ],
   "icons": [
     {
       "src": "images/favicon.png",
