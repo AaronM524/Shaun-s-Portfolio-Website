@@ -380,59 +380,57 @@ document.addEventListener('DOMContentLoaded', function() {
 const projectsData = {
   "filters": [
     { "label": "All", "value": "all" },
-    { "label": "Frontend", "value": "front" },
-    { "label": "Backend", "value": "back" },
+    { "label": "Full-Stack", "value": "fullstack" },
+    { "label": "Backend", "value": "backend" }
   ],
   "projects": [
     {
       "id": 1,
-      "category": "front",
+      "category": "fullstack",
       "title": "Fresh Finder",
       "description": "NBA stats explorer built with Flask and the NBA API. Search players/teams, view box scores, and explore stats with visuals and real-world API optimizations.",
-      "image": "PNG image.png", 
-      "tags": ["HTML", "Python", "CSS"],
+      "tags": ["Python", "Flask", "HTML", "CSS", "API"],
       "codeLink": "https://github.com/ShaunM042/Fresh-Finder"
     },
     {
       "id": 2,
-      "category": "front",
+      "category": "fullstack",
       "title": "Chatbot",
       "description": "This chatbot is designed to provide quick, helpful, and conversational responses to your questions or requests anytime you need.",
-      "image": "Screenshot 2025-06-04 at 8.33.52 PM.png",
-      "tags": ["HTML", "CSS", "Java"],
+      "tags": ["HTML", "CSS", "Java", "Conversational AI"],
       "codeLink": "https://github.com/ShaunM042/Chatbot"
     },
     {
       "id": 3,
-      "category": "back",
-      "title": "Prerequisite", 
+      "category": "backend",
+      "title": "Prerequisite Checker", 
       "description": "This project creates a tool that checks course requirements by using lists and diagrams called directed graphs. It shows courses and their prerequisites as a flowchart (called a Directed Acyclic Graph or DAG) so students can easily see which classes they need to take first. The system helps students understand the order of courses, avoid taking classes out of sequence, and plan their schoolwork better by making sure they meet all requirements before signing up.",
-      "tags": ["Java"],
+      "tags": ["Java", "Graph Algorithms", "Data Structures"],
       "codeLink": "https://github.com/ShaunM042/Prerequisite-Checker"
     },
     {
       "id": 4,
-      "category": "back",
+      "category": "fullstack",
       "title": "Parent Bridge",
-      "description": "This is a project we are working on which essentially creates a social media app tailored to schools for their specific needs.", // Fixed typo: "essentiall" -> "essentially"
-      "tags": ["TypeScript"],
+      "description": "This is a project we are working on which essentially creates a social media app tailored to schools for their specific needs.",
+      "tags": ["TypeScript", "React Native", "Social Platform"],
       "codeLink": "https://github.com/ShaunM042/ParentBridge"
     },
     {
       "id": 5,
-      "category": "back",
+      "category": "backend",
       "title": "Weather Generator",
       "description": "A Java library that uses historical data to create and analyze simulated weather forecasts. This study uses predictive models of historical weather data to simulate patterns of precipitation in the future.",
    
-      "tags": ["Java"],
+      "tags": ["Java", "Data Analysis", "Predictive Modeling"],
       "codeLink": "https://github.com/ShaunM042/Weather-Generator"
     },
     {
       "id": 6,
-      "category": "back",
+      "category": "fullstack",
       "title": "Heart-Transplant",
       "description": "This repository houses the creation of a heart transplant matching system that maximizes post-transplant survival rates by matching recipient hearts to donor hearts based on various factors",
-      "tags": ["React", "API", "Geolocation"],
+      "tags": ["React", "API", "Geolocation", "Healthcare"],
       "codeLink": "https://github.com/ShaunM042/Heart-Transplant"
     }
   ]
