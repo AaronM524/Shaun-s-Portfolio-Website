@@ -77,7 +77,15 @@ body {
     transform: translateX(-50%);
     color: white;
     font-size: 2rem;
-    animation: bounce 2s infinite;
+    animation: smoothBounce 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.scroll-down:hover {
+    color: #E3242B;
+    transform: translateX(-50%) scale(1.1);
+    opacity: 1;
 }
 
 .hero-content .btn {
@@ -245,6 +253,17 @@ body {
     .animated-text { font-size: 1.3rem; }
 }
 
+
+@keyframes smoothBounce {
+    0%, 100% {
+        transform: translateY(0) translateX(-50%);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-15px) translateX(-50%);
+        opacity: 1;
+    }
+}
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
