@@ -164,15 +164,6 @@
                 <i class="fas fa-download me-1"></i>Resume
               </a>
             </li>
-            <li class="nav-item">
-              <button
-                class="theme-toggle"
-                id="themeToggle"
-                aria-label="Toggle dark mode"
-              >
-                <i class="fas fa-moon"></i>
-              </button>
-            </li>
           </ul>
         </div>
       </div>
@@ -237,11 +228,13 @@
                 Hey, I'm <span class="highlight">Shaun</span>
               </h2>
               <p>
-                Full-stack developer who just really enjoys building things that work. I like clean code, smooth user 
-                experiences, and solving the kinds of problems that make other people want to walk away from their keyboard. 
-                I got into this at Rutgers, where I studied computer science and realized I’m happiest when I’m deep in code — figuring out how to make 
-                something faster, simpler, or more reliable. Since then, I’ve worked with tools like Flask, React, Spring Boot, and SQL to bring ideas to life, 
-                whether it’s for a real product or a project I spun up at 1AM just to see if I could.
+                I'm a full stack developer who enjoys building reliable systems that solve real problems. I like to focus on writing code that helps create smooth user experiences, and turning ideas into tools people actually want to use.
+              </p>
+              <p>
+                My interest in tech started early, but I really found myself in this space at Rutgers University, where I'm studying Computer Science. That's when I realized I wanted to build for a living by solving real problems, improving systems, and shipping code that makes life easier. I've worked with technologies like Python, Java, Flask, React, Spring Boot. Whether it's a personal project I started to experiment with new tools or a real product going into production, I'm always looking for ways to improve and scale what I build.
+              </p>
+              <p>
+                Right now, I'm looking for software engineering roles where I can work on meaningful products, collaborate with talented people, and keep growing as a developer. If you're building something great, I'd love to be part of it.
               </p>
             </div>
           </div>
@@ -822,51 +815,79 @@
           <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
             <div class="contact-form">
               <h3>Send Me a Message</h3>
-              <form role="form" aria-label="Contact form">
+              <form 
+                id="contactForm" 
+                action="https://formspree.io/f/xovabzzz" 
+                method="POST" 
+                role="form" 
+                aria-label="Contact form"
+                novalidate
+              >
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <input
                       type="text"
+                      id="name"
+                      name="name"
                       class="form-control"
                       placeholder="Your Name"
                       required
                       aria-label="Your name"
+                      minlength="2"
                     />
+                    <div class="invalid-feedback"></div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <input
                       type="email"
+                      id="email"
+                      name="email"
                       class="form-control"
                       placeholder="Your Email"
                       required
                       aria-label="Your email address"
                     />
+                    <div class="invalid-feedback"></div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <input
                     type="text"
+                    id="subject"
+                    name="subject"
                     class="form-control"
                     placeholder="Subject"
                     aria-label="Message subject"
+                    required
+                    minlength="3"
                   />
+                  <div class="invalid-feedback"></div>
                 </div>
                 <div class="mb-3">
                   <textarea
+                    id="message"
+                    name="message"
                     class="form-control"
                     placeholder="Your Message"
                     rows="5"
                     required
                     aria-label="Your message"
+                    minlength="10"
                   ></textarea>
+                  <div class="invalid-feedback"></div>
                 </div>
                 <button
                   type="submit"
+                  id="submitBtn"
                   class="submit-btn"
                   aria-label="Send message"
                 >
-                  Send Message
+                  <span class="btn-text">Send Message</span>
+                  <span class="btn-loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                  </span>
                 </button>
+                <div id="formStatus" class="form-status mt-3" style="display: none;"></div>
               </form>
             </div>
           </div>
