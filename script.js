@@ -254,7 +254,6 @@ const projectsData = {
       "category": "front",
       "title": "Fresh Finder",
       "description": "NBA stats explorer built with Flask and the NBA API. Search players/teams, view box scores, and explore stats with visuals and real-world API optimizations.",
-      "image": "PNG image.png", 
       "tags": ["HTML", "Python", "CSS"],
       "codeLink": "https://github.com/ShaunM042/Fresh-Finder"
     },
@@ -263,7 +262,6 @@ const projectsData = {
       "category": "front",
       "title": "Chatbot",
       "description": "This chatbot is designed to provide quick, helpful, and conversational responses to your questions or requests anytime you need.",
-      "image": "Screenshot 2025-06-04 at 8.33.52 PM.png",
       "tags": ["HTML", "CSS", "Java"],
       "codeLink": "https://github.com/ShaunM042/Chatbot"
     },
