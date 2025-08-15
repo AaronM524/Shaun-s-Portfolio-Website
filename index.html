@@ -816,51 +816,79 @@
           <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
             <div class="contact-form">
               <h3>Send Me a Message</h3>
-              <form role="form" aria-label="Contact form">
+              <form 
+                id="contactForm" 
+                action="https://formspree.io/f/xovabzzz" 
+                method="POST" 
+                role="form" 
+                aria-label="Contact form"
+                novalidate
+              >
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <input
                       type="text"
+                      id="name"
+                      name="name"
                       class="form-control"
                       placeholder="Your Name"
                       required
                       aria-label="Your name"
+                      minlength="2"
                     />
+                    <div class="invalid-feedback"></div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <input
                       type="email"
+                      id="email"
+                      name="email"
                       class="form-control"
                       placeholder="Your Email"
                       required
                       aria-label="Your email address"
                     />
+                    <div class="invalid-feedback"></div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <input
                     type="text"
+                    id="subject"
+                    name="subject"
                     class="form-control"
                     placeholder="Subject"
                     aria-label="Message subject"
+                    required
+                    minlength="3"
                   />
+                  <div class="invalid-feedback"></div>
                 </div>
                 <div class="mb-3">
                   <textarea
+                    id="message"
+                    name="message"
                     class="form-control"
                     placeholder="Your Message"
                     rows="5"
                     required
                     aria-label="Your message"
+                    minlength="10"
                   ></textarea>
+                  <div class="invalid-feedback"></div>
                 </div>
                 <button
                   type="submit"
+                  id="submitBtn"
                   class="submit-btn"
                   aria-label="Send message"
                 >
-                  Send Message
+                  <span class="btn-text">Send Message</span>
+                  <span class="btn-loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                  </span>
                 </button>
+                <div id="formStatus" class="form-status mt-3" style="display: none;"></div>
               </form>
             </div>
           </div>

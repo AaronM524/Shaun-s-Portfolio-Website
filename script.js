@@ -324,4 +324,172 @@ new Vue({
   }
 });
 
+// Enhanced Contact Form Handler
+class ContactFormHandler {
+    constructor() {
+        this.form = document.getElementById('contactForm');
+        this.submitBtn = document.getElementById('submitBtn');
+        this.statusDiv = document.getElementById('formStatus');
+        this.init();
+    }
+
+    init() {
+        if (!this.form) return;
+        
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        
+        // Real-time validation
+        const inputs = this.form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('input', () => this.clearFieldError(input));
+        });
+    }
+
+    validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let errorMessage = '';
+
+        // Clear previous validation
+        this.clearFieldError(field);
+
+        // Required field validation
+        if (field.hasAttribute('required') && !value) {
+            isValid = false;
+            errorMessage = 'This field is required';
+        }
+
+        // Email validation
+        if (field.type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address';
+            }
+        }
+
+        // Minimum length validation
+        if (field.hasAttribute('minlength') && value) {
+            const minLength = parseInt(field.getAttribute('minlength'));
+            if (value.length < minLength) {
+                isValid = false;
+                errorMessage = `Must be at least ${minLength} characters long`;
+            }
+        }
+
+        // Show validation result
+        if (!isValid) {
+            this.showFieldError(field, errorMessage);
+        } else if (value) {
+            field.classList.add('is-valid');
+        }
+
+        return isValid;
+    }
+
+    showFieldError(field, message) {
+        field.classList.remove('is-valid');
+        field.classList.add('is-invalid');
+        const feedback = field.nextElementSibling;
+        if (feedback && feedback.classList.contains('invalid-feedback')) {
+            feedback.textContent = message;
+        }
+    }
+
+    clearFieldError(field) {
+        field.classList.remove('is-invalid', 'is-valid');
+        const feedback = field.nextElementSibling;
+        if (feedback && feedback.classList.contains('invalid-feedback')) {
+            feedback.textContent = '';
+        }
+    }
+
+    validateForm() {
+        const inputs = this.form.querySelectorAll('input[required], textarea[required]');
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!this.validateField(input)) {
+                isValid = false;
+            }
+        });
+
+        return isValid;
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
+
+        if (!this.validateForm()) {
+            this.showStatus('Please fix the errors above', 'error');
+            return;
+        }
+
+        this.setLoading(true);
+        this.showStatus('Sending your message...', 'info');
+
+        try {
+            const formData = new FormData(this.form);
+            
+            const response = await fetch(this.form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                this.showStatus('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
+                this.form.reset();
+                this.clearAllValidation();
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            this.showStatus('Sorry, there was an error sending your message. Please try again or contact me directly.', 'error');
+        } finally {
+            this.setLoading(false);
+        }
+    }
+
+    setLoading(loading) {
+        const btnText = this.submitBtn.querySelector('.btn-text');
+        const btnLoading = this.submitBtn.querySelector('.btn-loading');
+        
+        if (loading) {
+            this.submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+        } else {
+            this.submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+        }
+    }
+
+    showStatus(message, type) {
+        this.statusDiv.textContent = message;
+        this.statusDiv.className = `form-status ${type}`;
+        this.statusDiv.style.display = 'block';
+
+        // Auto-hide success messages
+        if (type === 'success') {
+            setTimeout(() => {
+                this.statusDiv.style.display = 'none';
+            }, 6000);
+        }
+    }
+
+    clearAllValidation() {
+        const inputs = this.form.querySelectorAll('input, textarea');
+        inputs.forEach(input => this.clearFieldError(input));
+    }
+}
+
+// Initialize contact form
+document.addEventListener('DOMContentLoaded', function() {
+    new ContactFormHandler();
+});
 
