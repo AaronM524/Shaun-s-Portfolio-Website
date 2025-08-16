@@ -228,11 +228,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (animatedTextElement) {
         const phrases = [
             'Full Stack Developer',
+            'AWS & Azure Certified Developer',
             'Problem Solver',
-            'Creative Tech Explorer',
-            'Lifelong Learner',
-            'Soccer Fan',
-            'AWS & Azure Certified'
+            'Backend Focused',
+            'Sushi Enthusiast',
+            'Soccer Fan'
         ];
         
         // Use gradient animation for big tech feel
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const projectsData = {
   "filters": [
     { "label": "All", "value": "all" },
-    { "label": "Full-Stack", "value": "front" },
+    { "label": "1", "value": "front" },
     { "label": "Backend", "value": "back" },
   ],
   "projects": [
