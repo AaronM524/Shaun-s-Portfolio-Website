@@ -229,13 +229,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const phrases = [
             'Full Stack Developer',
             'AWS & Azure Certified Developer',
+            'Backend-Focused Developer',
             'Problem Solver',
-            'Backend Focused',
             'Sushi Enthusiast',
             'Soccer Fan'
         ];
         
-        // Use gradient animation for big tech feel
         new GradientTextAnimator(animatedTextElement, phrases, {
             cycleDuration: 3500
         });
