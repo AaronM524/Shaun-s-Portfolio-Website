@@ -115,60 +115,59 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg fixed-top"
-      role="navigation"
-      aria-label="Main navigation"
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobileMenuToggle"
+      class="mobile-menu-toggle"
+      aria-label="Toggle navigation menu"
     >
-      <div class="container">
-        <a class="navbar-brand" href="#home" aria-label="Shaun Mathew - Home"
-          >Shaun Mathew</a
-        >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay">
+      <div class="mobile-menu-content">
         <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu"
+          id="mobileMenuClose"
+          class="mobile-menu-close"
+          aria-label="Close navigation menu"
         >
-          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
+        
+        <nav class="mobile-nav" role="navigation" aria-label="Main navigation">
+          <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link" href="#home">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link" href="#about">About</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link" href="#skills">Skills</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link" href="#projects">Projects</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link" href="#contact">Contact</a>
             </li>
-            <li class="nav-item">
+            <li class="mobile-nav-item mobile-resume-item">
               <a
-                class="nav-link resume-btn"
+                class="mobile-resume-btn"
                 href="Shaun_Mathew_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Download Resume"
                 download="Shaun_Mathew_Resume.pdf"
               >
-                <i class="fas fa-download me-1"></i>Resume
+                <i class="fas fa-download me-2"></i>Resume
               </a>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section" role="banner">

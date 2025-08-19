@@ -1,41 +1,98 @@
-// Navbar scroll behavior and active navigation
-window.addEventListener('scroll', function () {
-    const navbar = document.querySelector('.navbar');
-    const backToTop = document.getElementById('backToTop');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+// Mobile Menu Functionality
+class MobileMenu {
+    constructor() {
+        this.toggleBtn = document.getElementById('mobileMenuToggle');
+        this.closeBtn = document.getElementById('mobileMenuClose');
+        this.overlay = document.getElementById('mobileMenuOverlay');
+        this.navLinks = document.querySelectorAll('.mobile-nav-link');
+        this.backToTop = document.getElementById('backToTop');
+        
+        this.init();
     }
-
-    // Active navigation highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
     
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
+    init() {
+        // Toggle menu
+        this.toggleBtn.addEventListener('click', () => this.openMenu());
+        this.closeBtn.addEventListener('click', () => this.closeMenu());
+        
+        // Close on overlay click
+        this.overlay.addEventListener('click', (e) => {
+            if (e.target === this.overlay) {
+                this.closeMenu();
+            }
+        });
+        
+        // Close on nav link click
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeMenu();
+                this.highlightActiveLink(link);
+            });
+        });
+        
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+                this.closeMenu();
+            }
+        });
+        
+        // Scroll behavior
+        this.handleScroll();
+        window.addEventListener('scroll', () => this.handleScroll());
+    }
+    
+    openMenu() {
+        this.overlay.classList.add('active');
+        document.body.classList.add('menu-open');
+        this.toggleBtn.style.opacity = '0.7';
+    }
+    
+    closeMenu() {
+        this.overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        this.toggleBtn.style.opacity = '1';
+    }
+    
+    highlightActiveLink(activeLink) {
+        this.navLinks.forEach(link => link.classList.remove('active'));
+        activeLink.classList.add('active');
+    }
+    
+    handleScroll() {
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
+        this.navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
 
-    // Toggle Back-to-Top button visibility
-    if (backToTop) {
-        if (window.scrollY > 400) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
+        // Toggle Back-to-Top button visibility
+        if (this.backToTop) {
+            if (window.scrollY > 400) {
+                this.backToTop.classList.add('active');
+            } else {
+                this.backToTop.classList.remove('active');
+            }
         }
     }
+}
+
+// Initialize mobile menu when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new MobileMenu();
 });
 
 // Theme toggle functionality
