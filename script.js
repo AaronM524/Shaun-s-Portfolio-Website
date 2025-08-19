@@ -1,9 +1,11 @@
-// Header Dropdown Menu Functionality
+// Header Navigation Functionality
 class HeaderMenu {
     constructor() {
         this.toggleBtn = document.getElementById('headerMenuToggle');
         this.dropdown = document.getElementById('headerDropdown');
-        this.navLinks = document.querySelectorAll('.dropdown-nav-link');
+        this.mobileNavLinks = document.querySelectorAll('.dropdown-nav-link');
+        this.desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
+        this.allNavLinks = [...this.mobileNavLinks, ...this.desktopNavLinks];
         this.backToTop = document.getElementById('backToTop');
         this.isOpen = false;
         
@@ -11,32 +13,42 @@ class HeaderMenu {
     }
     
     init() {
-        // Toggle dropdown
-        this.toggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.toggleMenu();
-        });
+        // Only set up mobile menu if toggle button exists
+        if (this.toggleBtn) {
+            // Toggle dropdown
+            this.toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleMenu();
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (this.isOpen && !this.dropdown.contains(e.target)) {
+                    this.closeMenu();
+                }
+            });
+            
+            // Close on mobile nav link click
+            this.mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    this.closeMenu();
+                    this.highlightActiveLink(link);
+                });
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.isOpen) {
+                    this.closeMenu();
+                }
+            });
+        }
         
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (this.isOpen && !this.dropdown.contains(e.target)) {
-                this.closeMenu();
-            }
-        });
-        
-        // Close on nav link click
-        this.navLinks.forEach(link => {
+        // Handle desktop nav links
+        this.desktopNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                this.closeMenu();
                 this.highlightActiveLink(link);
             });
-        });
-        
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.isOpen) {
-                this.closeMenu();
-            }
         });
         
         // Scroll behavior
@@ -65,8 +77,16 @@ class HeaderMenu {
     }
     
     highlightActiveLink(activeLink) {
-        this.navLinks.forEach(link => link.classList.remove('active'));
+        this.allNavLinks.forEach(link => link.classList.remove('active'));
         activeLink.classList.add('active');
+        
+        // Also highlight the corresponding link in the other navigation
+        const href = activeLink.getAttribute('href');
+        this.allNavLinks.forEach(link => {
+            if (link.getAttribute('href') === href) {
+                link.classList.add('active');
+            }
+        });
     }
     
     handleScroll() {
@@ -82,7 +102,8 @@ class HeaderMenu {
             }
         });
 
-        this.navLinks.forEach(link => {
+        // Update both mobile and desktop navigation active states
+        this.allNavLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');

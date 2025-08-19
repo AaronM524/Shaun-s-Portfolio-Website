@@ -343,7 +343,7 @@ body {
 
 /* Left: Brand Name */
 .header-brand {
-    flex: 1;
+    flex-shrink: 0;
 }
 
 .brand-link {
@@ -358,9 +358,92 @@ body {
     color: #E3242B;
 }
 
-/* Right: Hamburger Menu */
-.header-menu {
+/* Right: Navigation Container */
+.header-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Desktop Navigation - Visible on Large Screens */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.desktop-nav-item {
+    margin: 0;
+}
+
+.desktop-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
     position: relative;
+}
+
+.desktop-nav-link:hover,
+.desktop-nav-link.active {
+    color: #E3242B;
+    background-color: rgba(227, 36, 43, 0.1);
+}
+
+.desktop-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #E3242B;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.desktop-nav-link:hover::after,
+.desktop-nav-link.active::after {
+    width: 80%;
+}
+
+/* Desktop Resume Button */
+.desktop-resume-btn {
+    background-color: #E3242B;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.desktop-resume-btn:hover {
+    background-color: #c51e24;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(227, 36, 43, 0.3);
+}
+
+/* Mobile Menu - Hidden on Desktop */
+.mobile-menu {
+    position: relative;
+    display: none;
 }
 
 .header-menu-toggle {
@@ -492,6 +575,18 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+    /* Hide desktop navigation on tablets and smaller */
+    .desktop-nav {
+        display: none;
+    }
+    
+    /* Show mobile menu on tablets and smaller */
+    .mobile-menu {
+        display: block;
+    }
+}
+
 @media (max-width: 768px) {
     .header-container {
         padding: 0 15px;
@@ -522,6 +617,18 @@ body {
     .dropdown-nav-link {
         font-size: 1rem;
         padding: 14px 20px;
+    }
+}
+
+/* Desktop Only - Fine-tune spacing */
+@media (min-width: 1200px) {
+    .desktop-nav-list {
+        gap: 35px;
+    }
+    
+    .desktop-nav-link {
+        font-size: 1.05rem;
+        padding: 10px 15px;
     }
 }
 
