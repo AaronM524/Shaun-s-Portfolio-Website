@@ -52,6 +52,16 @@ body {
     color: white;
     z-index: 1;
     padding: 0 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content h1 {
@@ -118,6 +128,12 @@ body {
     max-width: 650px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     text-align: center;
+    width: 100%;
+    min-height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .static-text {
@@ -203,20 +219,32 @@ body {
 
 
 @media (max-width: 768px) {
+    .hero-content {
+        padding: 0 15px;
+        max-width: 95%;
+    }
+    
     .hero-subtext {
         font-size: 1.4rem;
         margin-bottom: 1.2rem;
-        display: flex;
         flex-direction: column;
         gap: 4px;
+        min-height: 3em;
     }
     .animated-text { font-size: 1.5rem; }
 }
 
 @media (max-width: 576px) {
+    .hero-content {
+        padding: 0 12px;
+        max-width: 98%;
+    }
+    
     .hero-subtext {
         font-size: 1.2rem;
         line-height: 1.5;
+        min-height: 3.2em;
+        gap: 2px;
     }
     .animated-text { font-size: 1.3rem; }
 }
@@ -1231,6 +1259,7 @@ textarea.form-control {
     .hero-subtext {
         font-size: 1rem;
         margin-bottom: 1.2rem;
+        min-height: 2.8em;
     }
     
     .rotating-text {
@@ -1283,6 +1312,7 @@ textarea.form-control {
     .hero-subtext {
         font-size: 0.95rem;
         line-height: 1.5;
+        min-height: 3.5em;
     }
     
     .rotating-text {
