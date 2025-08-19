@@ -330,6 +330,25 @@ body {
     z-index: 9999;
     padding: 15px 0;
     transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0);
+}
+
+/* Header with background for visibility on light sections */
+.fixed-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark header for light sections */
+.fixed-header.on-light-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
@@ -355,6 +374,17 @@ body {
 }
 
 .brand-link:hover {
+    color: #E3242B;
+}
+
+/* Brand link on light background */
+.fixed-header.scrolled .brand-link,
+.fixed-header.on-light-section .brand-link {
+    color: #1f2937;
+}
+
+.fixed-header.scrolled .brand-link:hover,
+.fixed-header.on-light-section .brand-link:hover {
     color: #E3242B;
 }
 
@@ -417,6 +447,20 @@ body {
     width: 80%;
 }
 
+/* Desktop navigation on light background */
+.fixed-header.scrolled .desktop-nav-link,
+.fixed-header.on-light-section .desktop-nav-link {
+    color: #1f2937;
+}
+
+.fixed-header.scrolled .desktop-nav-link:hover,
+.fixed-header.scrolled .desktop-nav-link.active,
+.fixed-header.on-light-section .desktop-nav-link:hover,
+.fixed-header.on-light-section .desktop-nav-link.active {
+    color: #E3242B;
+    background-color: rgba(227, 36, 43, 0.1);
+}
+
 /* Desktop Resume Button */
 .desktop-resume-btn {
     background-color: #E3242B;
@@ -474,6 +518,20 @@ body {
 
 .header-menu-toggle[aria-expanded="true"] {
     background-color: #c51e24;
+}
+
+/* Mobile hamburger button on light background */
+.fixed-header.scrolled .header-menu-toggle,
+.fixed-header.on-light-section .header-menu-toggle {
+    background-color: #E3242B;
+    box-shadow: 0 4px 12px rgba(227, 36, 43, 0.3);
+}
+
+.fixed-header.scrolled .header-menu-toggle:hover,
+.fixed-header.on-light-section .header-menu-toggle:hover {
+    background-color: #c51e24;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(227, 36, 43, 0.4);
 }
 
 /* Dropdown Menu */

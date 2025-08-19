@@ -7,7 +7,11 @@ class HeaderMenu {
         this.desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
         this.allNavLinks = [...this.mobileNavLinks, ...this.desktopNavLinks];
         this.backToTop = document.getElementById('backToTop');
+        this.header = document.querySelector('.fixed-header');
         this.isOpen = false;
+        
+        // Define sections with light backgrounds
+        this.lightSections = ['about', 'skills', 'contact', 'timeline'];
         
         this.init();
     }
@@ -93,11 +97,12 @@ class HeaderMenu {
         // Active navigation highlighting
         const sections = document.querySelectorAll('section[id]');
         let current = '';
+        const scrollPosition = window.scrollY;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 150;
             const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
             }
         });
@@ -110,12 +115,32 @@ class HeaderMenu {
             }
         });
 
+        // Update header background based on scroll position and current section
+        this.updateHeaderBackground(current, scrollPosition);
+
         // Toggle Back-to-Top button visibility
         if (this.backToTop) {
-            if (window.scrollY > 400) {
+            if (scrollPosition > 400) {
                 this.backToTop.classList.add('active');
             } else {
                 this.backToTop.classList.remove('active');
+            }
+        }
+    }
+
+    updateHeaderBackground(currentSection, scrollPosition) {
+        if (!this.header) return;
+
+        // Remove all header state classes
+        this.header.classList.remove('scrolled', 'on-light-section');
+
+        // If we've scrolled past the hero section (more than 100px) or we're on a light section
+        if (scrollPosition > 100 || this.lightSections.includes(currentSection)) {
+            this.header.classList.add('scrolled');
+            
+            // Add additional class for light sections for more specific styling if needed
+            if (this.lightSections.includes(currentSection)) {
+                this.header.classList.add('on-light-section');
             }
         }
     }
