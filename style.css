@@ -147,10 +147,12 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 8px;
 }
 
 .static-text {
     display: inline;
+    margin-right: 0;
 }
 
 .rotating-text {
