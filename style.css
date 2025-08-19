@@ -374,18 +374,19 @@ body {
 }
 
 .brand-link:hover {
-    color: #E3242B;
+    color: white;
 }
 
-/* Brand link on light background */
+/* Brand link on light background - RED BOLD */
 .fixed-header.scrolled .brand-link,
 .fixed-header.on-light-section .brand-link {
-    color: #1f2937;
+    color: #ef4444;
+    font-weight: 700;
 }
 
 .fixed-header.scrolled .brand-link:hover,
 .fixed-header.on-light-section .brand-link:hover {
-    color: #E3242B;
+    color: #ef4444;
 }
 
 /* Center/Right: Navigation Container */
@@ -419,60 +420,66 @@ body {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
-    padding: 8px 0;
+    padding: 8px 15px;
     position: relative;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 6px;
 }
 
 .desktop-nav-link:hover {
-    color: #ef4444;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .desktop-nav-link.active {
-    color: #ef4444;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Desktop navigation links on light backgrounds */
 .fixed-header.scrolled .desktop-nav-link,
 .fixed-header.on-light-section .desktop-nav-link {
     color: #ef4444;
+    font-weight: 600;
 }
 
 .fixed-header.scrolled .desktop-nav-link:hover,
 .fixed-header.on-light-section .desktop-nav-link:hover {
-    color: #dc2626;
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
 }
 
 .fixed-header.scrolled .desktop-nav-link.active,
 .fixed-header.on-light-section .desktop-nav-link.active {
-    color: #dc2626;
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
 }
 
 /* Desktop Resume Button */
 .desktop-resume-btn {
     background-color: #ef4444;
     color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 24px;
+    border-radius: 9999px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .desktop-resume-btn:hover {
-    background-color: #dc2626;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    background-color: #ef4444;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.3);
     color: white;
 }
 
 .desktop-resume-btn:active {
-    transform: translateY(-1px);
+    transform: translateY(0px);
 }
 
 /* Mobile Menu - Hidden on Large Screens */
@@ -493,8 +500,8 @@ body {
 }
 
 .header-menu-toggle:hover {
-    background-color: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 /* Hamburger icon on light backgrounds */
@@ -506,7 +513,7 @@ body {
 .fixed-header.scrolled .header-menu-toggle:hover,
 .fixed-header.on-light-section .header-menu-toggle:hover {
     background-color: rgba(239, 68, 68, 0.1);
-    color: #dc2626;
+    color: #ef4444;
 }
 
 /* Mobile Dropdown Menu */
@@ -567,8 +574,8 @@ body {
 
 /* Mobile Resume Button in Dropdown */
 .dropdown-resume-item {
-    margin-top: 10px;
-    padding: 0 25px 10px;
+    margin-top: 15px;
+    padding: 0 25px 15px;
 }
 
 .dropdown-resume-btn {
@@ -578,20 +585,20 @@ body {
     background-color: #ef4444;
     color: white;
     padding: 12px 20px;
-    border-radius: 25px;
+    border-radius: 9999px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
     width: 100%;
     justify-content: center;
 }
 
 .dropdown-resume-btn:hover {
-    background-color: #dc2626;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    background-color: #ef4444;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.3);
     color: white;
 }
 
