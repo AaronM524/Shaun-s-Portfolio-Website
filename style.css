@@ -717,7 +717,19 @@ body {
 
 /* Projects Section */
 .projects-section {
-    background-color: white;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    padding: 100px 0;
+    position: relative;
+}
+
+.projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.3), transparent);
 }
 
 .project-filter {
@@ -747,17 +759,36 @@ body {
 
 .project-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     margin-bottom: 30px;
     height: 100%;
+    border: 1px solid rgba(239, 68, 68, 0.1);
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ef4444, #dc2626, #b91c1c);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-img {
@@ -1414,9 +1445,21 @@ textarea.form-control {
 }
 
 /* Timeline Section */
-.timeline-section {
-    padding: 80px 0;
-    background-color: #f9f9f9;
+.journey-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.journey-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.3), transparent);
 }
 
 .timeline-container {
