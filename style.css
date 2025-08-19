@@ -455,49 +455,47 @@ body {
     background-color: rgba(239, 68, 68, 0.1);
 }
 
-/* Desktop Resume Button - Red Pill with Download Icon */
+/* Desktop Resume Button - Matching Explore My Work Button */
 .desktop-resume-btn {
-    background-color: #ef4444;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 9999px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    background-color: #ef4444;
+    color: white;
+    padding: 14px 32px;
     border: none;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
     white-space: nowrap;
 }
 
 .desktop-resume-btn:hover {
     background-color: #dc2626;
     color: white;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
+    transform: translateY(-3px);
 }
 
 .desktop-resume-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(0.98) translateY(-1px);
+    transition: transform 0.1s ease;
 }
 
 .desktop-resume-btn i {
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 @media (hover: none) {
     .desktop-resume-btn:hover {
         transform: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     .desktop-resume-btn:active {
-        background-color: #dc2626;
         transform: scale(0.95);
+        background-color: #dc2626;
         transition: all 0.15s ease;
     }
 }
@@ -592,7 +590,7 @@ body {
     color: #ef4444;
 }
 
-/* Mobile Resume Button in Dropdown - Red Pill with Download Icon */
+/* Mobile Resume Button in Dropdown - Matching Explore My Work Button */
 .dropdown-resume-item {
     margin-top: 15px;
     padding: 0 25px 15px;
@@ -604,44 +602,42 @@ body {
     gap: 8px;
     background-color: #ef4444;
     color: white;
-    padding: 12px 24px;
-    border-radius: 9999px;
-    text-decoration: none;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 40px;
+    font-size: 1.1rem;
     font-weight: 600;
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
     width: 100%;
     justify-content: center;
-    border: none;
     white-space: nowrap;
 }
 
 .dropdown-resume-btn:hover {
     background-color: #dc2626;
     color: white;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
+    transform: translateY(-3px);
 }
 
 .dropdown-resume-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(0.98) translateY(-1px);
+    transition: transform 0.1s ease;
 }
 
 .dropdown-resume-btn i {
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 @media (hover: none) {
     .dropdown-resume-btn:hover {
         transform: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     .dropdown-resume-btn:active {
-        background-color: #dc2626;
         transform: scale(0.95);
+        background-color: #dc2626;
         transition: all 0.15s ease;
     }
 }
