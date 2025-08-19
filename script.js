@@ -190,7 +190,7 @@ class GradientTextAnimator {
     }
     
     setupStyles() {
-        this.element.style.background = 'linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)';
+        this.element.style.background = 'linear-gradient(-45deg, #E3242B 0%, #dc2626 20%, #b91c1c 40%, #991b1b 60%, #dc2626 80%, #E3242B 100%)';
         this.element.style.backgroundSize = '400% 400%';
         this.element.style.webkitBackgroundClip = 'text';
         this.element.style.backgroundClip = 'text';
