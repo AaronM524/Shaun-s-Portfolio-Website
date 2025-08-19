@@ -669,7 +669,7 @@
               role="tab"
               :aria-selected="activeFilter === filter.value"
               :aria-controls="`projects-${filter.value}`"
-              :title="filter.description"
+              :data-tooltip="filter.description"
             >
               {{ filter.label }}
             </button>
