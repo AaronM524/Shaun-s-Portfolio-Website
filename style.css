@@ -1005,7 +1005,7 @@ textarea.form-control {
     border: 1px solid #bee5eb;
 }
 .footer {
-    background: var(--dark-color);
+    background: #000;
     color: white;
     padding: 50px 0 20px;
     text-align: center;
