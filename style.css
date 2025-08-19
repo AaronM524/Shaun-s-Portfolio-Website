@@ -388,10 +388,11 @@ body {
     color: #E3242B;
 }
 
-/* Right: Navigation Container */
+/* Center/Right: Navigation Container */
 .header-nav {
     display: flex;
     align-items: center;
+    gap: 30px;
 }
 
 /* Desktop Navigation - Visible on Large Screens */
@@ -406,7 +407,7 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 30px;
+    gap: 25px;
 }
 
 .desktop-nav-item {
@@ -418,70 +419,284 @@ body {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.desktop-nav-link:hover {
+    color: #ef4444;
+}
+
+.desktop-nav-link.active {
+    color: #ef4444;
+}
+
+/* Desktop navigation links on light backgrounds */
+.fixed-header.scrolled .desktop-nav-link,
+.fixed-header.on-light-section .desktop-nav-link {
+    color: #ef4444;
+}
+
+.fixed-header.scrolled .desktop-nav-link:hover,
+.fixed-header.on-light-section .desktop-nav-link:hover {
+    color: #dc2626;
+}
+
+.fixed-header.scrolled .desktop-nav-link.active,
+.fixed-header.on-light-section .desktop-nav-link.active {
+    color: #dc2626;
+}
+
+/* Desktop Resume Button */
+.desktop-resume-btn {
+    background-color: #ef4444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.desktop-resume-btn:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    color: white;
+}
+
+.desktop-resume-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Mobile Menu - Hidden on Large Screens */
+.mobile-menu {
+    display: none;
+    position: relative;
+}
+
+.header-menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.header-menu-toggle:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* Hamburger icon on light backgrounds */
+.fixed-header.scrolled .header-menu-toggle,
+.fixed-header.on-light-section .header-menu-toggle {
+    color: #ef4444;
+}
+
+.fixed-header.scrolled .header-menu-toggle:hover,
+.fixed-header.on-light-section .header-menu-toggle:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+/* Mobile Dropdown Menu */
+.header-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 10000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 15px 0;
+}
+
+.dropdown-nav-item {
+    margin: 0;
+}
+
+.dropdown-nav-link {
+    display: block;
+    color: #374151;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.dropdown-nav-link:hover {
+    background-color: rgba(239, 68, 68, 0.05);
+    color: #ef4444;
+    transform: translateX(5px);
+}
+
+.dropdown-nav-link.active {
+    background-color: rgba(239, 68, 68, 0.05);
+    color: #ef4444;
+}
+
+/* Mobile Resume Button in Dropdown */
+.dropdown-resume-item {
+    margin-top: 10px;
+    padding: 0 25px 10px;
+}
+
+.dropdown-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ef4444;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    width: 100%;
+    justify-content: center;
+}
+
+.dropdown-resume-btn:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    color: white;
+}
+
+/* Responsive Navigation */
+@media (min-width: 992px) {
+    .desktop-nav {
+        display: flex;
+    }
+    .mobile-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .desktop-nav {
+        display: none;
+    }
+    .desktop-resume-btn {
+        display: none;
+    }
+    .mobile-menu {
+        display: block;
+    }
+    align-items: center;
+}
+
+.desktop-nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 35px;
+}
+
+.desktop-nav-item {
+    margin: 0;
+}
+
+.desktop-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 0;
+    border-radius: 4px;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .desktop-nav-link:hover,
 .desktop-nav-link.active {
-    color: #E3242B;
-    background-color: rgba(227, 36, 43, 0.1);
+    color: #ef4444;
 }
 
 .desktop-nav-link::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 50%;
+    bottom: -4px;
+    left: 0;
     width: 0;
     height: 2px;
-    background-color: #E3242B;
+    background-color: #ef4444;
     transition: all 0.3s ease;
-    transform: translateX(-50%);
 }
 
 .desktop-nav-link:hover::after,
 .desktop-nav-link.active::after {
-    width: 80%;
+    width: 100%;
 }
 
 /* Desktop navigation on light background */
 .fixed-header.scrolled .desktop-nav-link,
 .fixed-header.on-light-section .desktop-nav-link {
-    color: #1f2937;
+    color: #ef4444;
 }
 
 .fixed-header.scrolled .desktop-nav-link:hover,
 .fixed-header.scrolled .desktop-nav-link.active,
 .fixed-header.on-light-section .desktop-nav-link:hover,
 .fixed-header.on-light-section .desktop-nav-link.active {
-    color: #E3242B;
-    background-color: rgba(227, 36, 43, 0.1);
+    color: #dc2626;
 }
 
 /* Desktop Resume Button */
 .desktop-resume-btn {
-    background-color: #E3242B;
+    background-color: #ef4444;
     color: white;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 24px;
+    border-radius: 6px;
     transition: all 0.3s ease;
-    margin-left: 15px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
 }
 
 .desktop-resume-btn:hover {
-    background-color: #c51e24;
+    background-color: #dc2626;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(227, 36, 43, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
 }
 
 /* Mobile Menu - Hidden on Desktop */
