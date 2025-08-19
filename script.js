@@ -1,23 +1,25 @@
-// Mobile Menu Functionality
-class MobileMenu {
+// Header Dropdown Menu Functionality
+class HeaderMenu {
     constructor() {
-        this.toggleBtn = document.getElementById('mobileMenuToggle');
-        this.closeBtn = document.getElementById('mobileMenuClose');
-        this.overlay = document.getElementById('mobileMenuOverlay');
-        this.navLinks = document.querySelectorAll('.mobile-nav-link');
+        this.toggleBtn = document.getElementById('headerMenuToggle');
+        this.dropdown = document.getElementById('headerDropdown');
+        this.navLinks = document.querySelectorAll('.dropdown-nav-link');
         this.backToTop = document.getElementById('backToTop');
+        this.isOpen = false;
         
         this.init();
     }
     
     init() {
-        // Toggle menu
-        this.toggleBtn.addEventListener('click', () => this.openMenu());
-        this.closeBtn.addEventListener('click', () => this.closeMenu());
+        // Toggle dropdown
+        this.toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMenu();
+        });
         
-        // Close on overlay click
-        this.overlay.addEventListener('click', (e) => {
-            if (e.target === this.overlay) {
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !this.dropdown.contains(e.target)) {
                 this.closeMenu();
             }
         });
@@ -32,7 +34,7 @@ class MobileMenu {
         
         // Close on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+            if (e.key === 'Escape' && this.isOpen) {
                 this.closeMenu();
             }
         });
@@ -42,16 +44,24 @@ class MobileMenu {
         window.addEventListener('scroll', () => this.handleScroll());
     }
     
+    toggleMenu() {
+        if (this.isOpen) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
+    }
+    
     openMenu() {
-        this.overlay.classList.add('active');
-        document.body.classList.add('menu-open');
-        this.toggleBtn.style.opacity = '0.7';
+        this.dropdown.classList.add('active');
+        this.toggleBtn.setAttribute('aria-expanded', 'true');
+        this.isOpen = true;
     }
     
     closeMenu() {
-        this.overlay.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        this.toggleBtn.style.opacity = '1';
+        this.dropdown.classList.remove('active');
+        this.toggleBtn.setAttribute('aria-expanded', 'false');
+        this.isOpen = false;
     }
     
     highlightActiveLink(activeLink) {
@@ -90,9 +100,9 @@ class MobileMenu {
     }
 }
 
-// Initialize mobile menu when DOM is loaded
+// Initialize header menu when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new MobileMenu();
+    new HeaderMenu();
 });
 
 // Theme toggle functionality

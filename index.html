@@ -115,59 +115,64 @@
   </head>
 
   <body>
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobileMenuToggle"
-      class="mobile-menu-toggle"
-      aria-label="Toggle navigation menu"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenuOverlay" class="mobile-menu-overlay">
-      <div class="mobile-menu-content">
-        <button
-          id="mobileMenuClose"
-          class="mobile-menu-close"
-          aria-label="Close navigation menu"
-        >
-          <i class="fas fa-times"></i>
-        </button>
+    <!-- Header Navigation -->
+    <header class="fixed-header">
+      <div class="header-container">
+        <!-- Left: Brand Name -->
+        <div class="header-brand">
+          <a href="#home" class="brand-link" aria-label="Shaun Mathew - Home">
+            Shaun Mathew
+          </a>
+        </div>
         
-        <nav class="mobile-nav" role="navigation" aria-label="Main navigation">
-          <ul class="mobile-nav-list">
-            <li class="mobile-nav-item">
-              <a class="mobile-nav-link" href="#home">Home</a>
-            </li>
-            <li class="mobile-nav-item">
-              <a class="mobile-nav-link" href="#about">About</a>
-            </li>
-            <li class="mobile-nav-item">
-              <a class="mobile-nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="mobile-nav-item">
-              <a class="mobile-nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="mobile-nav-item">
-              <a class="mobile-nav-link" href="#contact">Contact</a>
-            </li>
-            <li class="mobile-nav-item mobile-resume-item">
-              <a
-                class="mobile-resume-btn"
-                href="Shaun_Mathew_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download Resume"
-                download="Shaun_Mathew_Resume.pdf"
-              >
-                <i class="fas fa-download me-2"></i>Resume
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <!-- Right: Hamburger Menu -->
+        <div class="header-menu">
+          <button
+            id="headerMenuToggle"
+            class="header-menu-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          
+          <!-- Dropdown Menu -->
+          <div id="headerDropdown" class="header-dropdown">
+            <nav class="dropdown-nav" role="navigation" aria-label="Main navigation">
+              <ul class="dropdown-nav-list">
+                <li class="dropdown-nav-item">
+                  <a class="dropdown-nav-link" href="#home">Home</a>
+                </li>
+                <li class="dropdown-nav-item">
+                  <a class="dropdown-nav-link" href="#about">About</a>
+                </li>
+                <li class="dropdown-nav-item">
+                  <a class="dropdown-nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="dropdown-nav-item">
+                  <a class="dropdown-nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="dropdown-nav-item">
+                  <a class="dropdown-nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="dropdown-nav-item dropdown-resume-item">
+                  <a
+                    class="dropdown-resume-btn"
+                    href="Shaun_Mathew_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download Resume"
+                    download="Shaun_Mathew_Resume.pdf"
+                  >
+                    <i class="fas fa-download me-2"></i>Resume
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section" role="banner">

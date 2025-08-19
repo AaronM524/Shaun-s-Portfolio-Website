@@ -26,10 +26,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.menu-open {
-    overflow: hidden;
-}
-
 /* Hero Section */
 .hero-section {
     position: relative;
@@ -329,12 +325,49 @@ body.menu-open {
 }
 
 
-/* Mobile Menu Toggle Button */
-.mobile-menu-toggle {
+/* Fixed Header */
+.fixed-header {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Left: Brand Name */
+.header-brand {
+    flex: 1;
+}
+
+.brand-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.brand-link:hover {
+    color: #E3242B;
+}
+
+/* Right: Hamburger Menu */
+.header-menu {
+    position: relative;
+}
+
+.header-menu-toggle {
     background-color: #E3242B;
     color: white;
     border: none;
@@ -350,153 +383,149 @@ body.menu-open {
     box-shadow: 0 4px 12px rgba(227, 36, 43, 0.3);
 }
 
-.mobile-menu-toggle:hover {
+.header-menu-toggle:hover {
     background-color: #c51e24;
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(227, 36, 43, 0.4);
 }
 
-.mobile-menu-toggle:active {
+.header-menu-toggle:active {
     transform: scale(0.95);
 }
 
-/* Mobile Menu Overlay */
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    z-index: 9998;
+.header-menu-toggle[aria-expanded="true"] {
+    background-color: #c51e24;
+}
+
+/* Dropdown Menu */
+.header-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    min-width: 280px;
+    background-color: #000;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.mobile-menu-overlay.active {
+.header-dropdown.active {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
 }
 
-/* Mobile Menu Content */
-.mobile-menu-content {
+/* Dropdown Arrow */
+.header-dropdown::before {
+    content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
-    background-color: #E3242B;
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.mobile-menu-overlay.active .mobile-menu-content {
-    transform: translateX(0);
-}
-
-/* Mobile Menu Close Button */
-.mobile-menu-close {
-    position: absolute;
-    top: 20px;
+    top: -8px;
     right: 20px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #000;
 }
 
-.mobile-menu-close:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: rotate(90deg);
+/* Dropdown Navigation */
+.dropdown-nav {
+    padding: 20px 0;
 }
 
-/* Mobile Navigation */
-.mobile-nav {
-    padding: 80px 30px 30px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.mobile-nav-list {
+.dropdown-nav-list {
     list-style: none;
     margin: 0;
     padding: 0;
-    flex: 1;
 }
 
-.mobile-nav-item {
-    margin-bottom: 20px;
+.dropdown-nav-item {
+    margin: 0;
 }
 
-.mobile-nav-link {
+.dropdown-nav-link {
     display: block;
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    padding: 15px 20px;
-    border-radius: 8px;
+    padding: 12px 24px;
     transition: all 0.3s ease;
     border-left: 4px solid transparent;
 }
 
-.mobile-nav-link:hover,
-.mobile-nav-link.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-left-color: white;
-    transform: translateX(5px);
-    color: white;
-}
-
-/* Mobile Resume Button */
-.mobile-resume-item {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.mobile-resume-btn {
-    display: block;
-    background-color: white;
+.dropdown-nav-link:hover,
+.dropdown-nav-link.active {
+    background-color: rgba(227, 36, 43, 0.1);
+    border-left-color: #E3242B;
     color: #E3242B;
+}
+
+/* Dropdown Resume Button */
+.dropdown-resume-item {
+    margin-top: 10px;
+    padding: 0 20px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-resume-btn {
+    display: block;
+    background-color: #E3242B;
+    color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
 }
 
-.mobile-resume-btn:hover {
-    background-color: #f8f9fa;
-    color: #c51e24;
+.dropdown-resume-btn:hover {
+    background-color: #c51e24;
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(227, 36, 43, 0.3);
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-    .mobile-menu-content {
-        width: 100%;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 15px;
     }
     
-    .mobile-menu-toggle {
-        top: 15px;
-        right: 15px;
+    .brand-link {
+        font-size: 1.3rem;
+    }
+    
+    .header-menu-toggle {
         width: 45px;
         height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .header-dropdown {
+        min-width: 260px;
+        right: -10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-dropdown {
+        min-width: calc(100vw - 40px);
+        right: -15px;
+    }
+    
+    .dropdown-nav-link {
+        font-size: 1rem;
+        padding: 14px 20px;
     }
 }
 
