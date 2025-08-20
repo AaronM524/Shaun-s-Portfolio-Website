@@ -542,6 +542,7 @@ class MobileMenuHandler {
         this.navbarCollapse = document.querySelector('.navbar-collapse');
         this.body = document.body;
         this.navLinks = document.querySelectorAll('.nav-link');
+        this.isMenuOpen = false;
         
         this.init();
     }
@@ -549,46 +550,55 @@ class MobileMenuHandler {
     init() {
         if (!this.navbarToggler || !this.navbarCollapse) return;
         
-        // Handle toggle button clicks (only on mobile)
-        this.navbarToggler.addEventListener('click', () => {
-            if (window.innerWidth <= 767.98) {
-                this.toggleMenu();
-            }
+        // Handle toggle button clicks (prevent event propagation)
+        this.navbarToggler.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.toggleMenu();
         });
         
-        // Close menu when nav links are clicked (only on mobile)
+        // Close menu when nav links are clicked
         this.navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 767.98) {
+            link.addEventListener('click', (e) => {
+                if (this.isMenuOpen) {
                     this.closeMenu();
                 }
             });
         });
         
-        // Close menu when clicking outside (on the overlay)
+        // Close menu when clicking anywhere on the overlay background
         this.navbarCollapse.addEventListener('click', (e) => {
+            // Only close if clicking the overlay itself, not the menu content
             if (e.target === this.navbarCollapse) {
                 this.closeMenu();
             }
         });
         
-        // Handle escape key
+        // Handle escape key to close menu
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.navbarCollapse.classList.contains('show')) {
+            if (e.key === 'Escape' && this.isMenuOpen) {
                 this.closeMenu();
             }
         });
         
         // Close mobile menu on window resize to desktop
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 767.98 && this.navbarCollapse.classList.contains('show')) {
+            if (window.innerWidth > 767.98 && this.isMenuOpen) {
+                this.closeMenu();
+            }
+        });
+        
+        // Prevent menu from getting stuck by handling touch events
+        document.addEventListener('touchstart', (e) => {
+            if (this.isMenuOpen && !this.navbarCollapse.contains(e.target) && !this.navbarToggler.contains(e.target)) {
                 this.closeMenu();
             }
         });
     }
     
     toggleMenu() {
-        if (this.navbarCollapse.classList.contains('show')) {
+        console.log('Toggling menu, current state:', this.isMenuOpen);
+        if (this.isMenuOpen) {
             this.closeMenu();
         } else {
             this.openMenu();
@@ -596,15 +606,25 @@ class MobileMenuHandler {
     }
     
     openMenu() {
+        console.log('Opening menu');
         this.navbarCollapse.classList.add('show');
         this.body.classList.add('mobile-menu-open');
         this.navbarToggler.setAttribute('aria-expanded', 'true');
+        this.isMenuOpen = true;
+        
+        // Prevent background scrolling
+        this.body.style.overflow = 'hidden';
     }
     
     closeMenu() {
+        console.log('Closing menu');
         this.navbarCollapse.classList.remove('show');
         this.body.classList.remove('mobile-menu-open');
         this.navbarToggler.setAttribute('aria-expanded', 'false');
+        this.isMenuOpen = false;
+        
+        // Re-enable background scrolling
+        this.body.style.overflow = '';
     }
 }
 
