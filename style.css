@@ -335,10 +335,10 @@ body {
 
 /* Navbar with background on scroll or light sections */
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
+    background: transparent !important;
+    backdrop-filter: none;
+    box-shadow: none;
+    padding: 15px 0;
 }
 
 /* Navbar Brand */
@@ -437,16 +437,16 @@ body {
 
 /* Mobile Menu Dropdown */
 .navbar-collapse {
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
     margin-top: 10px;
     padding: 20px;
 }
 
 .navbar.scrolled .navbar-collapse {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    border: none;
 }
 
 /* Resume Button Styling - Always Red */
