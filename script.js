@@ -549,15 +549,19 @@ class MobileMenuHandler {
     init() {
         if (!this.navbarToggler || !this.navbarCollapse) return;
         
-        // Handle toggle button clicks
+        // Handle toggle button clicks (only on mobile)
         this.navbarToggler.addEventListener('click', () => {
-            this.toggleMenu();
+            if (window.innerWidth <= 767.98) {
+                this.toggleMenu();
+            }
         });
         
-        // Close menu when nav links are clicked
+        // Close menu when nav links are clicked (only on mobile)
         this.navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                this.closeMenu();
+                if (window.innerWidth <= 767.98) {
+                    this.closeMenu();
+                }
             });
         });
         
@@ -571,6 +575,13 @@ class MobileMenuHandler {
         // Handle escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.navbarCollapse.classList.contains('show')) {
+                this.closeMenu();
+            }
+        });
+        
+        // Close mobile menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767.98 && this.navbarCollapse.classList.contains('show')) {
                 this.closeMenu();
             }
         });
