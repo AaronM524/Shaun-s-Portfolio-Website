@@ -272,12 +272,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
     if (animatedTextElement) {
-        // Check if mobile viewport
-        const isMobile = window.innerWidth <= 768;
-        
+        // Use line break for both mobile and desktop to ensure consistent layout
         const phrases = [
             'Full Stack Developer',
-            isMobile ? 'AWS & Azure Certified<br>Developer' : 'AWS & Azure Certified Developer',
+            'AWS & Azure Certified<br>Developer',
             'Backend-Focused Developer',
             'Problem Solver',
             'Sushi Enthusiast',
@@ -286,14 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         new GradientTextAnimator(animatedTextElement, phrases, {
             cycleDuration: 3500
-        });
-        
-        // Update phrases on window resize
-        window.addEventListener('resize', function() {
-            const newIsMobile = window.innerWidth <= 768;
-            if (newIsMobile !== isMobile) {
-                location.reload(); // Simple solution to reinitialize with correct phrases
-            }
         });
     }
 });
