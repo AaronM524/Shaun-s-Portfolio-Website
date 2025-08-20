@@ -6,6 +6,26 @@
     --accent-color: #E3242B;
     --text-color: #374151;
     --text-light: #6b7280;
+}
+
+/* Font Awesome Icon Fixes */
+.fas, .fab, .far, .fal, .fad, .fass, .fasr, .fasl {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 6 Pro" !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    line-height: 1 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.fas {
+    font-weight: 900 !important;
+}
+
+.fab {
+    font-weight: 400 !important;
+}
 
 * {
     margin: 0;
@@ -1663,46 +1683,60 @@ body.mobile-menu-open .section {
     position: relative;
 }
 
+/* Tooltip content above the button */
 .filter-btn::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: -35px;
+    top: -45px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
     pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Tooltip arrow pointing down to button */
 .filter-btn::before {
     content: '';
     position: absolute;
-    bottom: -29px;
+    top: -6px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid rgba(0, 0, 0, 0.9);
+    border-top: 6px solid rgba(0, 0, 0, 0.9);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
 }
 
+/* Show tooltip on hover with fade-in effect */
 .filter-btn:hover::after,
 .filter-btn:hover::before {
     opacity: 1;
     visibility: visible;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+/* Ensure tooltips work on mobile but with touch delay */
+@media (hover: none) {
+    .filter-btn::after,
+    .filter-btn::before {
+        display: none;
+    }
 }
 
 .project-filter {

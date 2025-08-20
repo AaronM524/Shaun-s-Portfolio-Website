@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', function() {
 const projectsData = {
   "filters": [
     { "label": "All", "value": "all", "description": "Show all projects" },
-    { "label": "Full-Stack", "value": "front", "description": "Complete web applications with frontend and backend" },
-    { "label": "Backend", "value": "back", "description": "Server-side systems, APIs, and data processing" },
+    { "label": "Full-Stack", "value": "front", "description": "Frontend + Backend projects" },
+    { "label": "Backend", "value": "back", "description": "Server-side only projects" },
   ],
   "projects": [
     {
