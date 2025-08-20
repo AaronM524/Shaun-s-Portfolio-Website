@@ -769,15 +769,38 @@ body.mobile-menu-open {
     z-index: 1 !important;
 }
 
-.resume-btn:hover,
-.resume-btn:focus,
-.resume-btn:active,
-.resume-btn:visited {
+.resume-btn:hover {
     background-color: #e63030 !important;
     color: #fff !important;
     transform: translateY(-2px) !important;
     text-decoration: none !important;
     box-shadow: 0 8px 20px rgba(255, 60, 60, 0.4) !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+
+.resume-btn:focus {
+    background-color: #e63030 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.3), 0 6px 15px rgba(255, 60, 60, 0.3) !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+
+.resume-btn:active {
+    background-color: #dc2626 !important;
+    color: #fff !important;
+    transform: translateY(-1px) scale(0.98) !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(255, 60, 60, 0.3) !important;
+    font-weight: 700 !important;
+    transition: all 0.1s ease !important;
+}
+
+.resume-btn:visited {
+    background-color: #ff3c3c !important;
+    color: #fff !important;
     font-weight: 700 !important;
 }
 
@@ -892,14 +915,31 @@ body.mobile-menu-open {
         box-shadow: 0 4px 12px rgba(255, 60, 60, 0.3);
     }
     
-    .navbar-collapse .resume-btn:hover,
-    .navbar-collapse .resume-btn:focus,
-    .navbar-collapse .resume-btn:active {
+    .navbar-collapse .resume-btn:hover {
         background-color: #e63030 !important;
         color: #fff !important;
         font-weight: 700 !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 6px 16px rgba(255, 60, 60, 0.4);
+        transition: all 0.2s ease !important;
+    }
+    
+    .navbar-collapse .resume-btn:focus {
+        background-color: #e63030 !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.3), 0 4px 12px rgba(255, 60, 60, 0.3) !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .navbar-collapse .resume-btn:active {
+        background-color: #dc2626 !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        transform: scale(0.98) !important;
+        box-shadow: 0 4px 12px rgba(255, 60, 60, 0.3) !important;
+        transition: all 0.1s ease !important;
     }
     
     .navbar-collapse .resume-btn i,
@@ -2374,10 +2414,28 @@ textarea.form-control {
     outline-offset: 2px;
 }
 
-.nav-link:focus,
-.resume-btn:focus {
+/* Remove harsh outlines and replace with subtle effects */
+.nav-link:focus {
     outline: 2px solid rgba(227, 36, 43, 0.8);
     outline-offset: 2px;
+}
+
+.resume-btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.3) !important;
+}
+
+.resume-btn:focus:not(:focus-visible) {
+    box-shadow: 0 6px 15px rgba(255, 60, 60, 0.3) !important;
+    outline: none !important;
+}
+
+/* Remove focus state after click for better UX */
+.resume-btn:focus:not(:hover):not(:active) {
+    background-color: #ff3c3c !important;
+    transform: none !important;
+    box-shadow: 0 6px 15px rgba(255, 60, 60, 0.3) !important;
+    transition: all 0.2s ease !important;
 }
 
 /* Improved Responsive Typography */

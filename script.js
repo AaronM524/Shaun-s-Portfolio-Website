@@ -258,7 +258,8 @@ class GradientTextAnimator {
         this.element.style.opacity = '0.7';
         
         setTimeout(() => {
-            this.element.textContent = currentPhrase;
+            // Use innerHTML to support HTML content like <br> tags
+            this.element.innerHTML = currentPhrase;
             this.element.style.transform = 'scale(1)';
             this.element.style.opacity = '1';
             this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
@@ -271,9 +272,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
     if (animatedTextElement) {
+        // Check if mobile viewport
+        const isMobile = window.innerWidth <= 768;
+        
         const phrases = [
             'Full Stack Developer',
-            'AWS & Azure Certified Developer',
+            isMobile ? 'AWS & Azure Certified<br>Developer' : 'AWS & Azure Certified Developer',
             'Backend-Focused Developer',
             'Problem Solver',
             'Sushi Enthusiast',
@@ -282,6 +286,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         new GradientTextAnimator(animatedTextElement, phrases, {
             cycleDuration: 3500
+        });
+        
+        // Update phrases on window resize
+        window.addEventListener('resize', function() {
+            const newIsMobile = window.innerWidth <= 768;
+            if (newIsMobile !== isMobile) {
+                location.reload(); // Simple solution to reinitialize with correct phrases
+            }
         });
     }
 });
