@@ -535,3 +535,70 @@ document.addEventListener('DOMContentLoaded', function() {
     new ContactFormHandler();
 });
 
+// Mobile Menu Handler
+class MobileMenuHandler {
+    constructor() {
+        this.navbarToggler = document.querySelector('.navbar-toggler');
+        this.navbarCollapse = document.querySelector('.navbar-collapse');
+        this.body = document.body;
+        this.navLinks = document.querySelectorAll('.nav-link');
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.navbarToggler || !this.navbarCollapse) return;
+        
+        // Handle toggle button clicks
+        this.navbarToggler.addEventListener('click', () => {
+            this.toggleMenu();
+        });
+        
+        // Close menu when nav links are clicked
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeMenu();
+            });
+        });
+        
+        // Close menu when clicking outside (on the overlay)
+        this.navbarCollapse.addEventListener('click', (e) => {
+            if (e.target === this.navbarCollapse) {
+                this.closeMenu();
+            }
+        });
+        
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.navbarCollapse.classList.contains('show')) {
+                this.closeMenu();
+            }
+        });
+    }
+    
+    toggleMenu() {
+        if (this.navbarCollapse.classList.contains('show')) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
+    }
+    
+    openMenu() {
+        this.navbarCollapse.classList.add('show');
+        this.body.classList.add('mobile-menu-open');
+        this.navbarToggler.setAttribute('aria-expanded', 'true');
+    }
+    
+    closeMenu() {
+        this.navbarCollapse.classList.remove('show');
+        this.body.classList.remove('mobile-menu-open');
+        this.navbarToggler.setAttribute('aria-expanded', 'false');
+    }
+}
+
+// Initialize mobile menu handler
+document.addEventListener('DOMContentLoaded', function() {
+    new MobileMenuHandler();
+});
+

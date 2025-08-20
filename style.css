@@ -347,11 +347,26 @@ body {
     font-size: 1.5rem;
     color: white !important;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 10000;
 }
 
 .navbar.scrolled .navbar-brand {
     color: #ff3c3c !important;
     font-weight: 700 !important;
+}
+
+/* Ensure brand stays white and bold on mobile */
+@media (max-width: 991px) {
+    .navbar-brand {
+        color: white !important;
+        font-weight: 700 !important;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+        color: white !important;
+        font-weight: 700 !important;
+    }
 }
 
 /* Navigation Links - Default (Dark Background) */
@@ -419,34 +434,77 @@ body {
     border: none;
     color: white !important;
     background: transparent;
-    padding: 4px 8px;
+    padding: 8px 12px;
+    position: relative;
+    z-index: 10001;
 }
 
 .navbar-toggler:focus {
     box-shadow: none;
+    outline: none;
 }
 
 .navbar-toggler .fas {
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
 }
 
 .navbar.scrolled .navbar-toggler .fas {
-    color: #1f2937;
+    color: white;
 }
 
-/* Mobile Menu Dropdown */
+/* Keep hamburger white on mobile */
+@media (max-width: 991px) {
+    .navbar-toggler .fas {
+        color: white !important;
+    }
+    
+    .navbar.scrolled .navbar-toggler .fas {
+        color: white !important;
+    }
+}
+
+/* Mobile Menu - Full Screen Overlay */
 .navbar-collapse {
-    background: transparent;
-    backdrop-filter: none;
-    border-radius: 0;
-    margin-top: 10px;
-    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+.navbar-collapse.show {
+    transform: translateX(0);
 }
 
 .navbar.scrolled .navbar-collapse {
-    background: transparent;
-    border: none;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(5px);
+}
+
+/* Blur background content when mobile menu is open */
+body.mobile-menu-open {
+    overflow: hidden;
+}
+
+body.mobile-menu-open .hero-section,
+body.mobile-menu-open .section {
+    filter: blur(5px);
+    pointer-events: none;
+    transition: filter 0.3s ease;
 }
 
 /* Resume Button Styling - Always Red */
@@ -485,25 +543,59 @@ body {
 @media (max-width: 991px) {
     .navbar-nav {
         text-align: center;
-        gap: 10px;
+        gap: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
     
     .nav-item {
-        margin: 5px 0;
+        margin: 15px 0;
+        width: auto;
     }
     
     .nav-link {
-        padding: 10px 20px;
+        padding: 15px 30px;
         margin: 0;
-        border-radius: 6px;
+        border-radius: 8px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
     
     .navbar-collapse .nav-link {
         color: white !important;
     }
     
-    .navbar.scrolled .navbar-collapse .nav-link {
+    .navbar-collapse .nav-link:hover {
         color: #ff3c3c !important;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+    
+    .navbar.scrolled .navbar-collapse .nav-link {
+        color: white !important;
+    }
+    
+    .navbar.scrolled .navbar-collapse .nav-link:hover {
+        color: #ff3c3c !important;
+    }
+    
+    /* Mobile Resume Button */
+    .navbar-collapse .resume-btn {
+        margin-top: 30px;
+        font-size: 1.2rem;
+        padding: 18px 40px;
+        background-color: #ff3c3c !important;
+        color: white !important;
+    }
+    
+    .navbar-collapse .resume-btn:hover {
+        background-color: #e63030 !important;
+        transform: translateY(-3px);
     }
 }
 
