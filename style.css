@@ -529,23 +529,23 @@ body.mobile-menu-open .section {
 .resume-btn {
     background-color: #ff3c3c !important;
     color: white !important;
-    border-radius: 40px !important;
-    padding: 14px 32px !important;
+    border-radius: 30px !important;
+    padding: 10px 24px !important;
     margin-left: 15px !important;
     transition: all 0.3s ease !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     text-decoration: none !important;
-    font-size: 1.1rem !important;
-    box-shadow: 0 8px 20px rgba(255, 60, 60, 0.3) !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 6px 15px rgba(255, 60, 60, 0.3) !important;
     border: none !important;
 }
 
 .resume-btn:hover {
     background-color: #e63030 !important;
     color: white !important;
-    transform: translateY(-3px) !important;
+    transform: translateY(-2px) !important;
     text-decoration: none !important;
-    box-shadow: 0 12px 25px rgba(255, 60, 60, 0.4) !important;
+    box-shadow: 0 8px 20px rgba(255, 60, 60, 0.4) !important;
 }
 
 .navbar.scrolled .resume-btn {
@@ -618,15 +618,15 @@ body.mobile-menu-open .section {
     /* Mobile Resume Button */
     .navbar-collapse .resume-btn {
         margin-top: 30px;
-        font-size: 1.2rem;
-        padding: 18px 40px;
+        font-size: 1.1rem;
+        padding: 14px 32px;
         background-color: #ff3c3c !important;
         color: white !important;
     }
     
     .navbar-collapse .resume-btn:hover {
         background-color: #e63030 !important;
-        transform: translateY(-3px);
+        transform: translateY(-2px);
     }
 }
 
