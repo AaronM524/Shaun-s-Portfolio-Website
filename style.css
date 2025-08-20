@@ -6,7 +6,6 @@
     --accent-color: #E3242B;
     --text-color: #374151;
     --text-light: #6b7280;
-}
 
 * {
     margin: 0;
@@ -3429,7 +3428,7 @@ textarea.form-control {
 }
 
 .activity-list {
-    space-y: 16px;
+    margin-bottom: 16px;
 }
 
 .activity-item {
