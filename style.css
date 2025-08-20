@@ -95,7 +95,7 @@ body {
 
 .hero-content .btn {
     display: inline-block;
-    background-color: #E3242B;
+    background-color: #ef4444;
     color: white;
     padding: 14px 32px;
     border: none;
@@ -103,13 +103,15 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 8px 20px #BC544B;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
 }
 
 .hero-content .btn:hover {
-    background-color: #E3242B;
+    background-color: #dc2626;
+    color: white;
     transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(239, 68, 68, 0.4);
 }
 
 .hero-content .btn:active {
@@ -124,7 +126,7 @@ body {
     
     .hero-content .btn:active {
         transform: scale(0.95);
-        background-color: #c51e24;
+        background-color: #dc2626;
         transition: all 0.15s ease;
     }
 }
@@ -341,20 +343,21 @@ body {
 
 /* Navbar Brand */
 .navbar-brand {
-    font-weight: 700;
+    font-weight: 700 !important;
     font-size: 1.5rem;
     color: white !important;
     transition: all 0.3s ease;
 }
 
 .navbar.scrolled .navbar-brand {
-    color: #1f2937 !important;
+    color: #ff3c3c !important;
+    font-weight: 700 !important;
 }
 
 /* Navigation Links - Default (Dark Background) */
 .nav-link {
     color: white !important;
-    font-weight: 500;
+    font-weight: 700 !important;
     margin: 0 10px;
     position: relative;
     transition: all 0.3s ease;
@@ -362,7 +365,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #E3242B !important;
+    color: white !important;
     transform: translateY(-1px);
 }
 
@@ -373,7 +376,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #E3242B;
+    background-color: #ff3c3c;
     transition: width 0.3s ease;
 }
 
@@ -383,30 +386,32 @@ body {
 
 /* Navigation Links - On Light Background */
 .navbar.scrolled .nav-link {
-    color: #1f2937 !important;
+    color: #ff3c3c !important;
+    font-weight: 700 !important;
 }
 
 .navbar.scrolled .nav-link:hover {
-    color: #E3242B !important;
+    color: #ff3c3c !important;
 }
 
 .navbar.scrolled .nav-link::after {
-    background-color: #E3242B;
+    background-color: #ff3c3c;
 }
 
 /* Active Navigation Link */
 .nav-link.active {
-    color: #E3242B !important;
-    font-weight: 600;
+    color: white !important;
+    font-weight: 700 !important;
 }
 
 .nav-link.active::after {
     width: 100%;
-    background-color: #E3242B;
+    background-color: #ff3c3c;
 }
 
 .navbar.scrolled .nav-link.active {
-    color: #E3242B !important;
+    color: #ff3c3c !important;
+    font-weight: 700 !important;
 }
 
 /* Mobile Hamburger Menu */
@@ -444,6 +449,39 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Resume Button Styling - Always Red */
+.resume-btn {
+    background-color: #ff3c3c !important;
+    color: white !important;
+    border-radius: 40px !important;
+    padding: 14px 32px !important;
+    margin-left: 15px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    font-size: 1.1rem !important;
+    box-shadow: 0 8px 20px rgba(255, 60, 60, 0.3) !important;
+    border: none !important;
+}
+
+.resume-btn:hover {
+    background-color: #e63030 !important;
+    color: white !important;
+    transform: translateY(-3px) !important;
+    text-decoration: none !important;
+    box-shadow: 0 12px 25px rgba(255, 60, 60, 0.4) !important;
+}
+
+.navbar.scrolled .resume-btn {
+    background-color: #ff3c3c !important;
+    color: white !important;
+}
+
+.navbar.scrolled .resume-btn:hover {
+    background-color: #e63030 !important;
+    color: white !important;
+}
+
 @media (max-width: 991px) {
     .navbar-nav {
         text-align: center;
@@ -465,7 +503,7 @@ body {
     }
     
     .navbar.scrolled .navbar-collapse .nav-link {
-        color: #1f2937 !important;
+        color: #ff3c3c !important;
     }
 }
 
