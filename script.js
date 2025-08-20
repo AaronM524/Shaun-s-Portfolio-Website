@@ -540,6 +540,8 @@ class MobileMenuHandler {
     constructor() {
         this.navbarToggler = document.querySelector('.navbar-toggler');
         this.navbarCollapse = document.querySelector('.navbar-collapse');
+        this.mobileMenuClose = document.querySelector('.mobile-menu-close');
+        this.navbarNav = document.querySelector('.navbar-nav');
         this.body = document.body;
         this.navLinks = document.querySelectorAll('.nav-link');
         this.isMenuOpen = false;
@@ -557,19 +559,28 @@ class MobileMenuHandler {
             this.toggleMenu();
         });
         
+        // Handle close button clicks
+        if (this.mobileMenuClose) {
+            this.mobileMenuClose.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.closeMenu();
+            });
+        }
+        
         // Close menu when nav links are clicked
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                if (this.isMenuOpen) {
+                if (this.isMenuOpen && !link.classList.contains('resume-btn')) {
                     this.closeMenu();
                 }
             });
         });
         
-        // Close menu when clicking anywhere on the overlay background
+        // Close menu when clicking on the overlay background (not the menu panel)
         this.navbarCollapse.addEventListener('click', (e) => {
-            // Only close if clicking the overlay itself, not the menu content
-            if (e.target === this.navbarCollapse) {
+            // Only close if clicking the overlay itself, not the menu panel or its contents
+            if (e.target === this.navbarCollapse && !this.navbarNav.contains(e.target)) {
                 this.closeMenu();
             }
         });
@@ -588,9 +599,9 @@ class MobileMenuHandler {
             }
         });
         
-        // Prevent menu from getting stuck by handling touch events
-        document.addEventListener('touchstart', (e) => {
-            if (this.isMenuOpen && !this.navbarCollapse.contains(e.target) && !this.navbarToggler.contains(e.target)) {
+        // Handle touch events for better mobile experience
+        this.navbarCollapse.addEventListener('touchstart', (e) => {
+            if (e.target === this.navbarCollapse && this.isMenuOpen) {
                 this.closeMenu();
             }
         });
@@ -614,6 +625,13 @@ class MobileMenuHandler {
         
         // Prevent background scrolling
         this.body.style.overflow = 'hidden';
+        
+        // Focus management for accessibility
+        if (this.mobileMenuClose) {
+            setTimeout(() => {
+                this.mobileMenuClose.focus();
+            }, 100);
+        }
     }
     
     closeMenu() {
@@ -625,6 +643,11 @@ class MobileMenuHandler {
         
         // Re-enable background scrolling
         this.body.style.overflow = '';
+        
+        // Return focus to toggle button for accessibility
+        if (this.navbarToggler) {
+            this.navbarToggler.focus();
+        }
     }
 }
 
