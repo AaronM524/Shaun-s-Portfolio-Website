@@ -115,100 +115,62 @@
   </head>
 
   <body>
-    <!-- Header Navigation -->
-    <header class="fixed-header">
-      <div class="header-container">
-        <!-- Left: Brand Name -->
-        <div class="header-brand">
-          <a href="#home" class="brand-link" aria-label="Shaun Mathew - Home">
-            Shaun Mathew
-          </a>
-        </div>
-        
-        <!-- Center/Right: Desktop Navigation + Mobile Menu -->
-        <div class="header-nav">
-          <!-- Desktop Navigation Links -->
-          <nav class="desktop-nav" role="navigation" aria-label="Main navigation">
-            <ul class="desktop-nav-list">
-              <li class="desktop-nav-item">
-                <a class="desktop-nav-link" href="#home">Home</a>
-              </li>
-              <li class="desktop-nav-item">
-                <a class="desktop-nav-link" href="#about">About</a>
-              </li>
-              <li class="desktop-nav-item">
-                <a class="desktop-nav-link" href="#skills">Skills</a>
-              </li>
-              <li class="desktop-nav-item">
-                <a class="desktop-nav-link" href="#projects">Projects</a>
-              </li>
-              <li class="desktop-nav-item">
-                <a class="desktop-nav-link" href="#contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-          
-          <!-- Desktop Resume Button -->
-          <a
-            class="desktop-resume-btn"
-            href="Shaun_Mathew_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download Resume"
-            download="Shaun_Mathew_Resume.pdf"
-          >
-            <i class="fas fa-download"></i>Resume
-          </a>
-
-          <!-- Mobile Hamburger Menu -->
-          <div class="mobile-menu">
-            <button
-              id="headerMenuToggle"
-              class="header-menu-toggle"
-              aria-label="Toggle navigation menu"
-              aria-expanded="false"
-            >
-              <i class="fas fa-bars"></i>
-            </button>
-            
-            <!-- Mobile Dropdown Menu -->
-            <div id="headerDropdown" class="header-dropdown">
-              <nav class="dropdown-nav" role="navigation" aria-label="Main navigation">
-                <ul class="dropdown-nav-list">
-                  <li class="dropdown-nav-item">
-                    <a class="dropdown-nav-link" href="#home">Home</a>
-                  </li>
-                  <li class="dropdown-nav-item">
-                    <a class="dropdown-nav-link" href="#about">About</a>
-                  </li>
-                  <li class="dropdown-nav-item">
-                    <a class="dropdown-nav-link" href="#skills">Skills</a>
-                  </li>
-                  <li class="dropdown-nav-item">
-                    <a class="dropdown-nav-link" href="#projects">Projects</a>
-                  </li>
-                  <li class="dropdown-nav-item">
-                    <a class="dropdown-nav-link" href="#contact">Contact</a>
-                  </li>
-                  <li class="dropdown-nav-item dropdown-resume-item">
-                    <a
-                      class="dropdown-resume-btn"
-                      href="Shaun_Mathew_Resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Download Resume"
-                      download="Shaun_Mathew_Resume.pdf"
-                    >
-                      <i class="fas fa-download"></i>Resume
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg fixed-top"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#home" aria-label="Shaun Mathew - Home"
+          >Shaun Mathew</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#journey">Journey</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link resume-btn"
+                href="resume.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Resume"
+              >
+                <i class="fas fa-download me-1"></i>Resume
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section" role="banner">
@@ -272,13 +234,7 @@
                 I'm a full stack developer who enjoys building reliable systems that solve real problems. I like to focus on writing code that helps create smooth user experiences, and turning ideas into tools people actually want to use.
               </p>
               <p>
-                My interest in tech started early, but I really found myself in this space at Rutgers University, where I'm studying Computer Science. That's when I realized I wanted to build for a living.
-              </p>
-              <p>
-                I focus on solving real problems, improving systems, and shipping code that makes life easier. I've worked with technologies like Python, Java, Flask, React, Spring Boot.
-              </p>
-              <p>
-                When I'm not coding, you'll find me on the soccer field, trying new sushi spots around town, or diving into complex problems that spark my curiosity. I love the balance between technical challenges and staying active, and I'm always eager to learn something new.
+                My interest in tech started early, but I really found myself in this space at Rutgers University, where I'm studying Computer Science. That's when I realized I wanted to build for a living by solving real problems, improving systems, and shipping code that makes life easier. I've worked with technologies like Python, Java, Flask, React, Spring Boot. Whether it's a personal project I started to experiment with new tools or a real product going into production, I'm always looking for ways to improve and scale what I build.
               </p>
               <p>
                 Right now, I'm looking for software engineering roles where I can work on meaningful products, collaborate with talented people, and keep growing as a developer. If you're building something great, I'd love to be part of it.
@@ -289,7 +245,7 @@
       </div>
     </section>
     <!-- Timeline Section -->
-    <section id="timeline" class="section timeline-section">
+    <section id="journey" class="section journey-section">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">My Journey</h2>
 
@@ -310,9 +266,10 @@
             <div class="timeline-dot"></div>
             <div class="timeline-date">September 2022</div>
             <div class="timeline-content">
-              <h3>Started CS at Rutgers</h3>
+              <h3>Start of College</h3>
               <p>
-                Began my Computer Science journey at Rutgers University, building a strong foundation in programming, data structures, and software engineering principles.
+                Graduated high school and continued on to Rutgers,  where I began building my computer science foundation 
+                and diving deeper into the world of software development.
               </p>
             </div>
           </div>
@@ -320,33 +277,36 @@
 
           <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
             <div class="timeline-dot"></div>
-            <div class="timeline-date">June 2025</div>
+            <div class="timeline-date">August 2023</div>
             <div class="timeline-content">
-              <h3>Started UBS Internship</h3>
+              <h3>AWS Certificate</h3>
               <p>
-                Began my backend-focused software engineering internship at UBS, working on financial systems and gaining hands-on experience with production-level development.
+                Earned AWS certification, expanding my cloud computing expertise
+                and enhancing my technical skillset.
               </p>
             </div>
           </div>
 
           <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
             <div class="timeline-dot"></div>
-            <div class="timeline-date">July 2025</div>
+            <div class="timeline-date">October 2024</div>
             <div class="timeline-content">
-              <h3>UBS Global Hackathon</h3>
+              <h3>UBS Internship</h3>
               <p>
-                Competed in my first-ever hackathon as part of UBS's firm-wide event and advanced to represent the Americas region. Collaborated on a code quality accelerator tool that automated code remediation and significantly reduced review time.
+                Completed an internship at UBS, gaining valuable industry
+                experience in financial technology.
               </p>
             </div>
           </div>
 
           <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
             <div class="timeline-dot"></div>
-            <div class="timeline-date">August 2025</div>
+            <div class="timeline-date">June 2025</div>
             <div class="timeline-content">
-              <h3>Completed UBS Internship</h3>
+              <h3>Summer Internship</h3>
               <p>
-                Successfully completed my backend-focused internship, contributing to production financial systems and building an AI-powered log analysis tool that improved developer efficiency.
+                Starting my upcoming summer internship, excited to gain valuable
+                experience and expand my skillset.
               </p>
             </div>
           </div>
@@ -402,8 +362,8 @@
               </div>
               <h3>Python</h3>
               <p>
-                Backend development with Flask and FastAPI, data analysis with
-                Pandas and NumPy, and NLP with spaCy for text processing.
+                Data analysis, backend development, and automation using
+                frameworks like Flask and libraries like spaCy and Pandas.
               </p>
             </div>
           </div>
@@ -555,8 +515,8 @@
               </div>
               <h3>Cloud Computing</h3>
               <p>
-                AWS and Microsoft Azure cloud services. AWS Certified Cloud
-                Practitioner and Microsoft Azure Fundamentals certified.
+                AWS and Microsoft Azure cloud services. Certified AWS Cloud
+                Practitioner and Azure Fundamentals.
               </p>
             </div>
           </div>
@@ -589,8 +549,8 @@
               </div>
               <h3>Development Tools</h3>
               <p>
-                Git, GitHub, GitLab, Postman, Firebase, Maven, Redis, Apache Kafka, 
-                Render, Vercel for development and deployment workflows.
+                Git, GitHub, GitLab, Postman for API testing, Maven for project
+                management, and CI/CD for automated deployments.
               </p>
             </div>
           </div>
@@ -709,7 +669,6 @@
               role="tab"
               :aria-selected="activeFilter === filter.value"
               :aria-controls="`projects-${filter.value}`"
-              :data-tooltip="filter.description"
             >
               {{ filter.label }}
             </button>
@@ -861,7 +820,7 @@
               <h3>Send Me a Message</h3>
               <form 
                 id="contactForm" 
-                action="https://formspree.io/f/meozwwpa" 
+                action="https://formspree.io/f/xovabzzz" 
                 method="POST" 
                 role="form" 
                 aria-label="Contact form"
@@ -960,6 +919,7 @@
           <ul class="list-inline">
             <li class="list-inline-item"><a href="#home">Home</a></li>
             <li class="list-inline-item"><a href="#about">About</a></li>
+            <li class="list-inline-item"><a href="#journey">Journey</a></li>
             <li class="list-inline-item"><a href="#skills">Skills</a></li>
             <li class="list-inline-item"><a href="#projects">Projects</a></li>
             <li class="list-inline-item"><a href="#contact">Contact</a></li>
