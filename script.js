@@ -540,7 +540,6 @@ class MobileMenuHandler {
     constructor() {
         this.navbarToggler = document.querySelector('.navbar-toggler');
         this.navbarCollapse = document.querySelector('.navbar-collapse');
-        this.mobileMenuClose = document.querySelector('.mobile-menu-close');
         this.navbarNav = document.querySelector('.navbar-nav');
         this.body = document.body;
         this.navLinks = document.querySelectorAll('.nav-link');
@@ -552,21 +551,12 @@ class MobileMenuHandler {
     init() {
         if (!this.navbarToggler || !this.navbarCollapse) return;
         
-        // Handle toggle button clicks (prevent event propagation)
+        // Handle toggle button clicks - now handles both open and close
         this.navbarToggler.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             this.toggleMenu();
         });
-        
-        // Handle close button clicks
-        if (this.mobileMenuClose) {
-            this.mobileMenuClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.closeMenu();
-            });
-        }
         
         // Close menu when nav links are clicked
         this.navLinks.forEach(link => {
@@ -623,15 +613,15 @@ class MobileMenuHandler {
         this.navbarToggler.setAttribute('aria-expanded', 'true');
         this.isMenuOpen = true;
         
+        // Update hamburger icon to indicate it can close the menu
+        const hamburgerIcon = this.navbarToggler.querySelector('.fas');
+        if (hamburgerIcon) {
+            hamburgerIcon.classList.remove('fa-bars');
+            hamburgerIcon.classList.add('fa-times');
+        }
+        
         // Prevent background scrolling
         this.body.style.overflow = 'hidden';
-        
-        // Focus management for accessibility
-        if (this.mobileMenuClose) {
-            setTimeout(() => {
-                this.mobileMenuClose.focus();
-            }, 100);
-        }
     }
     
     closeMenu() {
@@ -641,13 +631,15 @@ class MobileMenuHandler {
         this.navbarToggler.setAttribute('aria-expanded', 'false');
         this.isMenuOpen = false;
         
+        // Update hamburger icon back to bars
+        const hamburgerIcon = this.navbarToggler.querySelector('.fas');
+        if (hamburgerIcon) {
+            hamburgerIcon.classList.remove('fa-times');
+            hamburgerIcon.classList.add('fa-bars');
+        }
+        
         // Re-enable background scrolling
         this.body.style.overflow = '';
-        
-        // Return focus to toggle button for accessibility
-        if (this.navbarToggler) {
-            this.navbarToggler.focus();
-        }
     }
 }
 
