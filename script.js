@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const phrases = [
             'Full Stack Developer',
             'AWS & Azure Certified<br>Developer',
-            'Backend-Focused Developer',
+            'Backend-Focused<br>Developer',
             'Problem Solver',
             'Sushi Enthusiast',
             'Soccer Fan'
