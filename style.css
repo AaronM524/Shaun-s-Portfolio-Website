@@ -1,3 +1,26 @@
+/* Mobile Zoom-Out White Border Fix */
+html {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+html::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f8fafc;
+    z-index: -9999;
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
 :root {
     --primary-color: #E3242B;
     --secondary-color: #c51e24;
@@ -43,6 +66,64 @@ body {
     background-color: var(--light-color);
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    
+    /* Extended background for zoom-out protection */
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Additional zoom-out protection */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background-color: var(--light-color);
+    z-index: -9998;
+}
+
+/* Ensure all sections extend edge-to-edge */
+.section,
+section,
+.container-fluid {
+    width: 100%;
+    min-width: 100vw;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Prevent horizontal scrollbars */
+* {
+    box-sizing: border-box;
+}
+
+/* Mobile-specific edge-to-edge fixes */
+@media screen and (max-width: 767.98px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    .container,
+    .container-fluid,
+    .row {
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 /* Hero Section */
@@ -54,6 +135,12 @@ body {
     justify-content: center;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
 }
 
 .hero-video {
@@ -350,6 +437,16 @@ body {
     padding: 15px 0;
     background: transparent !important;
     backdrop-filter: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    min-width: 100vw;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
 }
 
 /* Navbar with background on scroll or light sections */
