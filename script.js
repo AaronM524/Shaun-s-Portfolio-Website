@@ -1,55 +1,19 @@
-// Header Navigation Functionality
-class HeaderMenu {
+// Navbar Navigation Functionality
+class NavbarManager {
     constructor() {
-        this.toggleBtn = document.getElementById('headerMenuToggle');
-        this.dropdown = document.getElementById('headerDropdown');
-        this.mobileNavLinks = document.querySelectorAll('.dropdown-nav-link');
-        this.desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
-        this.allNavLinks = [...this.mobileNavLinks, ...this.desktopNavLinks];
+        this.navbar = document.querySelector('.navbar');
+        this.navLinks = document.querySelectorAll('.nav-link');
         this.backToTop = document.getElementById('backToTop');
-        this.header = document.querySelector('.fixed-header');
-        this.isOpen = false;
         
         // Define sections with light backgrounds
-        this.lightSections = ['about', 'skills', 'contact', 'timeline'];
+        this.lightSections = ['about', 'skills', 'contact', 'journey'];
         
         this.init();
     }
     
     init() {
-        // Only set up mobile menu if toggle button exists
-        if (this.toggleBtn) {
-            // Toggle dropdown
-            this.toggleBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleMenu();
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (this.isOpen && !this.dropdown.contains(e.target)) {
-                    this.closeMenu();
-                }
-            });
-            
-            // Close on mobile nav link click
-            this.mobileNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    this.closeMenu();
-                    this.highlightActiveLink(link);
-                });
-            });
-            
-            // Close on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && this.isOpen) {
-                    this.closeMenu();
-                }
-            });
-        }
-        
-        // Handle desktop nav links
-        this.desktopNavLinks.forEach(link => {
+        // Handle navigation link clicks
+        this.navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 this.highlightActiveLink(link);
             });
@@ -60,37 +24,9 @@ class HeaderMenu {
         window.addEventListener('scroll', () => this.handleScroll());
     }
     
-    toggleMenu() {
-        if (this.isOpen) {
-            this.closeMenu();
-        } else {
-            this.openMenu();
-        }
-    }
-    
-    openMenu() {
-        this.dropdown.classList.add('active');
-        this.toggleBtn.setAttribute('aria-expanded', 'true');
-        this.isOpen = true;
-    }
-    
-    closeMenu() {
-        this.dropdown.classList.remove('active');
-        this.toggleBtn.setAttribute('aria-expanded', 'false');
-        this.isOpen = false;
-    }
-    
     highlightActiveLink(activeLink) {
-        this.allNavLinks.forEach(link => link.classList.remove('active'));
+        this.navLinks.forEach(link => link.classList.remove('active'));
         activeLink.classList.add('active');
-        
-        // Also highlight the corresponding link in the other navigation
-        const href = activeLink.getAttribute('href');
-        this.allNavLinks.forEach(link => {
-            if (link.getAttribute('href') === href) {
-                link.classList.add('active');
-            }
-        });
     }
     
     handleScroll() {
@@ -107,16 +43,16 @@ class HeaderMenu {
             }
         });
 
-        // Update both mobile and desktop navigation active states
-        this.allNavLinks.forEach(link => {
+        // Update navigation active states
+        this.navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
             }
         });
 
-        // Update header background based on scroll position and current section
-        this.updateHeaderBackground(current, scrollPosition);
+        // Update navbar background based on scroll position and current section
+        this.updateNavbarBackground(current, scrollPosition);
 
         // Toggle Back-to-Top button visibility
         if (this.backToTop) {
@@ -128,27 +64,23 @@ class HeaderMenu {
         }
     }
 
-    updateHeaderBackground(currentSection, scrollPosition) {
-        if (!this.header) return;
+    updateNavbarBackground(currentSection, scrollPosition) {
+        if (!this.navbar) return;
 
-        // Remove all header state classes
-        this.header.classList.remove('scrolled', 'on-light-section');
+        // Remove scrolled class
+        this.navbar.classList.remove('scrolled');
 
-        // If we've scrolled past the hero section (more than 100px) or we're on a light section
+        // Add scrolled class if we've scrolled past the hero section (more than 100px) 
+        // or we're on a light section
         if (scrollPosition > 100 || this.lightSections.includes(currentSection)) {
-            this.header.classList.add('scrolled');
-            
-            // Add additional class for light sections for more specific styling if needed
-            if (this.lightSections.includes(currentSection)) {
-                this.header.classList.add('on-light-section');
-            }
+            this.navbar.classList.add('scrolled');
         }
     }
 }
 
-// Initialize header menu when DOM is loaded
+// Initialize navbar when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new HeaderMenu();
+    new NavbarManager();
 });
 
 // Theme toggle functionality

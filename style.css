@@ -323,34 +323,150 @@ body {
 }
 
 
-/* Fixed Header */
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    padding: 15px 0;
+/* Modern Transparent Navbar */
+.navbar {
     transition: all 0.3s ease;
-    background: rgba(0, 0, 0, 0);
+    padding: 15px 0;
+    background: transparent !important;
+    backdrop-filter: none;
 }
 
-/* Header with background for visibility on light sections */
-.fixed-header.scrolled {
-    background: rgba(255, 255, 255, 0.95);
+/* Navbar with background on scroll or light sections */
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 12px 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
 }
 
-/* Dark header for light sections */
-.fixed-header.on-light-section {
-    background: rgba(255, 255, 255, 0.95);
+/* Navbar Brand */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .navbar-brand {
+    color: #1f2937 !important;
+}
+
+/* Navigation Links - Default (Dark Background) */
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #E3242B !important;
+    transform: translateY(-1px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #E3242B;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Navigation Links - On Light Background */
+.navbar.scrolled .nav-link {
+    color: #1f2937 !important;
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: #E3242B !important;
+}
+
+.navbar.scrolled .nav-link::after {
+    background-color: #E3242B;
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+    color: #E3242B !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background-color: #E3242B;
+}
+
+.navbar.scrolled .nav-link.active {
+    color: #E3242B !important;
+}
+
+/* Mobile Hamburger Menu */
+.navbar-toggler {
+    border: none;
+    color: white !important;
+    background: transparent;
+    padding: 4px 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler .fas {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.navbar.scrolled .navbar-toggler .fas {
+    color: #1f2937;
+}
+
+/* Mobile Menu Dropdown */
+.navbar-collapse {
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 12px 0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.navbar.scrolled .navbar-collapse {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .nav-item {
+        margin: 5px 0;
+    }
+    
+    .nav-link {
+        padding: 10px 20px;
+        margin: 0;
+        border-radius: 6px;
+    }
+    
+    .navbar-collapse .nav-link {
+        color: white !important;
+    }
+    
+    .navbar.scrolled .navbar-collapse .nav-link {
+        color: #1f2937 !important;
+    }
 }
 
 .header-container {
@@ -1143,19 +1259,25 @@ body {
 
         .about-content p {
             font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
             color: #374151;
             text-align: left;
             max-width: 100%;
             font-weight: 400;
             letter-spacing: 0.01em;
+            transition: all 0.3s ease;
         }
 
         .about-content p:last-child {
             margin-bottom: 0;
             font-weight: 500;
             color: #1f2937;
+        }
+
+        /* Enhanced spacing between paragraphs for better readability */
+        .about-content p + p {
+            margin-top: 2.5rem;
         }
 
         @keyframes highlightPulse {
@@ -1222,9 +1344,13 @@ body {
 
             .about-content p {
                 font-size: 1.1rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
+                line-height: 1.8;
+                margin-bottom: 2rem;
                 text-align: center;
+            }
+
+            .about-content p + p {
+                margin-top: 2rem;
             }
 
             .container {
@@ -1248,8 +1374,13 @@ body {
             }
 
             .about-content p {
-                font-size: 0.95rem;
-                line-height: 1.5;
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 1.8rem;
+            }
+
+            .about-content p + p {
+                margin-top: 1.8rem;
             }
 
             .about-section {
