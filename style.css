@@ -528,34 +528,63 @@ body.mobile-menu-open .section {
 /* Resume Button Styling - Always Red */
 .resume-btn {
     background-color: #ff3c3c !important;
-    color: white !important;
+    color: #fff !important;
     border-radius: 30px !important;
     padding: 10px 24px !important;
     margin-left: 15px !important;
     transition: all 0.3s ease !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     text-decoration: none !important;
     font-size: 0.95rem !important;
     box-shadow: 0 6px 15px rgba(255, 60, 60, 0.3) !important;
     border: none !important;
+    display: inline-block !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
-.resume-btn:hover {
+.resume-btn:hover,
+.resume-btn:focus,
+.resume-btn:active,
+.resume-btn:visited {
     background-color: #e63030 !important;
-    color: white !important;
+    color: #fff !important;
     transform: translateY(-2px) !important;
     text-decoration: none !important;
     box-shadow: 0 8px 20px rgba(255, 60, 60, 0.4) !important;
+    font-weight: 700 !important;
 }
 
 .navbar.scrolled .resume-btn {
     background-color: #ff3c3c !important;
-    color: white !important;
+    color: #fff !important;
+    font-weight: 700 !important;
 }
 
-.navbar.scrolled .resume-btn:hover {
+.navbar.scrolled .resume-btn:hover,
+.navbar.scrolled .resume-btn:focus,
+.navbar.scrolled .resume-btn:active {
     background-color: #e63030 !important;
-    color: white !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Ensure Resume button text is always visible */
+.resume-btn i,
+.resume-btn span {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.resume-btn:hover i,
+.resume-btn:hover span,
+.resume-btn:focus i,
+.resume-btn:focus span,
+.resume-btn:active i,
+.resume-btn:active span {
+    color: #fff !important;
+    font-weight: 700 !important;
 }
 
 /* Desktop Navigation - Default horizontal layout */
@@ -621,12 +650,23 @@ body.mobile-menu-open .section {
         font-size: 1.1rem;
         padding: 14px 32px;
         background-color: #ff3c3c !important;
-        color: white !important;
+        color: #fff !important;
+        font-weight: 700 !important;
     }
     
-    .navbar-collapse .resume-btn:hover {
+    .navbar-collapse .resume-btn:hover,
+    .navbar-collapse .resume-btn:focus,
+    .navbar-collapse .resume-btn:active {
         background-color: #e63030 !important;
+        color: #fff !important;
+        font-weight: 700 !important;
         transform: translateY(-2px);
+    }
+    
+    .navbar-collapse .resume-btn i,
+    .navbar-collapse .resume-btn span {
+        color: #fff !important;
+        font-weight: 700 !important;
     }
 }
 
