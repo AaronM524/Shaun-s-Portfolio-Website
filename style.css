@@ -842,6 +842,21 @@ body.mobile-menu-open {
     z-index: 1 !important;
 }
 
+.resume-btn,
+.resume-btn:visited,
+.resume-btn:hover,
+.resume-btn:focus,
+.resume-btn:active {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important; /* Safari iOS preserves white text */
+}
+
+.resume-btn:hover,
+.resume-btn:focus,
+.resume-btn:active {
+    opacity: 1 !important; /* prevent lightening on tap/click */
+}
+
 .resume-btn:hover {
     background-color: #e63030 !important;
     color: #fff !important;
@@ -890,6 +905,19 @@ body.mobile-menu-open {
     color: #fff !important;
     font-weight: 700 !important;
     transform: translateY(-2px) !important;
+}
+
+/* Ensure text remains visible in mobile overlay menu as well */
+@media (max-width: 767.98px) {
+    .navbar-collapse .resume-btn,
+    .navbar-collapse .resume-btn:visited,
+    .navbar-collapse .resume-btn:hover,
+    .navbar-collapse .resume-btn:focus,
+    .navbar-collapse .resume-btn:active {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        opacity: 1 !important;
+    }
 }
 
 /* Ensure Resume button text is always visible */
