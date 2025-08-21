@@ -339,7 +339,7 @@ section,
     hyphens: auto;
     line-height: 1.3; /* Slightly increased for better two-line spacing */
     letter-spacing: 0.5px;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.35s ease; /* avoid transform-induced layout twitch */
     margin: 0;
     padding: 0.25rem 0;
     vertical-align: middle; /* Ensure proper centering */
