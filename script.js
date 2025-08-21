@@ -648,5 +648,20 @@ class MobileMenuHandler {
 // Initialize mobile menu handler
 document.addEventListener('DOMContentLoaded', function() {
     new MobileMenuHandler();
+    
+    // Fix scroll arrow functionality
+    const scrollArrow = document.querySelector('.scroll-down');
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', function(e) {
+            e.preventDefault();
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
 });
 
