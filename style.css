@@ -353,14 +353,15 @@ section,
 }
 
 /* Desktop-specific horizontal layout for hero subtext */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .hero-subtext {
         display: flex;
         flex-direction: row;
-        align-items: baseline;
+        align-items: center;
         justify-content: center;
         gap: 0.25rem;
         flex-wrap: nowrap;
+        margin-bottom: 1.5rem;
     }
     
     .static-text {
@@ -370,6 +371,22 @@ section,
     .animated-text-container {
         flex-shrink: 1;
         min-width: 0;
+    }
+    
+    /* Reduce button spacing on desktop */
+    .hero-content .btn {
+        margin-top: 1rem;
+    }
+}
+
+/* Tablet layout - stack vertically like mobile */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-subtext {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px;
+        margin-bottom: 1.8rem;
     }
 }
 
