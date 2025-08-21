@@ -2283,6 +2283,17 @@ body.mobile-menu-open {
     .contact-form .submit-btn {
         margin-top: auto;
         align-self: flex-start;
+        margin-bottom: -15px; /* Move button higher to align with GitHub link */
+    }
+    
+    /* Ensure the last form element has proper spacing for alignment */
+    .contact-form .mb-3:last-of-type {
+        margin-bottom: 2rem;
+    }
+    
+    /* Remove bottom margin from last contact item for precise alignment */
+    .contact-info .contact-item:last-child {
+        margin-bottom: 0;
     }
 }
 
