@@ -3676,6 +3676,11 @@ textarea.form-control {
     .contact-form .row {
         margin-left: 0;
         margin-right: 0;
+        --bs-gutter-x: 0; /* remove bootstrap horizontal gutters */
+    }
+    .contact-form .row > * {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
     .contact-form .row .col-md-6 {
         width: 100%;
@@ -3689,7 +3694,8 @@ textarea.form-control {
         min-height: 48px;
         margin-bottom: 20px;
         font-size: 16px !important; /* Force same font size for name and email */
-        width: 100%;
+        width: 100% !important; /* ensure full width overrides any inline styles */
+        max-width: 100% !important;
     }
     
     .contact-form .row .col-md-6 .form-control::placeholder {
@@ -3800,8 +3806,8 @@ textarea.form-control {
         width: 100%;
         flex: 0 0 100%;
         max-width: 100%;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
         margin-bottom: 0;
     }
     
