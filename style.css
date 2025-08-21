@@ -3853,13 +3853,14 @@ textarea.form-control {
 /* Final mobile overrides for rotating headline size */
 @media (max-width: 768px) {
     .hero-subtext .animated-text {
-        font-size: clamp(2rem, 6.5vw, 2.3rem);
+        font-size: clamp(1.7rem, 5.2vw, 2.0rem);
     }
 }
 
 @media (max-width: 576px) {
     .hero-subtext .animated-text {
-        font-size: clamp(2.1rem, 7vw, 2.5rem);
+        font-size: clamp(1.75rem, 5.6vw, 2.1rem);
+        line-height: 1.25; /* slightly tighter for two-line variants */
     }
 }
 
