@@ -227,6 +227,7 @@ class GradientTextAnimator {
         this.currentIndex = 0;
         this.options = {
             cycleDuration: options.cycleDuration || 4000,
+            phraseKeys: options.phraseKeys || [],
             ...options
         };
         
@@ -252,18 +253,37 @@ class GradientTextAnimator {
     
     updateText() {
         const currentPhrase = this.phrases[this.currentIndex];
+        const isDesktop = window.innerWidth >= 1024;
         
-        // Create smooth text transition
-        this.element.style.transform = 'scale(0.95)';
-        this.element.style.opacity = '0.7';
-        
-        setTimeout(() => {
-            // Use innerHTML to support HTML content like <br> tags
-            this.element.innerHTML = currentPhrase;
-            this.element.style.transform = 'scale(1)';
-            this.element.style.opacity = '1';
-            this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
-        }, 200);
+        if (isDesktop) {
+            // Desktop: keep original scale + fade animation
+            this.element.style.transform = 'scale(0.95)';
+            this.element.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                this.element.innerHTML = currentPhrase;
+                if (Array.isArray(this.options.phraseKeys) && this.options.phraseKeys.length) {
+                    const key = this.options.phraseKeys[this.currentIndex] || '';
+                    this.element.setAttribute('data-phrase', key);
+                }
+                this.element.style.transform = 'scale(1)';
+                this.element.style.opacity = '1';
+                this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+            }, 200);
+        } else {
+            // Mobile: fade-only to avoid layout twitch between different lengths
+            this.element.style.opacity = '0';
+            
+            setTimeout(() => {
+                this.element.innerHTML = currentPhrase;
+                if (Array.isArray(this.options.phraseKeys) && this.options.phraseKeys.length) {
+                    const key = this.options.phraseKeys[this.currentIndex] || '';
+                    this.element.setAttribute('data-phrase', key);
+                }
+                this.element.style.opacity = '1';
+                this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+            }, 200);
+        }
     }
 }
 
@@ -272,8 +292,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
     if (animatedTextElement) {
-        // Use line break for both mobile and desktop to ensure consistent layout
-        const phrases = [
+        // Use multi-line on mobile, single-line on desktop
+        const phrasesMobile = [
             'Full Stack Developer',
             'AWS & Azure Certified<br>Developer',
             'Backend-Focused<br>Developer',
@@ -281,9 +301,15 @@ document.addEventListener('DOMContentLoaded', function() {
             'Sushi Enthusiast',
             'Soccer Fan'
         ];
+
+        const phrasesDesktop = phrasesMobile.map(p => p.replace(/<br\s*\/?\s*>/gi, ' '));
+
+        const phrases = (window.innerWidth >= 1024) ? phrasesDesktop : phrasesMobile;
+        const phraseKeys = ['full-stack','aws-azure','backend-focused','problem-solver','sushi','soccer'];
         
         new GradientTextAnimator(animatedTextElement, phrases, {
-            cycleDuration: 3500
+            cycleDuration: 3500,
+            phraseKeys
         });
     }
 });
@@ -648,5 +674,20 @@ class MobileMenuHandler {
 // Initialize mobile menu handler
 document.addEventListener('DOMContentLoaded', function() {
     new MobileMenuHandler();
+    
+    // Fix scroll arrow functionality
+    const scrollArrow = document.querySelector('.scroll-down');
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', function(e) {
+            e.preventDefault();
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
 });
 

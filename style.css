@@ -6,6 +6,7 @@ html {
     min-height: 100%;
     overflow-x: hidden;
     position: relative;
+    scroll-behavior: smooth;
 }
 
 html::before {
@@ -191,6 +192,9 @@ section,
     animation: smoothBounce 3s ease-in-out infinite;
     transition: all 0.3s ease;
     opacity: 0.8;
+    z-index: 2;
+    pointer-events: auto;
+    touch-action: manipulation;
 }
 
 .scroll-down:hover {
@@ -359,7 +363,7 @@ section,
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 0.25rem;
+        gap: 0.70rem; /* subtle breathing room between static and rotating text */
         flex-wrap: nowrap;
         margin-bottom: 1.5rem;
     }
@@ -369,9 +373,37 @@ section,
     }
     
     .animated-text-container {
-        flex-shrink: 1;
+        flex-shrink: 0;
         min-width: 0;
+        white-space: nowrap;
+        width: auto; /* prevent full-width container creating a large gap */
+        max-width: none;
+        padding: 0; /* remove internal padding that adds extra space */
+        display: inline-flex;
+        align-items: center;
     }
+    
+    .hero-subtext .static-text {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    .hero-subtext .animated-text {
+        font-size: 2.5rem; /* make rotating headline bigger on desktop */
+        line-height: 1.2;
+    }
+    
+    /* Force single-line rotating headline on desktop */
+    .animated-text {
+        white-space: nowrap;
+        max-width: none;
+        overflow-wrap: normal;
+        word-wrap: normal;
+        hyphens: none;
+        margin-left: 0; /* ensure spacing relies on gap */
+    }
+
+    /* Prevent line breaks injected in phrases from splitting line on desktop */
+    .animated-text br { display: none; }
     
     /* Reduce button spacing on desktop */
     .hero-content .btn {
@@ -406,7 +438,7 @@ section,
         line-height: 1.4;
     }
     .animated-text { 
-        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        font-size: clamp(2rem, 7vw, 2.6rem); /* larger rotating headline on mobile */
         font-weight: 700;
         line-height: 1.3;
         max-width: min(85vw, 500px);
@@ -438,7 +470,7 @@ section,
     }
     
     .hero-subtext {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         line-height: 1.4;
         min-height: 3.6em;
         gap: 10px;
@@ -447,7 +479,7 @@ section,
         align-items: center !important;
     }
     .animated-text { 
-        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        font-size: clamp(2.2rem, 7.5vw, 2.8rem); /* slightly bigger on small phones */
         font-weight: 700;
         line-height: 1.3;
         max-width: min(85vw, 450px);
@@ -810,6 +842,21 @@ body.mobile-menu-open {
     z-index: 1 !important;
 }
 
+.resume-btn,
+.resume-btn:visited,
+.resume-btn:hover,
+.resume-btn:focus,
+.resume-btn:active {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important; /* Safari iOS preserves white text */
+}
+
+.resume-btn:hover,
+.resume-btn:focus,
+.resume-btn:active {
+    opacity: 1 !important; /* prevent lightening on tap/click */
+}
+
 .resume-btn:hover {
     background-color: #e63030 !important;
     color: #fff !important;
@@ -858,6 +905,19 @@ body.mobile-menu-open {
     color: #fff !important;
     font-weight: 700 !important;
     transform: translateY(-2px) !important;
+}
+
+/* Ensure text remains visible in mobile overlay menu as well */
+@media (max-width: 767.98px) {
+    .navbar-collapse .resume-btn,
+    .navbar-collapse .resume-btn:visited,
+    .navbar-collapse .resume-btn:hover,
+    .navbar-collapse .resume-btn:focus,
+    .navbar-collapse .resume-btn:active {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        opacity: 1 !important;
+    }
 }
 
 /* Ensure Resume button text is always visible */
@@ -1305,7 +1365,6 @@ body.mobile-menu-open {
     .mobile-menu {
         display: block;
     }
-}
 }
 
 .desktop-nav-list {
@@ -2283,6 +2342,18 @@ body.mobile-menu-open {
     .contact-form .submit-btn {
         margin-top: auto;
         align-self: flex-start;
+        margin-bottom: -10px; /* Slightly reduce negative margin */
+        transform: translateY(-20px); /* Raise button a bit more for better alignment */
+    }
+    
+    /* Ensure the last form element has proper spacing for alignment */
+    .contact-form .mb-3:last-of-type {
+        margin-bottom: 2rem;
+    }
+    
+    /* Remove bottom margin from last contact item for precise alignment */
+    .contact-info .contact-item:last-child {
+        margin-bottom: 0;
     }
 }
 
@@ -2297,6 +2368,12 @@ body.mobile-menu-open {
     line-height: 1.4;
     box-sizing: border-box;
     transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.4;
 }
 
 .form-control:focus {
@@ -2619,8 +2696,16 @@ textarea.form-control {
     }
     
     .scroll-down {
-        bottom: 20px;
-        font-size: 1.8rem;
+        bottom: 30px;
+        font-size: 2rem;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        min-width: 50px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .rotating-text {
@@ -2676,14 +2761,14 @@ textarea.form-control {
     }
     
     .hero-subtext {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         line-height: 1.4;
         min-height: 3.4em;
         margin-bottom: 1.8rem;
     }
     
     .animated-text {
-        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        font-size: clamp(1.6rem, 5vw, 1.9rem);
         font-weight: 700;
         line-height: 1.3;
         max-width: min(78vw, 380px);
@@ -2697,8 +2782,16 @@ textarea.form-control {
     }
     
     .scroll-down {
-        bottom: 15px;
-        font-size: 1.6rem;
+        bottom: 25px;
+        font-size: 1.8rem;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        min-width: 45px;
+        min-height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .rotating-text {
@@ -2749,7 +2842,7 @@ textarea.form-control {
     
     .form-control {
         height: 45px;
-        font-size: 0.9rem;
+        font-size: 16px;
     }
     
     textarea.form-control {
@@ -2962,7 +3055,7 @@ textarea.form-control {
 
 /* Date */
 .timeline-date {
-    font-weight: bold;
+    font-weight: 700;
     color: #E3242B;
     font-size: 1.1rem;
     margin-bottom: 10px;
@@ -3355,288 +3448,10 @@ textarea.form-control {
     to { transform: rotate(360deg); }
 }
 
-/* Professional Project Modal */
-.project-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 
-.project-modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
 
-.project-modal {
-    background: white;
-    border-radius: 16px;
-    max-width: 900px;
-    max-height: 90vh;
-    width: 90%;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    transform: scale(0.8) translateY(20px);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 
-.project-modal-overlay.active .project-modal {
-    transform: scale(1) translateY(0);
-}
 
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 32px;
-    border-bottom: 1px solid #e2e8f0;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-}
-
-.modal-title {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #1e293b;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: #64748b;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-}
-
-.modal-close:hover {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-}
-
-.modal-body {
-    padding: 0;
-    max-height: calc(90vh - 120px);
-    overflow-y: auto;
-}
-
-.project-image-container {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    background: #f8fafc;
-}
-
-.project-modal-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.project-details {
-    padding: 32px;
-}
-
-.project-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #475569;
-    margin-bottom: 24px;
-}
-
-.tech-stack,
-.project-features {
-    margin-bottom: 24px;
-}
-
-.tech-stack h4,
-.project-features h4 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 12px;
-}
-
-.tech-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tech-badge {
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.tech-badge:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.4);
-}
-
-.features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.features-list li {
-    padding: 8px 0;
-    padding-left: 24px;
-    position: relative;
-    color: #475569;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.features-list li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #10b981;
-    font-weight: bold;
-}
-
-.features-list li:last-child {
-    border-bottom: none;
-}
-
-.project-links {
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.project-links .btn {
-    flex: 1;
-    text-align: center;
-    padding: 12px 24px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-/* Custom Tooltip */
-.custom-tooltip {
-    position: fixed;
-    background: #1e293b;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    pointer-events: none;
-    z-index: 10000;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.custom-tooltip.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.custom-tooltip:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 4px solid transparent;
-    border-top-color: #1e293b;
-}
-
-/* Dark Mode Modal */
-[data-theme="dark"] .project-modal {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .modal-header {
-    background: var(--light-color);
-    border-bottom-color: var(--border-color);
-}
-
-[data-theme="dark"] .modal-title {
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .modal-close {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .modal-close:hover {
-    background: rgba(239, 68, 68, 0.2);
-    color: #fca5a5;
-}
-
-[data-theme="dark"] .project-image-container {
-    background: var(--light-color);
-}
-
-[data-theme="dark"] .project-description {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .tech-stack h4,
-[data-theme="dark"] .project-features h4 {
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .features-list li {
-    color: var(--text-light);
-    border-bottom-color: var(--border-color);
-}
-
-/* Responsive Modal */
-@media (max-width: 768px) {
-    .project-modal {
-        width: 95%;
-        max-height: 95vh;
-    }
-    
-    .modal-header {
-        padding: 20px 24px;
-    }
-    
-    .modal-title {
-        font-size: 1.5rem;
-    }
-    
-    .project-details {
-        padding: 24px;
-    }
-    
-    .project-image-container {
-        height: 200px;
-    }
-    
-    .project-links {
-        flex-direction: column;
-    }
-    
-    .project-links .btn {
-        flex: none;
-    }
-}
 
 /* Professional Contact Form Enhancements */
 .contact-form {
@@ -3747,44 +3562,6 @@ textarea.form-control {
     flex-shrink: 0;
 }
 
-/* Dark Mode Form Styles */
-[data-theme="dark"] .contact-form .form-control {
-    background-color: var(--card-bg);
-    border-color: var(--border-color);
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .contact-form .form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
-}
-
-[data-theme="dark"] .contact-form .form-control.error {
-    border-color: #fca5a5;
-    box-shadow: 0 0 0 3px rgba(252, 165, 165, 0.2);
-}
-
-[data-theme="dark"] .field-error {
-    color: #fca5a5;
-}
-
-[data-theme="dark"] .form-status-message.success {
-    background: rgba(16, 185, 129, 0.1);
-    color: #34d399;
-    border-color: #059669;
-}
-
-[data-theme="dark"] .form-status-message.error {
-    background: rgba(239, 68, 68, 0.1);
-    color: #fca5a5;
-    border-color: #dc2626;
-}
-
-[data-theme="dark"] .form-status-message.loading {
-    background: rgba(59, 130, 246, 0.1);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
 
 /* Enhanced Button States */
 .btn:disabled {
@@ -3923,10 +3700,36 @@ textarea.form-control {
     }
     
     /* Ensure two-column fields have same sizing */
+    /* Make two-column inputs span full width on mobile */
+    .contact-form .row {
+        margin-left: 0;
+        margin-right: 0;
+        --bs-gutter-x: 0; /* remove bootstrap horizontal gutters */
+    }
+    .contact-form .row > * {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .contact-form .row .col-md-6 {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
     .contact-form .row .col-md-6 .form-control {
         height: 48px; /* Force same height for name and email */
         min-height: 48px;
         margin-bottom: 20px;
+        font-size: 16px !important; /* Force same font size for name and email */
+        width: 100% !important; /* ensure full width overrides any inline styles */
+        max-width: 100% !important;
+    }
+    
+    .contact-form .row .col-md-6 .form-control::placeholder {
+        font-size: 16px !important; /* Force same placeholder size for name and email */
+        color: #6b7280;
+        line-height: 1.4;
     }
     
     /* Submit button mobile optimization */
@@ -3978,6 +3781,30 @@ textarea.form-control {
     }
 }
 
+/* Mobile placeholder consistency and sizing */
+@media (max-width: 768px) {
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        font-size: 16px !important;
+    }
+    .contact-form input::-webkit-input-placeholder,
+    .contact-form textarea::-webkit-input-placeholder {
+        font-size: 16px !important;
+    }
+    .contact-form input::-moz-placeholder,
+    .contact-form textarea::-moz-placeholder {
+        font-size: 16px !important;
+    }
+    .contact-form input:-ms-input-placeholder,
+    .contact-form textarea:-ms-input-placeholder {
+        font-size: 16px !important;
+    }
+    .contact-form input::-ms-input-placeholder,
+    .contact-form textarea::-ms-input-placeholder {
+        font-size: 16px !important;
+    }
+}
+
 /* Extra small mobile screens (375-480px) optimization */
 @media (max-width: 480px) {
     .contact-section .container {
@@ -3991,7 +3818,7 @@ textarea.form-control {
     }
     
     .contact-form .form-control {
-        font-size: 1rem;
+        font-size: 16px;
         height: 3.25rem;
         padding: 0.875rem 0.875rem;
         margin-bottom: 1.25rem;
@@ -4002,9 +3829,13 @@ textarea.form-control {
         margin-right: 0;
     }
     
+    /* Ensure full-width stacking on very small screens as well */
     .contact-form .row .col-md-6 {
-        padding-left: 0;
-        padding-right: 0;
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
         margin-bottom: 0;
     }
     
@@ -4019,207 +3850,36 @@ textarea.form-control {
     }
 }
 
-/* GitHub Activity Feed */
-.activity-section {
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.activity-feed {
-    background: white;
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.activity-feed h3 {
-    margin-bottom: 24px;
-    color: #1e293b;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.activity-feed h3 i {
-    color: #24292f;
-}
-
-.loading-state {
-    text-align: center;
-    padding: 40px 0;
-    color: #64748b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.activity-list {
-    margin-bottom: 16px;
-}
-
-.activity-item {
-    display: flex;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.activity-item:last-child {
-    border-bottom: none;
-}
-
-.activity-icon {
-    width: 32px;
-    height: 32px;
-    background: #f1f5f9;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.activity-icon i {
-    color: #64748b;
-    font-size: 14px;
-}
-
-.activity-details {
-    flex: 1;
-    min-width: 0;
-}
-
-.activity-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4px;
-}
-
-.repo-link {
-    font-weight: 600;
-    color: #0969da;
-    text-decoration: none;
-    font-size: 0.95rem;
-}
-
-.repo-link:hover {
-    text-decoration: underline;
-}
-
-.activity-time {
-    color: #64748b;
-    font-size: 0.85rem;
-    white-space: nowrap;
-}
-
-.commit-message {
-    color: #475569;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    word-break: break-word;
-}
-
-.activity-footer {
-    text-align: center;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid #f1f5f9;
-}
-
-.no-activity,
-.activity-error {
-    text-align: center;
-    padding: 40px 0;
-    color: #64748b;
-}
-
-.no-activity i,
-.activity-error i {
-    font-size: 2rem;
-    margin-bottom: 12px;
-    display: block;
-    color: #94a3b8;
-}
-
-/* Dark Mode Activity Feed */
-[data-theme="dark"] .activity-section {
-    background: var(--dark-color);
-    border-color: var(--border-color);
-}
-
-[data-theme="dark"] .activity-feed {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-}
-
-[data-theme="dark"] .activity-feed h3 {
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .activity-feed h3 i {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .loading-state {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .activity-item {
-    border-bottom-color: var(--border-color);
-}
-
-[data-theme="dark"] .activity-icon {
-    background: var(--light-color);
-}
-
-[data-theme="dark"] .activity-icon i {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .repo-link {
-    color: var(--primary-color);
-}
-
-[data-theme="dark"] .activity-time {
-    color: var(--text-muted);
-}
-
-[data-theme="dark"] .commit-message {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .activity-footer {
-    border-top-color: var(--border-color);
-}
-
-[data-theme="dark"] .no-activity,
-[data-theme="dark"] .activity-error {
-    color: var(--text-light);
-}
-
-[data-theme="dark"] .no-activity i,
-[data-theme="dark"] .activity-error i {
-    color: var(--text-muted);
-}
-
-/* Responsive Activity Feed */
+/* Final mobile overrides for rotating headline size */
 @media (max-width: 768px) {
-    .activity-feed {
-        padding: 24px;
+    .hero-subtext .animated-text {
+        font-size: clamp(1.7rem, 5.2vw, 2.0rem);
+        transition: opacity 0.35s ease; /* on mobile, use fade-only to prevent twitch */
     }
-    
-    .activity-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
+}
+
+@media (max-width: 576px) {
+    .hero-subtext .animated-text {
+        font-size: clamp(1.75rem, 5.6vw, 2.1rem);
+        line-height: 1.25; /* slightly tighter for two-line variants */
     }
-    
-    .activity-time {
-        font-size: 0.8rem;
+}
+
+/* Slightly reduce the specific long phrase on mobile only */
+@media (max-width: 768px) {
+    .hero-subtext .animated-text[data-phrase="aws-azure"] {
+        font-size: clamp(1.6rem, 4.8vw, 1.9rem);
+    }
+    .hero-subtext .animated-text[data-phrase="soccer"] {
+        font-size: clamp(1.85rem, 5.8vw, 2.2rem); /* slightly larger for short phrase */
+    }
+}
+@media (max-width: 576px) {
+    .hero-subtext .animated-text[data-phrase="aws-azure"] {
+        font-size: clamp(1.6rem, 5.2vw, 2.0rem);
+    }
+    .hero-subtext .animated-text[data-phrase="soccer"] {
+        font-size: clamp(1.95rem, 6.4vw, 2.3rem);
     }
 }
 
