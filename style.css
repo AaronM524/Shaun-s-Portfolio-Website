@@ -3869,10 +3869,16 @@ textarea.form-control {
     .hero-subtext .animated-text[data-phrase="aws-azure"] {
         font-size: clamp(1.6rem, 4.8vw, 1.9rem);
     }
+    .hero-subtext .animated-text[data-phrase="soccer"] {
+        font-size: clamp(1.85rem, 5.8vw, 2.2rem); /* slightly larger for short phrase */
+    }
 }
 @media (max-width: 576px) {
     .hero-subtext .animated-text[data-phrase="aws-azure"] {
         font-size: clamp(1.6rem, 5.2vw, 2.0rem);
+    }
+    .hero-subtext .animated-text[data-phrase="soccer"] {
+        font-size: clamp(1.95rem, 6.4vw, 2.3rem);
     }
 }
 
