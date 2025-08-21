@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
     if (animatedTextElement) {
-        // Use line break for both mobile and desktop to ensure consistent layout
-        const phrases = [
+        // Use multi-line on mobile, single-line on desktop
+        const phrasesMobile = [
             'Full Stack Developer',
             'AWS & Azure Certified<br>Developer',
             'Backend-Focused<br>Developer',
@@ -281,6 +281,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'Sushi Enthusiast',
             'Soccer Fan'
         ];
+
+        const phrasesDesktop = phrasesMobile.map(p => p.replace(/<br\s*\/?\s*>/gi, ' '));
+
+        const phrases = (window.innerWidth >= 1024) ? phrasesDesktop : phrasesMobile;
         
         new GradientTextAnimator(animatedTextElement, phrases, {
             cycleDuration: 3500
