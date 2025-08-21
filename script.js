@@ -253,21 +253,37 @@ class GradientTextAnimator {
     
     updateText() {
         const currentPhrase = this.phrases[this.currentIndex];
+        const isDesktop = window.innerWidth >= 1024;
         
-        // Fade-only transition to avoid layout twitch between different lengths
-        this.element.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Use innerHTML to support HTML content like <br> tags
-            this.element.innerHTML = currentPhrase;
-            // Set data attribute for CSS targeting of specific phrases
-            if (Array.isArray(this.options.phraseKeys) && this.options.phraseKeys.length) {
-                const key = this.options.phraseKeys[this.currentIndex] || '';
-                this.element.setAttribute('data-phrase', key);
-            }
-            this.element.style.opacity = '1';
-            this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
-        }, 200);
+        if (isDesktop) {
+            // Desktop: keep original scale + fade animation
+            this.element.style.transform = 'scale(0.95)';
+            this.element.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                this.element.innerHTML = currentPhrase;
+                if (Array.isArray(this.options.phraseKeys) && this.options.phraseKeys.length) {
+                    const key = this.options.phraseKeys[this.currentIndex] || '';
+                    this.element.setAttribute('data-phrase', key);
+                }
+                this.element.style.transform = 'scale(1)';
+                this.element.style.opacity = '1';
+                this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+            }, 200);
+        } else {
+            // Mobile: fade-only to avoid layout twitch between different lengths
+            this.element.style.opacity = '0';
+            
+            setTimeout(() => {
+                this.element.innerHTML = currentPhrase;
+                if (Array.isArray(this.options.phraseKeys) && this.options.phraseKeys.length) {
+                    const key = this.options.phraseKeys[this.currentIndex] || '';
+                    this.element.setAttribute('data-phrase', key);
+                }
+                this.element.style.opacity = '1';
+                this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+            }, 200);
+        }
     }
 }
 
