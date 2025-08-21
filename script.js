@@ -1,41 +1,86 @@
-// Navbar scroll behavior and active navigation
-window.addEventListener('scroll', function () {
-    const navbar = document.querySelector('.navbar');
-    const backToTop = document.getElementById('backToTop');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+// Navbar Navigation Functionality
+class NavbarManager {
+    constructor() {
+        this.navbar = document.querySelector('.navbar');
+        this.navLinks = document.querySelectorAll('.nav-link');
+        this.backToTop = document.getElementById('backToTop');
+        
+        // Define sections with light backgrounds
+        this.lightSections = ['about', 'skills', 'contact', 'journey'];
+        
+        this.init();
     }
-
-    // Active navigation highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
     
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
+    init() {
+        // Handle navigation link clicks
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.highlightActiveLink(link);
+            });
+        });
+        
+        // Scroll behavior
+        this.handleScroll();
+        window.addEventListener('scroll', () => this.handleScroll());
+    }
+    
+    highlightActiveLink(activeLink) {
+        this.navLinks.forEach(link => link.classList.remove('active'));
+        activeLink.classList.add('active');
+    }
+    
+    handleScroll() {
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        const scrollPosition = window.scrollY;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
+        // Update navigation active states
+        this.navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
 
-    // Toggle Back-to-Top button visibility
-    if (backToTop) {
-        if (window.scrollY > 400) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
+        // Update navbar background based on scroll position and current section
+        this.updateNavbarBackground(current, scrollPosition);
+
+        // Toggle Back-to-Top button visibility
+        if (this.backToTop) {
+            if (scrollPosition > 400) {
+                this.backToTop.classList.add('active');
+            } else {
+                this.backToTop.classList.remove('active');
+            }
         }
     }
+
+    updateNavbarBackground(currentSection, scrollPosition) {
+        if (!this.navbar) return;
+
+        // Remove scrolled class
+        this.navbar.classList.remove('scrolled');
+
+        // Add scrolled class if we've scrolled past the hero section (more than 100px) 
+        // or we're on a light section
+        if (scrollPosition > 100 || this.lightSections.includes(currentSection)) {
+            this.navbar.classList.add('scrolled');
+        }
+    }
+}
+
+// Initialize navbar when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new NavbarManager();
 });
 
 // Theme toggle functionality
@@ -190,7 +235,7 @@ class GradientTextAnimator {
     }
     
     setupStyles() {
-        this.element.style.background = 'linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)';
+        this.element.style.background = 'linear-gradient(-45deg, #E3242B 0%, #dc2626 20%, #b91c1c 40%, #991b1b 60%, #dc2626 80%, #E3242B 100%)';
         this.element.style.backgroundSize = '400% 400%';
         this.element.style.webkitBackgroundClip = 'text';
         this.element.style.backgroundClip = 'text';
@@ -213,7 +258,8 @@ class GradientTextAnimator {
         this.element.style.opacity = '0.7';
         
         setTimeout(() => {
-            this.element.textContent = currentPhrase;
+            // Use innerHTML to support HTML content like <br> tags
+            this.element.innerHTML = currentPhrase;
             this.element.style.transform = 'scale(1)';
             this.element.style.opacity = '1';
             this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
@@ -226,16 +272,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const animatedTextElement = document.getElementById('animatedText');
     
     if (animatedTextElement) {
+        // Use line break for both mobile and desktop to ensure consistent layout
         const phrases = [
             'Full Stack Developer',
+            'AWS & Azure Certified<br>Developer',
+            'Backend-Focused<br>Developer',
             'Problem Solver',
-            'Creative Tech Explorer',
-            'Lifelong Learner',
-            'Soccer Fan',
-            'AWS & Azure Certified'
+            'Sushi Enthusiast',
+            'Soccer Fan'
         ];
         
-        // Use gradient animation for big tech feel
         new GradientTextAnimator(animatedTextElement, phrases, {
             cycleDuration: 3500
         });
@@ -244,9 +290,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const projectsData = {
   "filters": [
-    { "label": "All", "value": "all" },
-    { "label": "Frontend", "value": "front" },
-    { "label": "Backend", "value": "back" },
+    { "label": "All", "value": "all", "description": "Show all projects" },
+    { "label": "Full-Stack", "value": "front", "description": "Frontend + Backend projects" },
+    { "label": "Backend", "value": "back", "description": "Server-side only projects" },
   ],
   "projects": [
     {
@@ -254,7 +300,6 @@ const projectsData = {
       "category": "front",
       "title": "Fresh Finder",
       "description": "NBA stats explorer built with Flask and the NBA API. Search players/teams, view box scores, and explore stats with visuals and real-world API optimizations.",
-      "image": "PNG image.png", 
       "tags": ["HTML", "Python", "CSS"],
       "codeLink": "https://github.com/ShaunM042/Fresh-Finder"
     },
@@ -263,7 +308,6 @@ const projectsData = {
       "category": "front",
       "title": "Chatbot",
       "description": "This chatbot is designed to provide quick, helpful, and conversational responses to your questions or requests anytime you need.",
-      "image": "Screenshot 2025-06-04 at 8.33.52 PM.png",
       "tags": ["HTML", "CSS", "Java"],
       "codeLink": "https://github.com/ShaunM042/Chatbot"
     },
@@ -491,5 +535,118 @@ class ContactFormHandler {
 // Initialize contact form
 document.addEventListener('DOMContentLoaded', function() {
     new ContactFormHandler();
+});
+
+// Mobile Menu Handler
+class MobileMenuHandler {
+    constructor() {
+        this.navbarToggler = document.querySelector('.navbar-toggler');
+        this.navbarCollapse = document.querySelector('.navbar-collapse');
+        this.navbarNav = document.querySelector('.navbar-nav');
+        this.body = document.body;
+        this.navLinks = document.querySelectorAll('.nav-link');
+        this.isMenuOpen = false;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.navbarToggler || !this.navbarCollapse) return;
+        
+        // Handle toggle button clicks - now handles both open and close
+        this.navbarToggler.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.toggleMenu();
+        });
+        
+        // Close menu when nav links are clicked
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (this.isMenuOpen && !link.classList.contains('resume-btn')) {
+                    this.closeMenu();
+                }
+            });
+        });
+        
+        // Close menu when clicking on the overlay background (not the menu panel)
+        this.navbarCollapse.addEventListener('click', (e) => {
+            // Only close if clicking the overlay itself, not the menu panel or its contents
+            if (e.target === this.navbarCollapse && !this.navbarNav.contains(e.target)) {
+                this.closeMenu();
+            }
+        });
+        
+        // Handle escape key to close menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isMenuOpen) {
+                this.closeMenu();
+            }
+        });
+        
+        // Close mobile menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767.98 && this.isMenuOpen) {
+                this.closeMenu();
+            }
+        });
+        
+        // Handle touch events for better mobile experience
+        this.navbarCollapse.addEventListener('touchstart', (e) => {
+            if (e.target === this.navbarCollapse && this.isMenuOpen) {
+                this.closeMenu();
+            }
+        });
+    }
+    
+    toggleMenu() {
+        console.log('Toggling menu, current state:', this.isMenuOpen);
+        if (this.isMenuOpen) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
+    }
+    
+    openMenu() {
+        console.log('Opening menu');
+        this.navbarCollapse.classList.add('show');
+        this.body.classList.add('mobile-menu-open');
+        this.navbarToggler.setAttribute('aria-expanded', 'true');
+        this.isMenuOpen = true;
+        
+        // Update hamburger icon to indicate it can close the menu
+        const hamburgerIcon = this.navbarToggler.querySelector('.fas');
+        if (hamburgerIcon) {
+            hamburgerIcon.classList.remove('fa-bars');
+            hamburgerIcon.classList.add('fa-times');
+        }
+        
+        // Prevent background scrolling
+        this.body.style.overflow = 'hidden';
+    }
+    
+    closeMenu() {
+        console.log('Closing menu');
+        this.navbarCollapse.classList.remove('show');
+        this.body.classList.remove('mobile-menu-open');
+        this.navbarToggler.setAttribute('aria-expanded', 'false');
+        this.isMenuOpen = false;
+        
+        // Update hamburger icon back to bars
+        const hamburgerIcon = this.navbarToggler.querySelector('.fas');
+        if (hamburgerIcon) {
+            hamburgerIcon.classList.remove('fa-times');
+            hamburgerIcon.classList.add('fa-bars');
+        }
+        
+        // Re-enable background scrolling
+        this.body.style.overflow = '';
+    }
+}
+
+// Initialize mobile menu handler
+document.addEventListener('DOMContentLoaded', function() {
+    new MobileMenuHandler();
 });
 
