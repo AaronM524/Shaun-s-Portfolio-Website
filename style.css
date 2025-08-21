@@ -3864,3 +3864,15 @@ textarea.form-control {
     }
 }
 
+/* Slightly reduce the specific long phrase on mobile only */
+@media (max-width: 768px) {
+    .hero-subtext .animated-text[data-phrase="aws-azure"] {
+        font-size: clamp(1.6rem, 4.8vw, 1.9rem);
+    }
+}
+@media (max-width: 576px) {
+    .hero-subtext .animated-text[data-phrase="aws-azure"] {
+        font-size: clamp(1.6rem, 5.2vw, 2.0rem);
+    }
+}
+

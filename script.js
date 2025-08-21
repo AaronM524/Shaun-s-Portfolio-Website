@@ -227,6 +227,7 @@ class GradientTextAnimator {
         this.currentIndex = 0;
         this.options = {
             cycleDuration: options.cycleDuration || 4000,
+            phraseKeys: options.phraseKeys || [],
             ...options
         };
         
@@ -260,6 +261,11 @@ class GradientTextAnimator {
         setTimeout(() => {
             // Use innerHTML to support HTML content like <br> tags
             this.element.innerHTML = currentPhrase;
+            // Set data attribute for CSS targeting of specific phrases
+            if (Array.isArray(this.options.phraseKeys) && this.options.phraseKeys.length) {
+                const key = this.options.phraseKeys[this.currentIndex] || '';
+                this.element.setAttribute('data-phrase', key);
+            }
             this.element.style.transform = 'scale(1)';
             this.element.style.opacity = '1';
             this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
@@ -285,9 +291,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const phrasesDesktop = phrasesMobile.map(p => p.replace(/<br\s*\/?\s*>/gi, ' '));
 
         const phrases = (window.innerWidth >= 1024) ? phrasesDesktop : phrasesMobile;
+        const phraseKeys = ['full-stack','aws-azure','backend-focused','problem-solver','sushi','soccer'];
         
         new GradientTextAnimator(animatedTextElement, phrases, {
-            cycleDuration: 3500
+            cycleDuration: 3500,
+            phraseKeys
         });
     }
 });
