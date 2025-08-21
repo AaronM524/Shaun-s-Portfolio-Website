@@ -352,6 +352,25 @@ section,
     100% { background-position: 0% 50%; }
 }
 
+/* Desktop-specific horizontal layout for hero subtext */
+@media (min-width: 768px) {
+    .hero-subtext {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+    }
+    
+    .static-text {
+        flex-shrink: 0;
+    }
+    
+    .animated-text-container {
+        flex-shrink: 1;
+        min-width: 0;
+    }
+}
 
 @media (max-width: 768px) {
     .hero-content {
@@ -362,7 +381,8 @@ section,
     .hero-subtext {
         font-size: 2rem;
         margin-bottom: 1.8rem;
-        flex-direction: column;
+        flex-direction: column !important;
+        align-items: center !important;
         gap: 12px;
         min-height: 3.2em;
         line-height: 1.4;
@@ -405,6 +425,8 @@ section,
         min-height: 3.6em;
         gap: 10px;
         margin-bottom: 2rem;
+        flex-direction: column !important;
+        align-items: center !important;
     }
     .animated-text { 
         font-size: clamp(1.8rem, 6vw, 2.4rem);
@@ -2196,21 +2218,30 @@ body.mobile-menu-open {
 }
 
 .form-control {
-    height: 50px;
-    border-radius: 5px;
-    border: 1px solid #e2e8f0;
-    padding: 0 15px;
+    min-height: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    padding: 12px 16px;
     margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.4;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 .form-control:focus {
-    box-shadow: none;
+    box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.1);
     border-color: #E3242B;
+    outline: none;
 }
 
 textarea.form-control {
-    height: 150px;
-    padding: 15px;
+    height: 120px;
+    min-height: 120px;
+    padding: 12px 16px;
+    line-height: 1.5;
+    resize: vertical;
 }
 
 .submit-btn {
@@ -3544,16 +3575,20 @@ textarea.form-control {
 }
 
 .contact-form .form-control {
+    min-height: 48px;
+    height: 48px;
     padding: 12px 16px;
     border: 2px solid #e2e8f0;
     border-radius: 8px;
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: 16px;
+    line-height: 1.4;
+    box-sizing: border-box;
 }
 
 .contact-form .form-control:focus {
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+    border-color: #E3242B;
+    box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.1);
     outline: none;
 }
 
@@ -3781,13 +3816,14 @@ textarea.form-control {
     
     /* Standardized input field sizing for mobile (375-480px) */
     .contact-form .form-control {
-        font-size: 1rem; /* Prevents zoom on iOS while remaining readable */
-        padding: 0.875rem 1rem;
-        height: 3.25rem; /* Fixed height for all input fields */
+        font-size: 16px; /* Prevents zoom on iOS while remaining readable */
+        padding: 12px 16px;
+        min-height: 48px;
+        height: 48px; /* Fixed height for all input fields */
         width: 100%;
-        border-radius: 0.5rem;
-        border: 0.125rem solid #e2e8f0;
-        margin-bottom: 1.25rem; /* Consistent spacing between fields */
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        margin-bottom: 20px; /* Consistent spacing between fields */
         transition: all 0.3s ease;
         line-height: 1.4;
         box-sizing: border-box;
@@ -3795,7 +3831,7 @@ textarea.form-control {
     }
     
     .contact-form .form-control::placeholder {
-        font-size: 1rem; /* Match input font size */
+        font-size: 16px; /* Match input font size */
         color: #6b7280;
         line-height: 1.4;
     }
@@ -3809,18 +3845,19 @@ textarea.form-control {
     
     /* Textarea specific styling - only this should be taller */
     textarea.form-control {
-        height: 8rem; /* Fixed height for textarea */
-        min-height: 8rem;
-        max-height: 12rem; /* Limit maximum height */
-        padding: 0.875rem 1rem; /* Same padding as other fields */
+        height: 120px; /* Fixed height for textarea */
+        min-height: 120px;
+        max-height: 200px; /* Limit maximum height */
+        padding: 12px 16px; /* Same padding as other fields */
         resize: vertical;
         line-height: 1.5; /* Slightly better line height for multi-line text */
     }
     
     /* Ensure two-column fields have same sizing */
     .contact-form .row .col-md-6 .form-control {
-        height: 3.25rem; /* Force same height for name and email */
-        margin-bottom: 1.25rem;
+        height: 48px; /* Force same height for name and email */
+        min-height: 48px;
+        margin-bottom: 20px;
     }
     
     /* Submit button mobile optimization */
