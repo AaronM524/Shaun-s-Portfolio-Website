@@ -6,6 +6,7 @@ html {
     min-height: 100%;
     overflow-x: hidden;
     position: relative;
+    scroll-behavior: smooth;
 }
 
 html::before {
@@ -438,7 +439,7 @@ section,
     }
     
     .hero-subtext {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         line-height: 1.4;
         min-height: 3.6em;
         gap: 10px;
@@ -447,7 +448,7 @@ section,
         align-items: center !important;
     }
     .animated-text { 
-        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        font-size: clamp(2rem, 6vw, 2.6rem);
         font-weight: 700;
         line-height: 1.3;
         max-width: min(85vw, 450px);
@@ -2283,7 +2284,8 @@ body.mobile-menu-open {
     .contact-form .submit-btn {
         margin-top: auto;
         align-self: flex-start;
-        margin-bottom: -15px; /* Move button higher to align with GitHub link */
+        margin-bottom: -20px; /* Move button higher to align with GitHub link */
+        transform: translateY(-5px); /* Additional fine-tuning for precise alignment */
     }
     
     /* Ensure the last form element has proper spacing for alignment */
@@ -2308,6 +2310,12 @@ body.mobile-menu-open {
     line-height: 1.4;
     box-sizing: border-box;
     transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.4;
 }
 
 .form-control:focus {
@@ -2630,8 +2638,16 @@ textarea.form-control {
     }
     
     .scroll-down {
-        bottom: 20px;
-        font-size: 1.8rem;
+        bottom: 30px;
+        font-size: 2rem;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        min-width: 50px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .rotating-text {
@@ -2687,14 +2703,14 @@ textarea.form-control {
     }
     
     .hero-subtext {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         line-height: 1.4;
         min-height: 3.4em;
         margin-bottom: 1.8rem;
     }
     
     .animated-text {
-        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        font-size: clamp(1.6rem, 5vw, 1.9rem);
         font-weight: 700;
         line-height: 1.3;
         max-width: min(78vw, 380px);
@@ -2708,8 +2724,16 @@ textarea.form-control {
     }
     
     .scroll-down {
-        bottom: 15px;
-        font-size: 1.6rem;
+        bottom: 25px;
+        font-size: 1.8rem;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        min-width: 45px;
+        min-height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .rotating-text {
@@ -2760,7 +2784,7 @@ textarea.form-control {
     
     .form-control {
         height: 45px;
-        font-size: 0.9rem;
+        font-size: 16px;
     }
     
     textarea.form-control {
@@ -3686,7 +3710,7 @@ textarea.form-control {
     }
     
     .contact-form .form-control {
-        font-size: 1rem;
+        font-size: 16px;
         height: 3.25rem;
         padding: 0.875rem 0.875rem;
         margin-bottom: 1.25rem;
