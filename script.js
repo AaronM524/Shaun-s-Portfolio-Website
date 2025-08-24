@@ -254,7 +254,6 @@ class GradientTextAnimator {
     updateText() {
         const currentPhrase = this.phrases[this.currentIndex];
         const isDesktop = window.innerWidth >= 1024;
-        
         if (isDesktop) {
             // Desktop: keep original scale + fade animation
             this.element.style.transform = 'scale(0.95)';
