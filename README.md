@@ -20,6 +20,25 @@ Getting Started:
 2. Open index.html in your web browser
 3. For development, use a local server: python -m http.server 8000
 
-Browser Support: Chrome, Firefox, Safari, Edge (latest versions)
+Customization:
+- Rotating headline: update phrases in `script.js` (see `phrasesMobile` and `phrasesDesktop`). Mobile-only sizing tweaks use CSS selectors like `.hero-subtext .animated-text[data-phrase="aws-azure"]`.
+- Projects: edit `projectsData` in `script.js` to add/remove items and tags.
+- Contact: the form posts to Formspree; change the `action` URL in `index.html#contact`.
+- Styles: adjust colors, spacing, and components in `style.css`. Mobile and desktop rules are separated with media queries.
 
-This project is open source and available under the MIT License.
+Development Notes:
+- Run a local server for best results (video autoplay, fonts, and AOS init):
+  - Python: `python -m http.server 8000`
+  - Node: `npx http-server -p 8000`
+- The navbar adapts color on light sections via JS (`NavbarManager`) and `.scrolled` styles.
+- The mobile menu uses an overlay with no page scroll when open; ESC and background tap close it.
+- The rotating headline uses a gradient text effect and cycles every ~3.5s. On mobile, transitions use fade-only to avoid layout twitch.
+
+Accessibility:
+- Keyboard-focus styles and larger tap targets on mobile are included.
+- Respects `prefers-reduced-motion` to limit non-essential animations.
+
+Deploy:
+- Static hosting works out of the box (GitHub Pages, Vercel static, Netlify, etc.). Just serve the repo root.
+
+Browser Support: Chrome, Firefox, Safari, Edge (latest versions)
