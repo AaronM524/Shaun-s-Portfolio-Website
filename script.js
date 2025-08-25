@@ -678,11 +678,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollArrow = document.querySelector('.scroll-down');
     if (scrollArrow) {
         // Desktop-only custom smooth scroll for a slower, eased animation
-        const easeInOutCubic = (t) => (t < 0.5
-            ? 4 * t * t * t
-            : 1 - Math.pow(-2 * t + 2, 3) / 2);
+        // Gentler finish using easeOutQuint to avoid abrupt cutoff near the end
+        const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
 
-        const smoothScrollTo = (targetY, duration = 800, easingFn = easeInOutCubic) => {
+        const smoothScrollTo = (targetY, duration = 950, easingFn = easeOutQuint) => {
             const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
             const distance = targetY - startY;
             const startTime = performance.now();
@@ -691,14 +690,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 const elapsed = now - startTime;
                 const t = Math.min(elapsed / duration, 1);
                 const eased = easingFn(t);
-                window.scrollTo(0, startY + distance * eased);
-                if (elapsed < duration) requestAnimationFrame(step);
+                const nextY = startY + distance * eased;
+                window.scrollTo(0, nextY);
+                if (elapsed < duration) {
+                    requestAnimationFrame(step);
+                } else {
+                    // Only final-snap if off by a noticeable amount (> 0.5px)
+                    if (Math.abs((window.pageYOffset || document.documentElement.scrollTop || 0) - targetY) > 0.5) {
+                        window.scrollTo(0, targetY);
+                    }
+                }
             };
 
             requestAnimationFrame(step);
         };
 
-        scrollArrow.addEventListener('click', function(e) {
+        const handleScrollToAbout = (e) => {
             e.preventDefault();
             const aboutSection = document.querySelector('#about');
             if (!aboutSection) return;
@@ -710,8 +717,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isDesktop && !prefersReducedMotion) {
                 const targetRect = aboutSection.getBoundingClientRect();
                 const targetY = targetRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-                // 800ms for a smoother feel; within requested 600–900ms
-                smoothScrollTo(targetY, 800, easeInOutCubic);
+                // ~950ms for a gentler finish
+                smoothScrollTo(targetY, 950, easeOutQuint);
             } else {
                 // Keep existing behavior on mobile or when reduced motion is preferred
                 aboutSection.scrollIntoView({
@@ -719,7 +726,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     block: 'start'
                 });
             }
-        });
+        };
+
+        scrollArrow.addEventListener('click', handleScrollToAbout);
+
+        // Apply same behavior to hero "Explore My Work" button (desktop only custom easing)
+        const heroExploreBtn = document.querySelector('.hero-content a.btn[href="#about"]');
+        if (heroExploreBtn) {
+            heroExploreBtn.addEventListener('click', handleScrollToAbout);
+        }
     }
 });
 
