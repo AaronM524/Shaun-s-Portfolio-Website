@@ -678,16 +678,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollArrow = document.querySelector('.scroll-down');
     if (scrollArrow) {
         // Desktop-only custom smooth scroll for a slower, eased animation
-        // Gentler end using easeInOutExpo for a polished finish
-        const easeInOutExpo = (t) => {
-            if (t === 0) return 0;
-            if (t === 1) return 1;
-            return t < 0.5
-                ? Math.pow(2, 20 * t - 10) / 2
-                : (2 - Math.pow(2, -20 * t + 10)) / 2;
-        };
+        // Gentler finish using easeOutQuint to avoid abrupt cutoff near the end
+        const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
 
-        const smoothScrollTo = (targetY, duration = 900, easingFn = easeInOutExpo) => {
+        const smoothScrollTo = (targetY, duration = 950, easingFn = easeOutQuint) => {
             const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
             const distance = targetY - startY;
             const startTime = performance.now();
@@ -696,12 +690,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 const elapsed = now - startTime;
                 const t = Math.min(elapsed / duration, 1);
                 const eased = easingFn(t);
-                window.scrollTo(0, startY + distance * eased);
+                const nextY = startY + distance * eased;
+                window.scrollTo(0, nextY);
                 if (elapsed < duration) {
                     requestAnimationFrame(step);
                 } else {
-                    // Ensure we land exactly at target to avoid any rounding artifacts
-                    window.scrollTo(0, targetY);
+                    // Only final-snap if off by a noticeable amount (> 0.5px)
+                    if (Math.abs((window.pageYOffset || document.documentElement.scrollTop || 0) - targetY) > 0.5) {
+                        window.scrollTo(0, targetY);
+                    }
                 }
             };
 
@@ -720,8 +717,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isDesktop && !prefersReducedMotion) {
                 const targetRect = aboutSection.getBoundingClientRect();
                 const targetY = targetRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-                // 900ms for a gentler finish within requested 600–900ms
-                smoothScrollTo(targetY, 900, easeInOutExpo);
+                // ~950ms for a gentler finish
+                smoothScrollTo(targetY, 950, easeOutQuint);
             } else {
                 // Keep existing behavior on mobile or when reduced motion is preferred
                 aboutSection.scrollIntoView({
