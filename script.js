@@ -680,11 +680,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Desktop-only custom smooth scroll for a slower, eased animation
         // Gentler finish using easeOutQuint to avoid abrupt cutoff near the end
         const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
+        // Mobile-friendly balanced easing: smooth start and finish
+        const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
 
         const smoothScrollTo = (targetY, duration = 950, easingFn = easeOutQuint) => {
             const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
             const distance = targetY - startY;
             const startTime = performance.now();
+            const root = document.documentElement;
+            const prevBehavior = root.style.scrollBehavior;
+            // Disable CSS native smooth to prevent double-smoothing during JS animation
+            root.style.scrollBehavior = 'auto';
 
             const step = (now) => {
                 const elapsed = now - startTime;
@@ -699,6 +705,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (Math.abs((window.pageYOffset || document.documentElement.scrollTop || 0) - targetY) > 0.5) {
                         window.scrollTo(0, targetY);
                     }
+                    // Restore previous behavior after animation completes
+                    root.style.scrollBehavior = prevBehavior || '';
                 }
             };
 
@@ -726,10 +734,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // ~950ms for a gentler finish
                 smoothScrollTo(targetY, 950, easeOutQuint);
             } else {
-                // Mobile: slightly slower custom easing to keep it smooth without jank
+                // Mobile: use balanced easing with moderate duration for polished feel
                 const targetRect = aboutSection.getBoundingClientRect();
                 const targetY = targetRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-                smoothScrollTo(targetY, 750, easeOutQuint);
+                smoothScrollTo(targetY, 700, easeInOutSine);
             }
         };
 
