@@ -677,11 +677,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fix scroll arrow functionality
     const scrollArrow = document.querySelector('.scroll-down');
     if (scrollArrow) {
+        // Desktop-only custom smooth scroll for a slower, eased animation
+        const easeInOutCubic = (t) => (t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+        const smoothScrollTo = (targetY, duration = 800, easingFn = easeInOutCubic) => {
+            const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+            const distance = targetY - startY;
+            const startTime = performance.now();
+
+            const step = (now) => {
+                const elapsed = now - startTime;
+                const t = Math.min(elapsed / duration, 1);
+                const eased = easingFn(t);
+                window.scrollTo(0, startY + distance * eased);
+                if (elapsed < duration) requestAnimationFrame(step);
+            };
+
+            requestAnimationFrame(step);
+        };
+
         scrollArrow.addEventListener('click', function(e) {
             e.preventDefault();
             const aboutSection = document.querySelector('#about');
-            if (aboutSection) {
-                aboutSection.scrollIntoView({ 
+            if (!aboutSection) return;
+
+            // Respect reduced motion preferences
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isDesktop = window.matchMedia && window.matchMedia('(min-width: 1024px)').matches;
+
+            if (isDesktop && !prefersReducedMotion) {
+                const targetRect = aboutSection.getBoundingClientRect();
+                const targetY = targetRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+                // 800ms for a smoother feel; within requested 600–900ms
+                smoothScrollTo(targetY, 800, easeInOutCubic);
+            } else {
+                // Keep existing behavior on mobile or when reduced motion is preferred
+                aboutSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
