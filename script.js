@@ -714,17 +714,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const isDesktop = window.matchMedia && window.matchMedia('(min-width: 1024px)').matches;
 
-            if (isDesktop && !prefersReducedMotion) {
+            if (prefersReducedMotion) {
+                // No animation for users who prefer reduced motion
+                aboutSection.scrollIntoView({
+                    behavior: 'auto',
+                    block: 'start'
+                });
+            } else if (isDesktop) {
                 const targetRect = aboutSection.getBoundingClientRect();
                 const targetY = targetRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
                 // ~950ms for a gentler finish
                 smoothScrollTo(targetY, 950, easeOutQuint);
             } else {
-                // Keep existing behavior on mobile or when reduced motion is preferred
-                aboutSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // Mobile: slightly slower custom easing to keep it smooth without jank
+                const targetRect = aboutSection.getBoundingClientRect();
+                const targetY = targetRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+                smoothScrollTo(targetY, 750, easeOutQuint);
             }
         };
 
