@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(step);
         };
 
-        scrollArrow.addEventListener('click', function(e) {
+        const handleScrollToAbout = (e) => {
             e.preventDefault();
             const aboutSection = document.querySelector('#about');
             if (!aboutSection) return;
@@ -729,7 +729,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     block: 'start'
                 });
             }
-        });
+        };
+
+        scrollArrow.addEventListener('click', handleScrollToAbout);
+
+        // Apply same behavior to hero "Explore My Work" button (desktop only custom easing)
+        const heroExploreBtn = document.querySelector('.hero-content a.btn[href="#about"]');
+        if (heroExploreBtn) {
+            heroExploreBtn.addEventListener('click', handleScrollToAbout);
+        }
     }
 });
 
