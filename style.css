@@ -3041,9 +3041,10 @@ textarea.form-control {
 .footer {
     background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
     color: white;
-    padding: 72px 0 40px; /* pt-12 pb-10 */
+    padding: 48px 0 32px; /* pt-12 pb-8 */
     text-align: center;
     position: relative;
+    border-top: 1px solid #262626; /* border-neutral-800 */
 }
 
 /* Subtle top separator glow */
@@ -3054,14 +3055,13 @@ textarea.form-control {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    box-shadow: 0 -12px 40px rgba(227, 36, 43, 0.12);
+    height: 22px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%); /* gradient fade up */
 }
 
 .footer-logo {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 600; /* font-semibold */
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
     margin-bottom: 0.75rem;
 }
 
@@ -3082,14 +3082,15 @@ textarea.form-control {
     background: rgba(255, 255, 255, 0.08);
     color: white;
     margin: 0 10px; /* space-x-5 */
-    transition: transform 0.25s ease, color 0.2s ease, background 0.25s ease;
+    transition: all 0.25s ease; /* transition-all */
     font-size: 1.25rem; /* text-xl */
+    padding: 0.75rem; /* p-3 */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25); /* shadow-md */
 }
 
 .social-links a:hover {
-    color: #ef4444; /* hover:text-red-500 */
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px) scale(1.08); /* hover:scale-110 */
+    background: #ef4444; /* hover:bg-red-500 */
+    transform: translateY(-2px) scale(1.1); /* hover:scale-110 */
 }
 
 .footer-links {
@@ -3133,14 +3134,21 @@ textarea.form-control {
     font-size: 0.95rem;
     transition: color 0.25s ease, transform 0.2s ease;
     position: relative;
+    text-underline-offset: 4px; /* underline-offset-4 */
+    text-decoration-thickness: 2px;
 }
 
 .footer-links a:hover {
-    color: #ffffff;
+    color: #ef4444; /* hover:text-red-500 */
+    text-decoration: underline; /* hover:underline */
 }
 
 /* Hover underline animation */
-.footer-links a::after {
+/* optional bottom border hover alternative */
+.footer-links a.border-hover {
+    text-decoration: none;
+}
+.footer-links a.border-hover::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -3148,12 +3156,11 @@ textarea.form-control {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #ef4444;
+    background: #ef4444; /* border-red-500 */
     transition: width 0.25s ease;
 }
-
-.footer-links a:hover::after {
-    width: 100%;
+.footer-links a.border-hover:hover::after {
+    width: 100%; /* hover:border-b-2 */
 }
 
 @media (max-width: 576px) {
