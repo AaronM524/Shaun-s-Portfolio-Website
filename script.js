@@ -672,3 +672,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Scroll progress bar
+document.addEventListener('DOMContentLoaded', function() {
+    const progress = document.getElementById('scrollProgress');
+    if (!progress) return;
+
+    const updateProgress = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+        const docHeight = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.body.clientHeight,
+            document.documentElement.clientHeight
+        );
+        const winHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+        const scrollable = Math.max(docHeight - winHeight, 1);
+        const pct = Math.min(100, Math.max(0, (scrollTop / scrollable) * 100));
+        progress.style.width = pct + '%';
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+});
+
