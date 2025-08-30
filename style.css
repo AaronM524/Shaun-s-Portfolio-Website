@@ -3129,7 +3129,8 @@ textarea.form-control {
     color: #ffffff;
     background: rgba(227, 36, 43, 0.18);
     border-color: rgba(227, 36, 43, 0.45);
-    transform: translateY(-1px) scale(1.06);
+    transform: translateY(-1px) scale(1.08);
+    filter: brightness(1.12);
     box-shadow: 0 6px 24px rgba(227, 36, 43, 0.25);
 }
 
@@ -3231,10 +3232,12 @@ textarea.form-control {
         padding: 14px 0; /* keep slim on small screens */
     }
     .social-links a {
-        width: 38px;
-        height: 38px;
-        font-size: 0.98rem;
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
         margin: 6px 8px 0;
+        box-shadow: 0 2px 12px rgba(227, 36, 43, 0.15);
+        backdrop-filter: saturate(130%) blur(4px);
     }
     .footer-links ul {
         gap: 0.6rem;
