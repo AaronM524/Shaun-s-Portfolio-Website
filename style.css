@@ -3039,16 +3039,30 @@ textarea.form-control {
     border-radius: 2px;
 }
 .footer {
-    background: #000;
+    background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
     color: white;
-    padding: 50px 0 20px;
+    padding: 72px 0 40px; /* pt-12 pb-10 */
     text-align: center;
+    position: relative;
+}
+
+/* Subtle top separator glow */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    box-shadow: 0 -12px 40px rgba(227, 36, 43, 0.12);
 }
 
 .footer-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.75rem;
 }
 
 .footer-description {
@@ -3062,18 +3076,20 @@ textarea.form-control {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     color: white;
-    margin: 0 6px;
-    transition: all 0.3s ease;
+    margin: 0 10px; /* space-x-5 */
+    transition: transform 0.25s ease, color 0.2s ease, background 0.25s ease;
+    font-size: 1.25rem; /* text-xl */
 }
 
 .social-links a:hover {
-    background: var(--primary-color);
-    transform: translateY(-3px);
+    color: #ef4444; /* hover:text-red-500 */
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px) scale(1.08); /* hover:scale-110 */
 }
 
 .footer-links {
@@ -3100,22 +3116,44 @@ textarea.form-control {
     padding: 0;
     margin: 0;
     list-style: none;
+    display: flex; /* flex */
+    align-items: center;
+    justify-content: center; /* justify-center */
+    gap: 1.25rem; /* space-x-5/space-x-6 */
+    flex-wrap: wrap;
 }
 
 .footer-links li {
-    display: inline-block;
-    margin: 0 10px;
+    display: inline-flex;
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.78);
     text-decoration: none;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease, transform 0.2s ease;
+    position: relative;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: #ffffff;
+}
+
+/* Hover underline animation */
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #ef4444;
+    transition: width 0.25s ease;
+}
+
+.footer-links a:hover::after {
+    width: 100%;
 }
 
 @media (max-width: 576px) {
@@ -3127,12 +3165,28 @@ textarea.form-control {
 
 
 .copyright {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
-    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+    margin-top: 28px;
     text-align: center;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem; /* text-sm */
+}
+
+/* Mobile responsiveness for footer */
+@media (max-width: 576px) {
+    .footer {
+        padding: 56px 0 32px; /* slightly tighter */
+    }
+    .social-links a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.125rem; /* text-lg */
+        margin: 0 8px;
+    }
+    .footer-links ul {
+        gap: 0.9rem;
+    }
 }
 
 /* Back to Top Button */
