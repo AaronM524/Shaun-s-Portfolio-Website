@@ -728,146 +728,172 @@
       </div>
     </section>
 
-         <div id="app">
-        <section id="projects" class="projects-section">
-            <div class="container">
-                <h2 class="section-title">My Projects</h2>
-                
-                <div class="project-filter">
-                    <button
-                        v-for="filter in filters"
-                        :key="filter.value"
-                        @click="activeFilter = filter.value"
-                        :class="['filter-btn', { active: activeFilter === filter.value }]"
-                        :data-tooltip="filter.description"
-                    >
-                        {{ filter.label }}
-                    </button>
-                </div>
+    <div id="app">
+      <section id="projects" class="projects-section">
+        <div class="container">
+          <h2 class="section-title">My Projects</h2>
 
-                <div class="row">
-                    <div
-                        v-for="(project, index) in filteredProjects"
-                        :key="project.id"
-                        class="col-lg-4 col-md-6 mb-4"
-                    >
-                        <article class="project-card" :data-category="project.category">
-                            <div class="project-header">
-                                <div class="project-icon">
-                                    <i :class="project.icon"></i>
-                                </div>
-                                <h3>{{ project.title }}</h3>
-                                <p>{{ project.description }}</p>
-                            </div>
-                            <div class="project-info">
-                                <div class="project-tags">
-                                    <span
-                                        v-for="tag in project.tags"
-                                        :key="tag"
-                                        class="project-tag"
-                                    >
-                                        {{ tag }}
-                                    </span>
-                                </div>
-                                <a
-                                    :href="project.codeLink"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="project-btn"
-                                >
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                            </div>
-                        </article>
-                    </div>
+          <div class="project-filter">
+            <button
+              v-for="filter in filters"
+              :key="filter.value"
+              @click="activeFilter = filter.value"
+              :class="['filter-btn', { active: activeFilter === filter.value }]"
+              :data-tooltip="filter.description"
+            >
+              {{ filter.label }}
+            </button>
+          </div>
+
+          <div class="row">
+            <div
+              v-for="(project, index) in filteredProjects"
+              :key="project.id"
+              class="col-lg-4 col-md-6 mb-4"
+            >
+              <article class="project-card" :data-category="project.category">
+                <div class="project-header">
+                  <div class="project-icon">
+                    <i :class="project.icon"></i>
+                  </div>
+                  <h3>{{ project.title }}</h3>
+                  <p>{{ project.description }}</p>
                 </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span
+                      v-for="tag in project.tags"
+                      :key="tag"
+                      class="project-tag"
+                    >
+                      {{ tag }}
+                    </span>
+                  </div>
+                  <a
+                    :href="project.codeLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn"
+                  >
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </article>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </div>
 
     <script>
-        // Sample project data - replace with your actual data
-        const projectsData = {
-            filters: [
-                { value: 'all', label: 'All Projects', description: 'View all my projects' },
-                { value: 'web', label: 'Web Apps', description: 'Full-stack web applications' },
-                { value: 'mobile', label: 'Mobile', description: 'Mobile applications' },
-                { value: 'ai', label: 'AI/ML', description: 'Artificial Intelligence & Machine Learning' },
-                { value: 'tool', label: 'Tools', description: 'Developer tools and utilities' }
-            ],
-            projects: [
-                {
-                    id: 1,
-                    title: 'E-Commerce Platform',
-                    description: 'Full-stack e-commerce application with React, Node.js, and PostgreSQL featuring secure payment processing and real-time inventory management.',
-                    tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-                    category: 'web',
-                    codeLink: 'https://github.com/yourusername/ecommerce',
-                    icon: 'fas fa-shopping-cart'
-                },
-                {
-                    id: 2,
-                    title: 'Task Manager App',
-                    description: 'React Native mobile app for task management with Firebase backend, featuring offline sync and push notifications.',
-                    tags: ['React Native', 'Firebase', 'Redux'],
-                    category: 'mobile',
-                    codeLink: 'https://github.com/yourusername/taskmanager',
-                    icon: 'fas fa-tasks'
-                },
-                {
-                    id: 3,
-                    title: 'ML Sentiment Analyzer',
-                    description: 'Python-based sentiment analysis tool using natural language processing to analyze social media posts and customer feedback.',
-                    tags: ['Python', 'scikit-learn', 'NLTK', 'Flask'],
-                    category: 'ai',
-                    codeLink: 'https://github.com/yourusername/sentiment-analyzer',
-                    icon: 'fas fa-brain'
-                },
-                {
-                    id: 4,
-                    title: 'Code Quality Tool',
-                    description: 'Development tool for automated code review and quality assessment with integration for popular IDEs and CI/CD pipelines.',
-                    tags: ['Java', 'Spring Boot', 'Maven'],
-                    category: 'tool',
-                    codeLink: 'https://github.com/yourusername/code-quality',
-                    icon: 'fas fa-code'
-                },
-                {
-                    id: 5,
-                    title: 'Weather Dashboard',
-                    description: 'Real-time weather application with data visualization, weather alerts, and 7-day forecasts using multiple weather APIs.',
-                    tags: ['JavaScript', 'Chart.js', 'API Integration'],
-                    category: 'web',
-                    codeLink: 'https://github.com/yourusername/weather-dashboard',
-                    icon: 'fas fa-cloud-sun'
-                },
-                {
-                    id: 6,
-                    title: 'Log Analysis AI',
-                    description: 'AI-powered tool for analyzing and categorizing system logs with anomaly detection and automated alerting capabilities.',
-                    tags: ['Python', 'TensorFlow', 'pandas'],
-                    category: 'ai',
-                    codeLink: 'https://github.com/yourusername/log-analyzer',
-                    icon: 'fas fa-chart-line'
-                }
-            ]
-        };
+      // Sample project data - replace with your actual data
+      const projectsData = {
+        filters: [
+          {
+            value: "all",
+            label: "All Projects",
+            description: "View all my projects",
+          },
+          {
+            value: "web",
+            label: "Web Apps",
+            description: "Full-stack web applications",
+          },
+          {
+            value: "mobile",
+            label: "Mobile",
+            description: "Mobile applications",
+          },
+          {
+            value: "ai",
+            label: "AI/ML",
+            description: "Artificial Intelligence & Machine Learning",
+          },
+          {
+            value: "tool",
+            label: "Tools",
+            description: "Developer tools and utilities",
+          },
+        ],
+        projects: [
+          {
+            id: 1,
+            title: "E-Commerce Platform",
+            description:
+              "Full-stack e-commerce application with React, Node.js, and PostgreSQL featuring secure payment processing and real-time inventory management.",
+            tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+            category: "web",
+            codeLink: "https://github.com/yourusername/ecommerce",
+            icon: "fas fa-shopping-cart",
+          },
+          {
+            id: 2,
+            title: "Task Manager App",
+            description:
+              "React Native mobile app for task management with Firebase backend, featuring offline sync and push notifications.",
+            tags: ["React Native", "Firebase", "Redux"],
+            category: "mobile",
+            codeLink: "https://github.com/yourusername/taskmanager",
+            icon: "fas fa-tasks",
+          },
+          {
+            id: 3,
+            title: "ML Sentiment Analyzer",
+            description:
+              "Python-based sentiment analysis tool using natural language processing to analyze social media posts and customer feedback.",
+            tags: ["Python", "scikit-learn", "NLTK", "Flask"],
+            category: "ai",
+            codeLink: "https://github.com/yourusername/sentiment-analyzer",
+            icon: "fas fa-brain",
+          },
+          {
+            id: 4,
+            title: "Code Quality Tool",
+            description:
+              "Development tool for automated code review and quality assessment with integration for popular IDEs and CI/CD pipelines.",
+            tags: ["Java", "Spring Boot", "Maven"],
+            category: "tool",
+            codeLink: "https://github.com/yourusername/code-quality",
+            icon: "fas fa-code",
+          },
+          {
+            id: 5,
+            title: "Weather Dashboard",
+            description:
+              "Real-time weather application with data visualization, weather alerts, and 7-day forecasts using multiple weather APIs.",
+            tags: ["JavaScript", "Chart.js", "API Integration"],
+            category: "web",
+            codeLink: "https://github.com/yourusername/weather-dashboard",
+            icon: "fas fa-cloud-sun",
+          },
+          {
+            id: 6,
+            title: "Log Analysis AI",
+            description:
+              "AI-powered tool for analyzing and categorizing system logs with anomaly detection and automated alerting capabilities.",
+            tags: ["Python", "TensorFlow", "pandas"],
+            category: "ai",
+            codeLink: "https://github.com/yourusername/log-analyzer",
+            icon: "fas fa-chart-line",
+          },
+        ],
+      };
 
-        new Vue({
-            el: '#app',
-            data: {
-                filters: projectsData.filters,
-                projects: projectsData.projects,
-                activeFilter: 'all'
-            },
-            computed: {
-                filteredProjects() {
-                    return this.activeFilter === 'all'
-                        ? this.projects
-                        : this.projects.filter(p => p.category === this.activeFilter);
-                }
-            }
-        });
+      new Vue({
+        el: "#app",
+        data: {
+          filters: projectsData.filters,
+          projects: projectsData.projects,
+          activeFilter: "all",
+        },
+        computed: {
+          filteredProjects() {
+            return this.activeFilter === "all"
+              ? this.projects
+              : this.projects.filter((p) => p.category === this.activeFilter);
+          },
+        },
+      });
     </script>
 
     <!-- Contact Section -->
@@ -1124,7 +1150,24 @@
       duration: 800,
       once: false,
       mirror: true,
+      easing: "ease-out-quart",
       offset: 100,
+      startEvent: "DOMContentLoaded",
+      useClassNames: true,
+    });
+
+    // Ensure positions are accurate and allow re-triggering reliably
+    window.addEventListener("load", function () {
+      AOS.refreshHard();
+      setTimeout(function () {
+        AOS.refresh();
+      }, 300);
+    });
+    window.addEventListener("resize", function () {
+      AOS.refresh();
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) AOS.refresh();
     });
   </script>
 </html>
