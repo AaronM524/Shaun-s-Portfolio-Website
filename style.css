@@ -3041,7 +3041,7 @@ textarea.form-control {
 .footer {
     background: linear-gradient(180deg, #0b0b0f 0%, #000000 100%);
     color: white;
-    padding: 14px 0; /* ultra-slim */
+    padding: 12px 0; /* slightly slimmer */
     text-align: center;
     position: relative;
     border-top: 1px solid #262626; /* border-neutral-800 */
@@ -3133,9 +3133,8 @@ textarea.form-control {
     box-shadow: 0 6px 24px rgba(227, 36, 43, 0.25);
 }
 
-.footer-links {
-    margin-top: 12px !important; /* slimmer spacing */
-}
+/* Footer links removed; ensure no extra spacing */
+.footer-links { display: none; }
 
 .footer-links h4 {
     font-size: 1.2rem;
