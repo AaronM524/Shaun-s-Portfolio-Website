@@ -3152,18 +3152,27 @@ textarea.form-control {
 }
 
 /* Focus States for Accessibility */
-*:focus {
-    outline: 2px solid #E3242B;
+/* Use focus-visible for keyboard users and avoid outlining structural containers */
+:focus-visible {
+    outline: 2px solid rgba(227, 36, 43, 0.6);
     outline-offset: 2px;
+}
+
+.navbar:focus,
+.navbar *:focus {
+    outline: none;
 }
 
 /* Remove harsh outlines and replace with subtle effects */
-.nav-link:focus {
-    outline: 2px solid rgba(227, 36, 43, 0.8);
-    outline-offset: 2px;
+.nav-link:focus-visible {
+    outline: none;
+}
+.nav-link:focus-visible::after {
+    width: 100%;
 }
 
-.resume-btn:focus {
+.resume-btn:focus,
+.resume-btn:focus-visible {
     outline: none !important;
     box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.3) !important;
 }
