@@ -4793,3 +4793,15 @@ textarea.form-control {
         font-size: clamp(1.95rem, 6.4vw, 2.3rem);
     }
 }
+
+/* Contact form desktop two-column layout overrides */
+@media (min-width: 768px) {
+    /* Place Name and Email side-by-side on desktop */
+    .contact-form .row > .col-md-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+    /* Add subtle horizontal breathing room between the two columns */
+    .contact-form .row > .col-md-6:first-child { padding-right: 8px !important; }
+    .contact-form .row > .col-md-6:last-child { padding-left: 8px !important; }
+}
