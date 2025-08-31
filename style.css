@@ -2950,13 +2950,6 @@ textarea.form-control {
     resize: vertical;
 }
 
-/* Final overrides: inputs/textareas carry spacing; wrappers have no extra gap */
-.contact-form .form-control { margin-bottom: 16px !important; /* mb-4 */ }
-.contact-form .row .col-md-6 .form-control { margin-bottom: 16px !important; }
-.contact-form .mb-3, .contact-form .row .mb-3 { margin-bottom: 0 !important; }
-.contact-form .mb-3:last-of-type { margin-bottom: 0 !important; }
-.contact-form textarea.form-control { height: 120px !important; min-height: 120px !important; }
-
 /* Ensure button sits neatly below textarea with comfortable spacing */
 .contact-form .submit-btn {
     margin-top: 16px !important; /* mt-4 */
@@ -4823,3 +4816,10 @@ textarea.form-control {
 .contact-section .row {
     margin-top: 4rem; /* mt-16 */
 }
+
+/* Contact form final normalization: consistent spacing and textarea height */
+.contact-form .form-control { margin-bottom: 0 !important; }
+.contact-form .row .col-md-6 .form-control { margin-bottom: 0 !important; }
+.contact-form .mb-3, .contact-form .row .mb-3 { margin-bottom: 16px !important; }
+.contact-form .mb-3:last-of-type { margin-bottom: 16px !important; }
+.contact-form textarea.form-control { height: 120px !important; min-height: 120px !important; }
