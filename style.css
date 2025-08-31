@@ -2848,7 +2848,7 @@ section,
 
 /* Slightly increase spacing between form fields */
 .contact-form .mb-3 {
-    margin-bottom: 1.25rem;
+    margin-bottom: 12px;
 }
 
 /* Desktop contact section - equal height cards */
@@ -2942,12 +2942,19 @@ section,
 }
 
 textarea.form-control {
-    height: 120px;
-    min-height: 120px;
+    height: 160px;
+    min-height: 160px;
     padding: 12px 16px;
     line-height: 1.5;
     resize: vertical;
 }
+
+/* Final overrides: ensure spacing comes from wrappers and inputs have no margins */
+.contact-form .form-control { margin-bottom: 0 !important; }
+.contact-form .row .col-md-6 .form-control { margin-bottom: 0 !important; }
+.contact-form .mb-3, .contact-form .row .mb-3 { margin-bottom: 12px !important; }
+.contact-form .mb-3:last-of-type { margin-bottom: 12px !important; }
+.contact-form textarea.form-control { height: 180px !important; min-height: 180px !important; }
 
 .submit-btn {
     background-color: var(--rutgers-scarlet);
@@ -3560,7 +3567,7 @@ textarea.form-control {
     }
     
     textarea.form-control {
-        height: 120px;
+        height: 160px;
     }
     
     .submit-btn {
@@ -4592,8 +4599,8 @@ textarea.form-control {
     
     /* Textarea specific styling - only this should be taller */
     textarea.form-control {
-        height: 120px; /* Fixed height for textarea */
-        min-height: 120px;
+        height: 160px; /* Fixed height for textarea */
+        min-height: 160px;
         max-height: 200px; /* Limit maximum height */
         padding: 12px 16px; /* Same padding as other fields */
         resize: vertical;
