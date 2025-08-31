@@ -2757,9 +2757,10 @@ section,
 }
 
 .contact-info {
-    background: rgba(20, 20, 20, 0.85);
-    border-radius: 16px;
-    padding: 28px;
+    background: rgba(20, 20, 20, 0.9);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border-radius: 20px;
+    padding: 32px;
     border: 1px solid rgba(227, 36, 43, 0.12);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
@@ -2825,9 +2826,10 @@ section,
 }
 
 .contact-form {
-    background: rgba(20, 20, 20, 0.85);
-    border-radius: 16px;
-    padding: 28px;
+    background: rgba(20, 20, 20, 0.9);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border-radius: 20px;
+    padding: 32px;
     border: 1px solid rgba(227, 36, 43, 0.12);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
@@ -2835,6 +2837,17 @@ section,
 
 .contact-form h3 {
     color: #f3f4f6;
+    margin-bottom: 1.25rem;
+}
+
+/* Make top-row inputs full-width to avoid squished fields */
+.contact-form .row > .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Slightly increase spacing between form fields */
+.contact-form .mb-3 {
     margin-bottom: 1.25rem;
 }
 
@@ -2869,11 +2882,11 @@ section,
     }
     
     .contact-form .mb-3 {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
     }
     
     .contact-form .row .mb-3 {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
     }
     
     /* Push submit button to align with GitHub link */
