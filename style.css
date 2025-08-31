@@ -2961,9 +2961,11 @@ textarea.form-control {
 .contact-form .submit-btn {
     margin-top: 16px !important; /* mt-4 */
     margin-bottom: 0 !important;
-    align-self: auto !important;
+    align-self: center !important; /* self-center */
     width: auto !important; /* w-fit */
     display: inline-flex;
+    margin-left: auto; /* mx-auto */
+    margin-right: auto;
     padding: 0.75rem 1.5rem; /* py-3 px-6 */
     border-radius: 9999px; /* rounded-full */
     transition: transform 0.2s ease-in-out; /* transition-transform */
