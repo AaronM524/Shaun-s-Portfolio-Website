@@ -2829,8 +2829,8 @@ section,
 .contact-form {
     background: rgba(20, 20, 20, 0.9);
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    border-radius: 20px;
-    padding: 32px;
+    border-radius: 20px; /* rounded-xl */
+    padding: 32px; /* p-8 */
     border: 1px solid rgba(227, 36, 43, 0.12);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
@@ -2843,8 +2843,8 @@ section,
 
 /* Make top-row inputs full-width to avoid squished fields */
 .contact-form .row > .col-md-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 1 1 0%; /* flex-1 */
+    max-width: 100%; /* w-full on small screens */
 }
 
 /* Slightly increase spacing between form fields */
@@ -4804,12 +4804,11 @@ textarea.form-control {
 @media (min-width: 768px) {
     /* Place Name and Email side-by-side on desktop */
     .contact-form .row > .col-md-6 {
-        flex: 0 0 50% !important;
-        max-width: 50% !important;
+        flex: 0 0 calc(50% - 8px) !important; /* two equal halves with gap */
+        max-width: calc(50% - 8px) !important;
     }
     /* Add subtle horizontal breathing room between the two columns */
-    .contact-form .row > .col-md-6:first-child { padding-right: 8px !important; }
-    .contact-form .row > .col-md-6:last-child { padding-left: 8px !important; }
+    .contact-form .row { column-gap: 16px; } /* gap-4 */
 }
 
 /* Spacing under Get In Touch header for contact row */
@@ -4822,4 +4821,4 @@ textarea.form-control {
 .contact-form .row .col-md-6 .form-control { margin-bottom: 0 !important; }
 .contact-form .mb-3, .contact-form .row .mb-3 { margin-bottom: 16px !important; }
 .contact-form .mb-3:last-of-type { margin-bottom: 16px !important; }
-.contact-form textarea.form-control { height: 120px !important; min-height: 120px !important; }
+.contact-form textarea.form-control { height: auto !important; min-height: 120px !important; }
