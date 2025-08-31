@@ -2897,10 +2897,10 @@ section,
     }
     
     .contact-form .submit-btn {
-        margin-top: auto;
-        align-self: flex-start;
-        margin-bottom: -10px; /* Slightly reduce negative margin */
-        transform: translateY(-20px); /* Raise button a bit more for better alignment */
+        margin-top: 16px; /* natural placement beneath textarea on desktop */
+        align-self: auto;
+        margin-bottom: 0;
+        transform: none;
     }
     
     /* Ensure the last form element has proper spacing for alignment */
@@ -2957,7 +2957,7 @@ textarea.form-control {
 .contact-form textarea.form-control { height: 120px !important; min-height: 120px !important; }
 
 /* Ensure button sits neatly below textarea with comfortable spacing */
-.contact-form .submit-btn { margin-top: 16px !important; margin-bottom: 0 !important; align-self: flex-start; }
+.contact-form .submit-btn { margin-top: 16px !important; margin-bottom: 0 !important; align-self: auto !important; }
 
 .submit-btn {
     background-color: var(--rutgers-scarlet);
