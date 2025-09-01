@@ -2754,12 +2754,14 @@ section,
 .contact-section {
     background: linear-gradient(180deg, #000000 0%, #0b0b0f 100%);
     color: #e5e7eb;
+    padding: 5rem 0; /* py-20 equivalent */
 }
 
 .contact-info {
-    background: rgba(20, 20, 20, 0.85);
-    border-radius: 16px;
-    padding: 28px;
+    background: rgba(20, 20, 20, 0.9);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border-radius: 20px;
+    padding: 32px;
     border: 1px solid rgba(227, 36, 43, 0.12);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
@@ -2825,9 +2827,10 @@ section,
 }
 
 .contact-form {
-    background: rgba(20, 20, 20, 0.85);
-    border-radius: 16px;
-    padding: 28px;
+    background: rgba(20, 20, 20, 0.9);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border-radius: 20px; /* rounded-xl */
+    padding: 32px; /* p-8 */
     border: 1px solid rgba(227, 36, 43, 0.12);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
@@ -2836,6 +2839,17 @@ section,
 .contact-form h3 {
     color: #f3f4f6;
     margin-bottom: 1.25rem;
+}
+
+/* Make top-row inputs full-width to avoid squished fields */
+.contact-form .row > .col-md-6 {
+    flex: 1 1 0%; /* flex-1 */
+    max-width: 100%; /* w-full on small screens */
+}
+
+/* Slightly increase spacing between form fields */
+.contact-form .mb-3 {
+    margin-bottom: 12px;
 }
 
 /* Desktop contact section - equal height cards */
@@ -2869,11 +2883,11 @@ section,
     }
     
     .contact-form .mb-3 {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
     }
     
     .contact-form .row .mb-3 {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
     }
     
     /* Push submit button to align with GitHub link */
@@ -2884,10 +2898,10 @@ section,
     }
     
     .contact-form .submit-btn {
-        margin-top: auto;
-        align-self: flex-start;
-        margin-bottom: -10px; /* Slightly reduce negative margin */
-        transform: translateY(-20px); /* Raise button a bit more for better alignment */
+        margin-top: 16px; /* natural placement beneath textarea on desktop */
+        align-self: auto;
+        margin-bottom: 0;
+        transform: none;
     }
     
     /* Ensure the last form element has proper spacing for alignment */
@@ -2929,12 +2943,27 @@ section,
 }
 
 textarea.form-control {
-    height: 120px;
-    min-height: 120px;
+    height: 160px;
+    min-height: 160px;
     padding: 12px 16px;
     line-height: 1.5;
     resize: vertical;
 }
+
+/* Ensure button sits neatly below textarea with comfortable spacing */
+.contact-form .submit-btn {
+    margin-top: 16px !important; /* mt-4 */
+    margin-bottom: 0 !important;
+    align-self: center !important; /* self-center */
+    width: auto !important; /* w-fit */
+    display: inline-flex;
+    margin-left: auto; /* mx-auto */
+    margin-right: auto;
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 9999px; /* rounded-full */
+    transition: transform 0.2s ease-in-out; /* transition-transform */
+}
+.contact-form .submit-btn:hover { transform: scale(1.05); }
 
 .submit-btn {
     background-color: var(--rutgers-scarlet);
@@ -3547,7 +3576,7 @@ textarea.form-control {
     }
     
     textarea.form-control {
-        height: 120px;
+        height: 160px;
     }
     
     .submit-btn {
@@ -4579,8 +4608,8 @@ textarea.form-control {
     
     /* Textarea specific styling - only this should be taller */
     textarea.form-control {
-        height: 120px; /* Fixed height for textarea */
-        min-height: 120px;
+        height: 160px; /* Fixed height for textarea */
+        min-height: 160px;
         max-height: 200px; /* Limit maximum height */
         padding: 12px 16px; /* Same padding as other fields */
         resize: vertical;
@@ -4770,3 +4799,26 @@ textarea.form-control {
         font-size: clamp(1.95rem, 6.4vw, 2.3rem);
     }
 }
+
+/* Contact form desktop two-column layout overrides */
+@media (min-width: 768px) {
+    /* Place Name and Email side-by-side on desktop */
+    .contact-form .row > .col-md-6 {
+        flex: 0 0 calc(50% - 8px) !important; /* two equal halves with gap */
+        max-width: calc(50% - 8px) !important;
+    }
+    /* Add subtle horizontal breathing room between the two columns */
+    .contact-form .row { column-gap: 16px; } /* gap-4 */
+}
+
+/* Spacing under Get In Touch header for contact row */
+.contact-section .row {
+    margin-top: 4rem; /* mt-16 */
+}
+
+/* Contact form final normalization: consistent spacing and textarea height */
+.contact-form .form-control { margin-bottom: 0 !important; }
+.contact-form .row .col-md-6 .form-control { margin-bottom: 0 !important; }
+.contact-form .mb-3, .contact-form .row .mb-3 { margin-bottom: 16px !important; }
+.contact-form .mb-3:last-of-type { margin-bottom: 16px !important; }
+.contact-form textarea.form-control { height: auto !important; min-height: 120px !important; }
