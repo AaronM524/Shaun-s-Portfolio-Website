@@ -117,13 +117,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Video handling with GitHub CDN support
+// Hero video handling
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('heroVideo');
     const heroSection = document.querySelector('.hero-section');
     
     if (video) {
-        console.log('Attempting to load video from:', video.querySelector('source').src);
-        
         // Ensure video properties are set
         video.muted = true;
         video.playsInline = true;
@@ -133,54 +132,22 @@ document.addEventListener('DOMContentLoaded', function() {
         let videoLoaded = false;
         
         video.addEventListener('loadeddata', function() {
-            console.log('Video loaded successfully');
             videoLoaded = true;
-            // Try to play the video
-            video.play().then(() => {
-                console.log('Video is playing');
-            }).catch(e => {
-                console.log('Video autoplay blocked:', e);
-            });
+            video.play().catch(() => {});
         });
         
-        video.addEventListener('canplay', function() {
-            console.log('Video can play');
-            videoLoaded = true;
-        });
-        
-        video.addEventListener('error', function(e) {
-            console.log('Video error:', e);
-            console.log('Error details:', video.error);
+        video.addEventListener('error', function() {
             applyFallback();
         });
         
-        video.addEventListener('stalled', function() {
-            console.log('Video loading stalled');
-        });
-        
         function applyFallback() {
-            heroSection.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)';
-            console.log('Applied fallback background');
+            if (heroSection) {
+                heroSection.style.background = 'linear-gradient(135deg, #0b0f19 0%, #111827 40%, #1f2937 100%)';
+            }
         }
         
-        // Force load the video
         video.load();
-        
-        // Increased timeout for CDN loading (15 seconds)
-        setTimeout(() => {
-            if (!videoLoaded) {
-                console.log('Video timeout - applying fallback after 15 seconds');
-                applyFallback();
-            }
-        }, 15000);
-        
-        // Also check if video is actually playing after some time
-        setTimeout(() => {
-            if (video.paused && !video.ended) {
-                console.log('Video appears to be paused, attempting to play');
-                video.play().catch(e => console.log('Play attempt failed:', e));
-            }
-        }, 3000);
+        setTimeout(() => { if (!videoLoaded) applyFallback(); }, 12000);
     }
 });
 
