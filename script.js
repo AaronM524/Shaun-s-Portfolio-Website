@@ -96,6 +96,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// Footer year auto-update
+document.addEventListener('DOMContentLoaded', function() {
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = String(new Date().getFullYear());
+    }
+});
+
+// Footer last updated text
+document.addEventListener('DOMContentLoaded', function() {
+    const el = document.getElementById('lastUpdated');
+    if (!el) return;
+
+    const d = new Date();
+    const formatter = new Intl.DateTimeFormat(undefined, {
+        year: 'numeric', month: 'short', day: '2-digit'
+    });
+    el.textContent = formatter.format(d);
+});
+
 // Video handling with GitHub CDN support
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('heroVideo');

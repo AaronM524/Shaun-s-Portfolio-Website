@@ -3115,6 +3115,53 @@ textarea.form-control {
     text-shadow: 0 0 12px rgba(227, 36, 43, 0.2);
 }
 
+/* Recruiter-focused tagline */
+.footer-tagline { display: none; }
+
+/* CTA buttons in footer */
+.footer-ctas { display: none; }
+
+.footer-ctas .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-ctas .cta.primary {
+    background: #E3242B;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(227, 36, 43, 0.35);
+}
+.footer-ctas .cta.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(227, 36, 43, 0.5);
+}
+
+.footer-ctas .cta.secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: #e5e7eb;
+}
+.footer-ctas .cta.secondary:hover {
+    background: rgba(227, 36, 43, 0.16);
+    color: #fff;
+    border-color: rgba(227, 36, 43, 0.45);
+}
+
+.footer-ctas .cta.ghost {
+    background: transparent;
+    color: #e5e7eb;
+}
+.footer-ctas .cta.ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
 /* Optional animated underline/glow pulse under name */
 .footer-logo::after {
     content: '';
@@ -3166,7 +3213,7 @@ textarea.form-control {
     box-shadow: 0 6px 24px rgba(227, 36, 43, 0.25);
 }
 
-/* Footer links removed; ensure no extra spacing */
+/* Hide quick links for minimal footer */
 .footer-links { display: none; }
 
 .footer-links h4 {
@@ -3262,6 +3309,10 @@ textarea.form-control {
 @media (max-width: 576px) {
     .footer {
         padding: 14px 0; /* keep slim on small screens */
+    }
+    .footer-ctas {
+        flex-direction: column;
+        gap: 8px;
     }
     .social-links a {
         width: 36px;
