@@ -2757,75 +2757,30 @@ section,
     padding: 5rem 0; /* py-20 equivalent */
 }
 
-/* Contact section layout */
-.contact-section .row {
-    display: flex;
-    align-items: stretch;
-}
-
-@media (max-width: 991.98px) {
-    .contact-section .row {
-        flex-direction: column;
-    }
-    
-    .contact-info {
-        margin-bottom: 2rem;
-    }
-}
-
 .contact-info {
     background: rgba(20, 20, 20, 0.9);
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    border-radius: 16px;
-    padding: 2rem;
+    border-radius: 20px;
+    padding: 32px;
     border: 1px solid rgba(227, 36, 43, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(227, 36, 43, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-info:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 4px 16px rgba(227, 36, 43, 0.12);
-    transform: translateY(-2px);
-}
-
-.contact-info h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #f8fafc;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.025em;
-}
-
-.contact-info > p {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
 }
 
 .contact-item {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 1.25rem;
-    padding: 0.875rem 1rem;
-    border-radius: 12px;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    min-height: 52px;
-}
-
-.contact-item:last-child {
-    margin-bottom: 0;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .contact-item:hover {
-    background-color: rgba(227, 36, 43, 0.08);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(227, 36, 43, 0.15);
+    background-color: rgba(227, 36, 43, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(227, 36, 43, 0.25);
 }
 
 .contact-item:hover .contact-icon {
@@ -2839,204 +2794,176 @@ section,
 }
 
 .contact-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(227, 36, 43, 0.15), rgba(227, 36, 43, 0.08));
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(227, 36, 43, 0.14);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
-    margin-top: 6px;
-    color: #f87171;
-    font-size: 1rem;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(227, 36, 43, 0.2);
-    flex-shrink: 0;
+    margin-right: 20px;
+    color: #ef4444;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(227, 36, 43, 0.3);
 }
 
 .contact-text h4 {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0.125rem;
-    color: #f1f5f9;
-    transition: color 0.25s ease;
-    letter-spacing: -0.01em;
-    line-height: 1.4;
+    margin-bottom: 5px;
+    color: #e5e7eb;
+    transition: color 0.3s ease;
 }
 
 .contact-text p, .contact-text a {
-    color: #94a3b8;
+    color: #9ca3af;
     text-decoration: none;
-    transition: color 0.25s ease;
-    font-size: 0.875rem;
-    line-height: 1.4;
-    margin: 0;
+    transition: color 0.3s ease;
 }
 
 .contact-text a:hover {
-    color: #f87171;
+    color: #ef4444;
 }
 
 .contact-form {
     background: rgba(20, 20, 20, 0.9);
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    border-radius: 16px;
-    padding: 2rem;
+    border-radius: 20px; /* rounded-xl */
+    padding: 32px; /* p-8 */
     border: 1px solid rgba(227, 36, 43, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(227, 36, 43, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 4px 16px rgba(227, 36, 43, 0.12);
-    transform: translateY(-2px);
-}
-
-.contact-form form {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Ensure both cards align content at the top and share consistent behavior */
-.contact-info,
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
 }
 
 .contact-form h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #f8fafc;
-    margin-bottom: 1.75rem;
-    letter-spacing: -0.025em;
-}
-
-/* Form row spacing - align with contact items */
-.contact-form .row {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
+    color: #f3f4f6;
     margin-bottom: 1.25rem;
 }
 
+/* Make top-row inputs full-width to avoid squished fields */
 .contact-form .row > .col-md-6 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    flex: 1 1 0%; /* flex-1 */
+    max-width: 100%; /* w-full on small screens */
 }
 
-/* Single field spacing to match contact items */
-.contact-form .mb-3:not(.row .mb-3) {
-    margin-bottom: 1.25rem;
+/* Slightly increase spacing between form fields */
+.contact-form .mb-3 {
+    margin-bottom: 12px;
 }
 
-@media (max-width: 767.98px) {
-    .contact-form .row {
-        margin-left: 0;
-        margin-right: 0;
+/* Desktop contact section - equal height cards */
+@media (min-width: 1024px) {
+    .contact-section .row {
+        display: flex;
+        align-items: stretch;
     }
     
-    .contact-form .row > .col-md-6 {
-        padding-left: 0;
-        padding-right: 0;
-        margin-bottom: 1.25rem;
+    .contact-section .col-lg-5,
+    .contact-section .col-lg-7 {
+        display: flex;
+        flex-direction: column;
     }
-}
-
-/* Align form fields with contact items */
-.contact-form .mb-3 {
-    margin-bottom: 1.25rem;
-}
-
-.contact-form .mb-3:last-of-type {
-    margin-bottom: 1.25rem;
-}
-
-/* Ensure submit button has proper top spacing */
-.contact-form .submit-btn {
-    margin-top: 0.5rem !important;
-}
-
-/* Desktop refinements */
-@media (min-width: 1024px) {
+    
+    .contact-info,
+    .contact-form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    /* Match form spacing to contact info spacing */
+    .contact-form {
+        justify-content: space-between;
+    }
+    
+    .contact-form h3 {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form .mb-3 {
+        margin-bottom: 1.75rem;
+    }
+    
+    .contact-form .row .mb-3 {
+        margin-bottom: 1.75rem;
+    }
+    
+    /* Push submit button to align with GitHub link */
+    .contact-form form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    
     .contact-form .submit-btn {
-        width: auto;
-        min-width: 160px;
+        margin-top: 16px; /* natural placement beneath textarea on desktop */
+        align-self: auto;
+        margin-bottom: 0;
+        transform: none;
+    }
+    
+    /* Ensure the last form element has proper spacing for alignment */
+    .contact-form .mb-3:last-of-type {
+        margin-bottom: 2rem;
+    }
+    
+    /* Remove bottom margin from last contact item for precise alignment */
+    .contact-info .contact-item:last-child {
+        margin-bottom: 0;
     }
 }
 
 .form-control {
-    min-height: 52px;
-    height: 52px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 14px 16px;
-    margin-bottom: 1.25rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    min-height: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.4;
     box-sizing: border-box;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(0, 0, 0, 0.4);
-    color: #f1f5f9;
-    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    background-color: var(--rutgers-white);
+    color: var(--rutgers-black);
 }
 
 .form-control::placeholder {
-    font-size: 0.95rem;
-    color: #64748b;
-    line-height: 1.5;
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.4;
 }
 
 .form-control:focus {
-    box-shadow: 0 0 0 3px rgba(227, 36, 43, 0.15), 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-color: #f87171;
+    box-shadow: 0 0 0 3px rgba(204, 0, 51, 0.2);
+    border-color: var(--rutgers-scarlet);
     outline: none;
-    transform: translateY(-1px);
-    background: rgba(0, 0, 0, 0.5);
 }
 
 textarea.form-control {
-    height: 140px;
-    min-height: 140px;
-    max-height: 200px;
-    padding: 14px 16px;
-    line-height: 1.6;
+    height: 160px;
+    min-height: 160px;
+    padding: 12px 16px;
+    line-height: 1.5;
     resize: vertical;
 }
 
 /* Ensure button sits neatly below textarea with comfortable spacing */
 .contact-form .submit-btn {
-    margin-top: 1rem !important;
+    margin-top: 20px !important; /* slightly more space */
     margin-bottom: 0 !important;
-    align-self: flex-start !important;
-    width: auto !important;
+    align-self: flex-start !important; /* left align */
+    width: auto !important; /* w-fit */
     display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-left: 0;
+    margin-left: 0; /* remove centering */
     margin-right: 0;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: -0.01em;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(135deg, #e11d48, #dc2626);
-    border: none;
-    color: #ffffff;
-    box-shadow: 0 4px 16px rgba(227, 36, 43, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 9999px; /* rounded-full */
+    transition: transform 0.2s ease-in-out; /* transition-transform */
 }
-.contact-form .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(227, 36, 43, 0.35), 0 4px 8px rgba(0, 0, 0, 0.15);
-    background: linear-gradient(135deg, #f43f5e, #ef4444);
-}
+.contact-form .submit-btn:hover { transform: scale(1.05); }
 
 .submit-btn {
     background-color: var(--rutgers-scarlet);
